@@ -1,0 +1,31 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/infrastructureRegister/{{infrastructureRegisterId}}/infrastructureRisk/Create"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Risk Type</th>
+                <th>Risk Consequence</th>
+                <th>Risk Probability</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="infrastructureRisk in infrastructureRisks">
+            <td>
+                <a href="#/infrastructureRegister/{{infrastructureRegisterId}}/infrastructureRisk/{{infrastructureRisk.id}}">{{infrastructureRisk.description}}</a>
+            </td>
+            <td>
+                <a href="#/infrastructureRegister/{{infrastructureRegisterId}}/infrastructureRisk/{{infrastructureRisk.id}}">{{infrastructureRisk.riskType}}</a>
+            </td>
+            <td>
+                <a href="#/infrastructureRegister/{{infrastructureRegisterId}}/infrastructureRisk/{{infrastructureRisk.id}}">{{infrastructureRisk.riskConsequence}}</a>
+            </td>
+            <td>
+                <a href="#/infrastructureRegister/{{infrastructureRegisterId}}/infrastructureRisk/{{infrastructureRisk.id}}">{{infrastructureRisk.riskProbability}}</a>
+            </td>
+        </tr>
+    </table>
+</div>

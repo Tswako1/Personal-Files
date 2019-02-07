@@ -1,0 +1,109 @@
+﻿<div class="col-md-12">
+    <form class="form-horizontal captureform" novalidate role="form" name="projectActivitiesForm">
+        <div>
+            <h4 style="margin-left: 0; padding-left: 0" class="col-lg-3">Project Gantt Chart</h4>
+            <h4 style="margin-left: 0" class="col-lg-2">Planned Start</h4>
+            <h4 style="margin-left: 0" class="col-lg-2">Planned End</h4>
+            <h4 style="margin-left: 0" class="col-lg-2">Actual End</h4>
+            <h4 style="margin-left: 0" class="col-lg-2">Complete</h4>
+        </div>
+
+        <div class="form-group">
+            <label for="inputactivityEstablishSteeringCommitteeStartDate" class="col-lg-3 control-label">Preparatory Phase</label>
+            <div class="col-lg-2">
+                <input ng-model="project.activityEstablishSteeringCommitteeStartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="inputactivityEstablishSteeringCommitteeStartDate" name="activityEstablishSteeringCommitteeStartDate" placeholder="">
+                <div class="error" validation-message="Activity should start after project start date and should be less than activity end date"></div>
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="project.activityEstablishSteeringCommitteeEndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text1" placeholder="" name="activityEstablishSteeringCommitteeEndDate">
+                <div class="error" validation-message="Activity should end before project end date and should be greater than activity start date"></div>
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="project.activityEstablishSteeringCommitteeCompleteDate" name="activityEstablishSteeringCommitteeCompleteDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text2" placeholder="">
+                <div class="error" validation-message="Completion date should not be in the future"></div>
+            </div>
+            <div class="col-lg-3 checkbox mipmis-checkbox">
+                <input ng-model="project.activityEstablishSteeringCommitteeComplete" type="checkbox" value="true" id="inputMisaSupportedProject" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputBusinessProjectPlanDate" class="col-lg-3 control-label">Design Procurement and Design</label>
+            <div class="col-lg-2">
+                <input ng-model="project.activityDesignStartDate" name="activityDesignStartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text3" placeholder="">
+                <div class="error" validation-message="Activity should start after project start date and should be less than activity end date"></div>
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="project.activityDesignEndDate" name="activityDesignEndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text4" placeholder="">
+                <div class="error" validation-message="Activity should end before project end date and should be greater than activity start date"></div>
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="project.activityDesignCompleteDate" name="activityDesignCompleteDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text5" placeholder="">
+                <div class="error" validation-message="Completion date should not be in the future"></div>
+            </div>
+            <div class="col-lg-3 checkbox mipmis-checkbox">
+                <input ng-model="project.activityDesignComplete" type="checkbox" value="true" id="Checkbox1" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputBusinessProjectPlanDate" class="col-lg-3 control-label">Implementation Procurement</label>
+            <div class="col-lg-2">
+                <input ng-model="project.activityTenderStartDate" name="activityTenderStartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text6" placeholder="">
+                <div class="error" validation-message="Activity should start after project start date and should be less than activity end date"></div>
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="project.activityTenderEndDate" name="activityTenderEndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text7" placeholder="">
+                <div class="error" validation-message="Activity should end before project end date and should be greater than activity start date"></div>
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="project.activityTenderCompleteDate" name="activityTenderCompleteDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text8" placeholder="">
+                <div class="error" validation-message="Completion date should not be in the future"></div>
+            </div>
+            <div class="col-lg-3 checkbox mipmis-checkbox">
+                <input ng-model="project.activityTenderComplete" type="checkbox" value="true" id="Checkbox2" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputBusinessProjectPlanDate" class="col-lg-3 control-label">Implementation</label>
+            <div class="col-lg-2">
+                <input ng-model="project.activityConstructionStartDate" name="activityConstructionStartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text9" placeholder="">
+                <div class="error" validation-message="Activity should start after project start date and should be less than activity end date"></div>
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="project.activityConstructionEndDate" name="activityConstructionEndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text10" placeholder="">
+                <div class="error" validation-message="Activity should end before project end date and should be greater than activity start date"></div>
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="project.activityConstructionCompleteDate" name="activityConstructionCompleteDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text11" placeholder="">
+                <div class="error" validation-message="Completion date should not be in the future"></div>
+            </div>
+            <div class="col-lg-3 checkbox mipmis-checkbox">
+                <input ng-model="project.activityConstructionComplete" type="checkbox" value="true" id="Checkbox3" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputBusinessProjectPlanDate" class="col-lg-3 control-label">Defect Liability</label>
+            <div class="col-lg-2">
+                <input ng-model="project.activityCompletionStartDate" name="activityCompletionStartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text12" placeholder="">
+                <div class="error" validation-message="Activity should start after project start date and should be less than activity end date"></div>
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="project.activityCompletionEndDate" name="activityCompletionEndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text13" placeholder="">
+                <div class="error" validation-message="Activity should end before project end date and should be greater than activity start date"></div>
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="project.activityCompletionCompleteDate" name="activityCompletionCompleteDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text14" placeholder="">
+                <div class="error" validation-message="Completion date should not be in the future"></div>
+            </div>
+            <div class="col-lg-3 checkbox mipmis-checkbox">
+                <input ng-model="project.activityCompletionComplete" type="checkbox" value="true" id="Checkbox4" placeholder="">
+            </div>
+        </div>
+
+
+        <div class="form-actions">
+            <div class="container">
+                <button ng-click="saveProjectActivities()" type="submit" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Save</button>
+            </div>
+        </div>
+    </form>
+</div>

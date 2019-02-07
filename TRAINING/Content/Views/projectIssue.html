@@ -1,0 +1,72 @@
+﻿<form class="form-horizontal col-md-12" noviladate role="form" name="projectIssueForm">
+    <div class="form-group">
+        <label for="inputDateReported" class="col-lg-3 control-label">Date Reported</label>
+        <div class="col-lg-3">
+            <input ng-model="projectIssue.dateReported" required ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="inputDateReported" placeholder="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label ng-model="projectIssue.description" for="inputDescription" class="col-lg-3 control-label">Description</label>
+        <div class="col-lg-9">
+            <input ng-model="projectIssue.description" required type="text" class="form-control" id="inputDescription" placeholder="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="selectRaisedBy" class="col-lg-3 control-label">Raised By</label>
+        <div class="col-lg-3">
+            <select ng-options="person.id as person.description for person in people" ng-model="projectIssue.raisedById" class="form-control" id="selectRaisedBy"></select>
+        </div>
+    </div>
+    <div class="row">
+        <label for="issueSeverity" class="col-lg-3 control-label">Severity</label>
+        <div>
+            <div class="col-lg-3">
+
+                <select ng-options="issueSeverity.id as issueSeverity.description for issueSeverity in issueSeverities" required ng-model="projectIssue.issueSeverityId" class="form-control" id="selectRiskConsequence">
+                </select>
+            </div>
+        </div>
+        <label hidden for="riskProbability" class="col-lg-3 control-label">Probability</label>
+        <div hidden class="col-lg-3">
+
+            <select ng-options="issueProbability.id as issueProbability.description for issueProbability in issueProbabilities" ng-model="projectIssue.issueProbabilityId" class="form-control" id="selectRiskProbability">
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label ng-model="projectIssue.issuePriority" for="inputIssuePriority" class="col-lg-3 control-label">Issue Priority</label>
+        <div class="col-lg-3">
+            <input ng-model="projectIssue.issuePriority" disabled type="text" class="form-control exposure {{projectIssue.issuePriority}}" id="inputIssuePriority" placeholder="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="selectResponsible" class="col-lg-3 control-label">Responsible Person</label>
+        <div class="col-lg-3">
+            <select ng-options="person.id as person.description for person in people" ng-model="projectIssue.responsibleId" class="form-control" id="selectResponsible"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputIssueResponse" class="col-lg-3 control-label">Response</label>
+        <div class="col-lg-9">
+            <input ng-model="projectIssue.response" required type="text" class="form-control" id="inputIssueResponse" placeholder="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputStatus" class="col-lg-3 control-label">Issue Closed</label>
+        <div class="col-lg-3 checkbox mipmis-checkbox">
+            <input ng-model="projectIssue.status" type="checkbox" value="true" id="inputStatus" placeholder="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputDateResloved" class="col-lg-3 control-label">Date Resolved</label>
+        <div class="col-lg-3">
+            <input ng-model="projectIssue.dateResolved" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="inputDateResloved" placeholder="">
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <div class="container">
+            <button ng-click="saveProjectIssue()" value="Save" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Save</button>
+        </div>
+    </div>
+</form>

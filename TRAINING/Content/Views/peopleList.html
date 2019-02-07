@@ -1,0 +1,27 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/administration/people/Create"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Surname</th>
+                <th>E Mail</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="person in people">
+            <td>
+                <a href="#/administration/people/{{person.id}}">{{person.firstName}}</a>
+            </td>
+            <td>
+                <a href="#/administration/people/{{person.id}}">{{person.surname}}</a>
+            </td>
+            <td>
+                <a href="#/administration/people/{{person.id}}">{{person.emailAddress}}</a>
+            </td>
+        </tr>
+    </table>
+</div>

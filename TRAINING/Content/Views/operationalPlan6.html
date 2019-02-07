@@ -1,0 +1,189 @@
+﻿<ul placeholder-content="toolbar">
+    <li class="dropdown">
+        <a class="dropdown-toggle" href="#">Sector Plans  <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li style="display: block"><a style="color: #333; margin: 3px 10px;" href="/#/operationalPlan/{{operationalPlan.id}}/1">Annual Technical Support Plans</a></li>
+            <li style="display: block"><a style="color: #333; margin: 3px 10px;" href="/#/operationalPlan/{{operationalPlan.id}}/2">Developed Sector Plans</a></li>
+            <li style="display: block"><a style="color: #333; margin: 3px 10px;" href="/#/operationalPlan/{{operationalPlan.id}}/3">Reviewed Sector Plans</a></li>
+            <li style="display: block"><a style="color: #333; margin: 3px 10px;" href="/#/operationalPlan/{{operationalPlan.id}}/4">Developed SDF/ LUMS</a></li>
+            <li style="display: block"><a style="color: #333; margin: 3px 10px;" href="/#/operationalPlan/{{operationalPlan.id}}/5">Reviewed SDF/ LUMS</a></li>
+            <li style="display: block"><a style="color: #333; margin: 3px 10px;" href="/#/operationalPlan/{{operationalPlan.id}}/6">Developed O_M Plans</a></li>
+            <li style="display: block"><a style="color: #333; margin: 3px 10px;" href="/#/operationalPlan/{{operationalPlan.id}}/7">Reviewed O_M Plans</a></li>
+        </ul>
+    </li>
+</ul>
+<div class="col-md-12">
+    <form class="form-horizontal" novalidate role="form" name="operationalPlanForm">
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-4 control-label"></label>
+            <label for="inputNumber" class="col-lg-4 control-label">Sector Plans</label>
+        </div>
+        <div class="row section" style="margin-bottom: 0">
+            <span class="col-lg-2">KPI 2.1.2:</span>
+            <p class="col-lg-10">Number of municipalities assisted with the development and implementation of sectoral and strategic plans</p>
+        </div>
+        <div class="row" style="margin-bottom: 0">
+            <span class="col-lg-2">Definition</span>
+            <p class="col-lg-10">Continuously contribute towards improvement of municipal infrastructure services delivery by facilitating the development of both Sectoral and Strategic Plans (IDP, SDBIP, CIP, WSDP etc.)</p>
+        </div>
+        <div class="row" style="margin-bottom: 0">
+            <span class="col-lg-2">Expected Impact:</span>
+            <p class="col-lg-10">Improvement of municipal infrastructure services deliverys</p>
+        </div>
+        <div class="form-group">
+
+            <label for="organisation" class="col-lg-2">Organisation</label>
+            <div class="col-lg-4">
+                <select ng-options="organisation.id as organisation.name for organisation in organisations" required ng-disabled="new_ops_plan" ng-model="operationalPlan.organisationId" class="form-control" id="selectOrganisation"></select>
+            </div>
+            <label for="inputYear" class="col-lg-2 control-label">Financial Year</label>
+            <div class="col-lg-3">
+                <select ng-options="financialYear.id as financialYear.description for financialYear in financialYears" required ng-disabled="new_ops_plan" ng-model="operationalPlan.financialYearId" class="form-control" id="inputYear"></select>
+            </div>
+        </div>
+
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-4 control-label">Process/Tasks</label>
+            <label for="inputNumber" class="col-lg-2 control-label">Start</label>
+            <label for="inputNumber" class="col-lg-2 control-label">End</label>
+            <label for="inputNumber" class="col-lg-1 control-label">Q1</label>
+            <label for="inputNumber" class="col-lg-1 control-label">Q2</label>
+            <label for="inputNumber" class="col-lg-1 control-label">Q3</label>
+            <label for="inputNumber" class="col-lg-1 control-label">Q4</label>
+        </div>
+
+        <div class="row section">
+            <label for="inputNumber" class="col-lg-4 control-label">Status-quo Assessment   </label>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.statusQuoAssessment_SEC_StartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text14" placeholder="">
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.statusQuoAssessment_SEC_EndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text15" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.statusQuoAssessment_SEC_TargetQ1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text16" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.statusQuoAssessment_SEC_TargetQ2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text17" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.statusQuoAssessment_SEC_TargetQ3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text18" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.statusQuoAssessment_SEC_TargetQ4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text19" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-4 control-label">Development of BP for Funding</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.developmentBPforFunding_SEC_StartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text20" placeholder="">
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.developmentBPforFunding_SEC_EndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text21" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.developmentBPforFunding_SEC_TargetQ1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text22" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.developmentBPforFunding_SEC_TargetQ2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text23" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.developmentBPforFunding_SEC_TargetQ3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text24" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.developmentBPforFunding_SEC_TargetQ4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text25" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-4 control-label">Develop Terms of Reference</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.developToR_SEC_StartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text26" placeholder="">
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.developToR_SEC_EndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text32" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.developToR_SEC_TargetQ1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text33" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.developToR_SEC_TargetQ2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text34" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.developToR_SEC_TargetQ3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text35" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.developToR_SEC_TargetQ4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text36" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-4 control-label">Develop Draft Sector Plan</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.developDraftSectorPlan_SEC_StartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text115" placeholder="">
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.developDraftSectorPlan_SEC_EndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text116" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.developDraftSectorPlan_SEC_TargetQ1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text117" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.developDraftSectorPlan_SEC_TargetQ2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text118" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.developDraftSectorPlan_SEC_TargetQ3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text119" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.developDraftSectorPlan_SEC_TargetQ4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text120" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-4 control-label">Develop Final Sector Plan</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.developFinalSectorPlan_SEC_StartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text121" placeholder="">
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.developFinalSectorPlan_SEC_EndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text122" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.developFinalSectorPlan_SEC_TargetQ1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text123" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.developFinalSectorPlan_SEC_TargetQ2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text124" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.developFinalSectorPlan_SEC_TargetQ3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text125" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.developFinalSectorPlan_SEC_TargetQ4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text126" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-4 control-label">MISA Intervention Close-out</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.misaInterventionCloseOut_SEC_StartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text127" placeholder="">
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.misaInterventionCloseOut_SEC_EndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text128" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.misaInterventionCloseOut_SEC_TargetQ1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text129" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.misaInterventionCloseOut_SEC_TargetQ2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text130" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.misaInterventionCloseOut_SEC_TargetQ3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text131" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.misaInterventionCloseOut_SEC_TargetQ4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text132" placeholder="">
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <div class="container">
+                <button ng-click="saveOperationalPlan()" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Save</button>
+            </div>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,104 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <form class="search">
+            <input ng-model="filter" type="text">
+            <button ng-click="clearSearch()" class="search remove-filter" ng-show="serverFilter">X</button>
+            <button type="submit" ng-click="search()"></button>
+        </form>
+    </li>
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/projectRegistration/Create" operation="CreateProject" title="Add New Project"></a>
+    </li>
+	
+	<li>
+        <a class="glyphicon glyphicon-star" href="http://10.116.66.74:8091/contact.aspx" operation="CreateProject" title="Alternative Project"></a>
+    </li>
+	
+	<li>
+        <a class="glyphicon glyphicon-eye-open" href="http://10.116.66.74:8091/contact.aspx" operation="CreateProject" title="Alternative Project"></a>
+    </li>
+	
+	<li>
+        <a class="glyphicon glyphicon-filter" href="http://10.116.66.74:8091/contact.aspx" operation="CreateProject" title="Alternative Project"></a>
+    </li>
+	
+	
+	<li>
+        <a class="glyphicon glyphicon-leaf" href="10.116.66.74:8091/contact.aspx" operation="CreateProject" title="Second Star"></a>
+    </li>
+	
+</ul>
+<div class="col-md-12">
+    <form class="form-horizontal filters" novalidate role="form">
+        <div class="row">
+            <label for="filterOrganisation" class="col-lg-3 control-label">Organisation</label>
+            <div class="col-lg-3">
+                <select ng-options="organisation.id as organisation.name for organisation in organisations" ng-model="filters.organisation" class="form-control" id="filterOrganisation"></select>
+                <button ng-click="filters.organisation = null" class="remove-filter" ng-show="filters.organisation">X</button>
+            </div>
+            <label for="filterAssetClass" class="col-lg-3 control-label">Status</label>
+            <div class="col-lg-3">
+                <select ng-options="status.id as status.description for status in projectStatus" ng-model="filters.projectStatus" class="form-control" id="filterProjectStatus"></select>
+                <button ng-click="filters.projectStatus = null" class="remove-filter" ng-show="filters.projectStatus">X</button>
+            </div>
+        </div>
+        <div class="row">
+            <label for="filterOrganisation" class="col-lg-3 control-label">Sector Program</label>
+            <div class="col-lg-3">
+                <select ng-options="x.id as x.description for x in sectorProgrammes" ng-model="filters.sectorProgram" class="form-control" id="filterSectorProgram"></select>
+                <button ng-click="filters.sectorProgram = null" class="remove-filter" ng-show="filters.sectorProgram">X</button>
+            </div>
+            <label for="filterAssetClass" class="col-lg-3 control-label">Funding Source</label>
+            <div class="col-lg-3">
+                <select ng-options="x.id as x.description for x in fundingSources" ng-model="filters.fundingSource" class="form-control" id="filterFundingSource"></select>
+                <button ng-click="filters.fundingSource = null" class="remove-filter" ng-show="filters.fundingSource">X</button>
+            </div>
+        </div>
+    </form>
+    <table class="table infrastructureList">
+        <colgroup>
+            <col></col>
+            <col></col>
+            <col></col>
+        </colgroup>
+        <thead>
+            <tr>
+                <th ng-click="sort('Number')" ng-class="{sorted: field == 'Number', desc: desc}">Project Number</th>
+                <th ng-click="sort('Description')" ng-class="{sorted: field == 'Description', desc: desc}">Project Name</th>
+                <th ng-click="sort('Status')" ng-class="{sorted: field == 'Status', desc: desc}">Project Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tr ng-repeat="project in projects">
+            <td>
+                <a href="#/projectOverview/{{project.id}}">{{project.number}}</a>
+            </td>
+            <td>
+                <a href="#/projectOverview/{{project.id}}">{{project.name}}</a>
+            </td>
+            <td>
+                <a href="#/projectOverview/{{project.id}}">{{project.status}}</a>
+            </td>
+            <td class="list-item-action">
+                <a href="#/projectRegistration/{{project.id}}" class="icon-pencil" title="Edit" ng-hide="deleteProject.value" operation="CreateProject"></a>
+                <a href="#/projectRegistration/{{project.id}}/financials" class="icon-money" title="Financials" ng-hide="deleteProject.value"></a>
+                <a href="#/projectRegistration/{{project.id}}/indicators" class="icon-rulers" title="Indicators" ng-hide="deleteProject.value"></a>
+                <a href="#/projectRegistration/{{project.id}}/projectActivities" class="icon-settings" title="Project Gantt Chart" ng-hide="deleteProject.value"></a>
+                <a href="#/projectRegistration/{{project.id}}/projectCheckList" class="icon-signup" title="Project Check List" ng-hide="deleteProject.value"></a>
+                <a href="#/projectRegistration/{{project.id}}/siteVisitList" class="icon-calendar" title="Activity Scheduler" ng-hide="deleteProject.value"></a>
+                <a href="#/projectRegistration/{{project.id}}/riskList" class="icon-warning" title="Risks" ng-hide="deleteProject.value"></a>
+                <a href="#/projectRegistration/{{project.id}}/issueList" class="icon-fire" title="Issues" ng-hide="deleteProject.value"></a>
+                <a href="#/projectRegistration/{{project.id}}/qualityControl" class="icon-certificate" title="Quality Control" ng-hide="deleteProject.value"></a>
+                <a href="#/projectRegistration/{{project.id}}/projectStakeHolderList" class="glyphicon glyphicon-user" title="Stake Holders" ng-hide="deleteProject.value"></a>
+                <a href="" ng-click="deleteProjectRegistration(project.id,$index)" class="glyphicon glyphicon-trash" title="Delete" ng-show="deleteProject.value" operation="SystemAdministration"></a>
+            </td>
+        </tr>
+    </table>
+    <div class="paging">
+        <ol>
+            <li ng-show="pages.length > 1 && page > 1"><a ng-click="gotoPage(page - 1)" class="icon-angle-left"></a></li>
+            <li ng-show="pages.length > 1">Page {{page}}</li>
+            <li ng-show="pages.length > 1 && page < pages.length"><a ng-click="gotoPage(page + 1)" class="icon-angle-right"></a></li>
+        </ol>
+    </div>
+</div>

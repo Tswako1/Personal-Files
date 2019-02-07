@@ -1,0 +1,10 @@
+1. http://localhost:49438/#/operations/overview/bfa57863-1b80-4e99-8dbf-67052e414fdb
+check overview
+2. http://localhost:49438/Content/Views/OperationalPlanOverview.html
+
+3. http://localhost:49438/#/operations/overview/56f28c1c-859d-4f05-86ed-0520764fa4c8
+	different from 1
+
+http://localhost:49438/#/operations/overview/bfa57863-1b80-4e99-8dbf-67052e414fdb
+
+http://localhost:49438/#/operations/plans/create

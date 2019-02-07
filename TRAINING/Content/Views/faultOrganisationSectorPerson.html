@@ -1,0 +1,59 @@
+﻿<div class="col-md-12">
+    <form class="form-horizontal col-md-12" formnovalidate role="form" name="faultOrganisationSectorPersonForm">
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Province</label>
+            <div class="col-lg-3">
+                <select ng-model="faultOrganisationSectorPerson.provinceCode" class="form-control" ng-options="province.id as province.name for province in provinces"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">District</label>
+            <div class="col-lg-6">
+                <select ng-model="faultOrganisationSectorPerson.districtCode" class="form-control" ng-options="district.districtId as district.districtName for district in districts"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Organisation</label>
+            <div class="col-lg-6">
+                <select ng-model="faultOrganisationSectorPerson.organisationId" class="form-control" ng-options="organisation.id as organisation.name for organisation in organisations"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Sector Programme</label>
+            <div class="col-lg-6">
+                <select ng-model="faultOrganisationSectorPerson.sectorProgrammeId" class="form-control" ng-options="sector.id as sector.description for sector in sectors"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Responsible Person</label>
+            <div class="col-lg-6">
+                <select ng-model="faultOrganisationSectorPerson.responsiblePersonId" class="form-control" ng-options="person.id as person.name for person in people"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="FirstEscalation" class="col-lg-3 control-label">First Escalation</label>
+            <div class="col-lg-6">
+                 <select ng-options="person as person.name for person in people track by person.id" data="people" select2 multiple style="width: 100%" ng-model="faultOrganisationSectorPerson.firstEscalation" id="FirstEscalation"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="SecondEscalation" class="col-lg-3 control-label">Second Escalation</label>
+            <div class="col-lg-6">
+                 <select ng-options="person as person.name for person in people track by person.id" data="people" select2 multiple style="width: 100%" ng-model="faultOrganisationSectorPerson.secondEscalation" id="SecondEscalation"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="ThirdEscalation" class="col-lg-3 control-label">Third Escalation</label>
+            <div class="col-lg-6">
+                 <select ng-options="person as person.name for person in people track by person.id" data="people" select2 multiple style="width: 100%" ng-model="faultOrganisationSectorPerson.thirdEscalation" id="ThirdEscalation"></select>
+            </div>
+        </div>
+
+
+        <div class="form-actions">
+            <div class="container">
+                <button ng-click="save()" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Save</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,687 @@
+﻿<ul placeholder-content="toolbar">
+    <li class="dropdown">
+        <a class="dropdown-toggle" href="#">2.2.1 Annual Technical Support Plans  <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li style="display: block"><a style="color: #333; margin: 3px 10px;" href="/#/operationalPlan/{{operationalPlan.id}}/actuals/{{operationalActual.id}}/1">2.2.1 Annual Technical Support Plans</a></li>
+            <li style="display: block"><a style="color: #333; margin: 3px 10px;" href="/#/operationalPlan/{{operationalPlan.id}}/actuals/{{operationalActual.id}}/2">2.2.2 Sector Plans</a></li>
+            <li style="display: block"><a style="color: #333; margin: 3px 10px;" href="/#/operationalPlan/{{operationalPlan.id}}/actuals/{{operationalActual.id}}/3">2.2.3 Spatial Development Frameworks</a></li>
+            <li style="display: block"><a style="color: #333; margin: 3px 10px;" href="/#/operationalPlan/{{operationalPlan.id}}/actuals/{{operationalActual.id}}/4">2.2.4 Operation and Maintenance Plans</a></li>
+
+        </ul>
+    </li>
+</ul>
+<div class="col-md-12">
+    <form class="form-horizontal" novalidate role="form" name="operationalActualForm">
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-4 control-label">Annual Technical Support Plans</label>
+        </div>
+        <div class="row section" style="margin-bottom: 0">
+            <span class="col-lg-2">KPI 2.2.1:</span>
+            <p class="col-lg-10">Number of municipalities with which annual technical support plans are signed and reported against quarterly</p>
+        </div>
+        <div class="row" style="margin-bottom: 0">
+            <span class="col-lg-2">Definition</span>
+            <p class="col-lg-10">MISA technical consultants provide advice and other forms of technical support to municipalities to assist them to plan and/ or deliver and / or maintain municipal infrastructure, i.e., roads, storm water, water, waste water, sanitation, energy, human settlement and waste management</p>
+        </div>
+        <div class="row" style="margin-bottom: 0">
+            <span class="col-lg-2">Measure</span>
+            <p class="col-lg-10">Quantitative (Count of number of municipalities with annual technical support plans are signed and reported against)</p>
+        </div>
+        <div class="form-group">
+            <label for="organisation" class="col-lg-2">Organisation</label>
+            <div class="col-lg-4">
+                <select ng-options="organisation.id as organisation.name for organisation in organisations" disabled ng-model="operationalActual.organisationId" class="form-control" id="selectOrganisation"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputYear" class="col-lg-2 control-label">Financial Year</label>
+            <div class="col-lg-3">
+                <select ng-options="financialYear.id as financialYear.description for financialYear in financialYears" disabled ng-model="operationalActual.misaFinancialYearId" class="form-control" id="Select2"></select>
+            </div>
+            <label for="inputPeriod" class="col-lg-2 control-label">Financial Period</label>
+            <div class="col-lg-3">
+                <select ng-options="financialPeriod.id as financialPeriod.description for financialPeriod in financialPeriods" required ng-disabled="new_ops_actual" ng-model="operationalActual.misaFinancialPeriodId" class="form-control" id="Select3"></select>
+            </div>
+        </div>
+
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-2 control-label" style="text-align:center">Process</label>
+            <label for="inputNumber" class="col-lg-1 control-label" style="text-align:center">Achieved</label>
+            <label for="inputNumber" class="col-lg-1 control-label" style="text-align:center">Docs</label>
+            <label for="inputNumber" class="col-lg-1 control-label" style="text-align:center">Q1 T</label>
+            <label for="inputNumber" class="col-lg-1 control-label" style="text-align:center">Q1 A</label>
+            <label for="inputNumber" class="col-lg-1 control-label" style="text-align:center">Q2 T</label>
+            <label for="inputNumber" class="col-lg-1 control-label" style="text-align:center">Q2 A</label>
+            <label for="inputNumber" class="col-lg-1 control-label" style="text-align:center">Q3 T</label>
+            <label for="inputNumber" class="col-lg-1 control-label" style="text-align:center">Q3 A</label>
+            <label for="inputNumber" class="col-lg-1 control-label" style="text-align:center">Q4 T</label>
+            <label for="inputNumber" class="col-lg-1 control-label" style="text-align:center">Q4 A</label>
+        </div>
+
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-3 control-label"></label>
+            <label for="inputNumber" class="col-lg-3 control-label">1. Develop municipal Technical Support Plan (TSP)</label>
+        </div>
+        <div class="row section">
+            <label for="inputNumber" class="col-lg-2 control-label">1.1 Brief municipality about MISA technical support programme</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.atsP_11BriefMunicipality_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text28" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count17=getDocumentCount(17)">
+                <span class="document-management" document-count="count17" foreign-id="operationalActual.id" foreign-type="5" document-type="17" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_11BriefMunicipality_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text1" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_11BriefMunicipality_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text2" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_11BriefMunicipality_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text4" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_11BriefMunicipality_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text5" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_11BriefMunicipality_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text6" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_11BriefMunicipality_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text7" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_11BriefMunicipality_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text8" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_11BriefMunicipality_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text9" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-2 control-label">1.2 Determine projects that municipality requests for support</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.atsP_12DetermineProjects_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text3" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count18=getDocumentCount(18)">
+                <span class="document-management" document-count="count18" foreign-id="operationalActual.id" foreign-type="5" document-type="18" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_12DetermineProjects_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text11" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_12DetermineProjects_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text12" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_12DetermineProjects_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text13" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_12DetermineProjects_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text14" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_12DetermineProjects_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text15" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_12DetermineProjects_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text17" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_12DetermineProjects_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text18" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_12DetermineProjects_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text19" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-2 control-label">1.3 Develop TSP and get signed off by municipality and TS Programme</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.atsP_13DevelopTSP_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text10" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count19=getDocumentCount(19)">
+                <span class="document-management" document-count="count19" foreign-id="operationalActual.id" foreign-type="5" document-type="19" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_13DevelopTSP_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text20" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_13DevelopTSP_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text21" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_13DevelopTSP_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text23" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_13DevelopTSP_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text24" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_13DevelopTSP_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text25" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_13DevelopTSP_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text26" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_13DevelopTSP_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text27" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_13DevelopTSP_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text29" placeholder="">
+            </div>
+        </div>
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-3 control-label"></label>
+            <label for="inputNumber" class="col-lg-3 control-label">2. Securing Funds for Sector Projects</label>
+        </div>
+        <div class="row section">
+            <label for="inputNumber" class="col-lg-2 control-label">2.1 Assist municipality in developing Technical Report and Business Plan</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.atsP_21AssistDevelopTR_BP_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text16" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count20=getDocumentCount(20)">
+                <span class="document-management" document-count="count20" foreign-id="operationalActual.id" foreign-type="5" document-type="20" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_21AssistDevelopTR_BP_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text30" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_21AssistDevelopTR_BP_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text31" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_21AssistDevelopTR_BP_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text32" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_21AssistDevelopTR_BP_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text34" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_21AssistDevelopTR_BP_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text35" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_21AssistDevelopTR_BP_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text36" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_21AssistDevelopTR_BP_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text37" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_21AssistDevelopTR_BP_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text38" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-2 control-label">2.2 Assist municipality in presenting the TR and BP to funding agency (MIG, DWS, etc.)</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.atsP_22AssistPresentTR_BP_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text22" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count21=getDocumentCount(21)">
+                <span class="document-management" document-count="count21" foreign-id="operationalActual.id" foreign-type="5" document-type="21" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_22AssistPresentTR_BP_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text40" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_22AssistPresentTR_BP_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text41" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_22AssistPresentTR_BP_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text42" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_22AssistPresentTR_BP_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text43" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_22AssistPresentTR_BP_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text44" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_22AssistPresentTR_BP_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text46" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_22AssistPresentTR_BP_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text47" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_22AssistPresentTR_BP_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text48" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-2 control-label">2.3 Funding Agency's approval of BP and Funds</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.atsP_23FundingApprovalBP_Funds_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text33" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count22=getDocumentCount(22)">
+                <span class="document-management" document-count="count22" foreign-id="operationalActual.id" foreign-type="5" document-type="22" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_23FundingApprovalBP_Funds_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text49" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_23FundingApprovalBP_Funds_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text50" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_23FundingApprovalBP_Funds_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text52" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_23FundingApprovalBP_Funds_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text53" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_23FundingApprovalBP_Funds_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text54" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_23FundingApprovalBP_Funds_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text55" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_23FundingApprovalBP_Funds_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text56" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_23FundingApprovalBP_Funds_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text58" placeholder="">
+            </div>
+        </div>
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-3 control-label"></label>
+            <label for="inputNumber" class="col-lg-3 control-label">3. Planning for Implementation</label>
+        </div>
+        <div class="row section">
+            <label for="inputNumber" class="col-lg-2 control-label">3.1 Establish Project Steering Committee</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.atsP_31EstablishProjectSteeringCommittee_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text39" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count23=getDocumentCount(23)">
+                <span class="document-management" document-count="count23" foreign-id="operationalActual.id" foreign-type="5" document-type="23" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_31EstablishProjectSteeringCommittee_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text59" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_31EstablishProjectSteeringCommittee_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text60" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_31EstablishProjectSteeringCommittee_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text61" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_31EstablishProjectSteeringCommittee_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text62" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_31EstablishProjectSteeringCommittee_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text64" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_31EstablishProjectSteeringCommittee_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text65" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_31EstablishProjectSteeringCommittee_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text66" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_31EstablishProjectSteeringCommittee_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text67" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-2 control-label">3.2 Infrastructure Procurement Planning</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.atsP_32InfrastructureProcurementPlanning_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text45" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count24=getDocumentCount(24)">
+                <span class="document-management" document-count="count24" foreign-id="operationalActual.id" foreign-type="5" document-type="24" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_32InfrastructureProcurementPlanning_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text68" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_32InfrastructureProcurementPlanning_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text70" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_32InfrastructureProcurementPlanning_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text71" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_32InfrastructureProcurementPlanning_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text72" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_32InfrastructureProcurementPlanning_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text73" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_32InfrastructureProcurementPlanning_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text74" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_32InfrastructureProcurementPlanning_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text76" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_32InfrastructureProcurementPlanning_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text77" placeholder="">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-2 control-label">3.3 Appointment of Consultants/ PSP</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.atsP_33AppointmentConsultantsPSP_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text51" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count25=getDocumentCount(25)">
+                <span class="document-management" document-count="count25" foreign-id="operationalActual.id" foreign-type="5" document-type="25" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_33AppointmentConsultantsPSP_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text78" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_33AppointmentConsultantsPSP_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text79" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_33AppointmentConsultantsPSP_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text80" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_33AppointmentConsultantsPSP_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text82" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_33AppointmentConsultantsPSP_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text83" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_33AppointmentConsultantsPSP_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text84" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_33AppointmentConsultantsPSP_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text85" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_33AppointmentConsultantsPSP_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text86" placeholder="">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-2 control-label">3.4 Preliminary design</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.atsP_34PreliminaryDesign_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text57" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count26=getDocumentCount(26)">
+                <span class="document-management" document-count="count26" foreign-id="operationalActual.id" foreign-type="5" document-type="26" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_34PreliminaryDesign_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text88" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_34PreliminaryDesign_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text89" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_34PreliminaryDesign_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text90" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_34PreliminaryDesign_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text91" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_34PreliminaryDesign_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text92" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_34PreliminaryDesign_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text94" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_34PreliminaryDesign_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text95" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_34PreliminaryDesign_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text96" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-2 control-label">3.5 Final Design</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.atsP_35FinalDesign_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text63" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count27=getDocumentCount(27)">
+                <span class="document-management" document-count="count27" foreign-id="operationalActual.id" foreign-type="5" document-type="27" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_35FinalDesign_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text97" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_35FinalDesign_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text98" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_35FinalDesign_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text100" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_35FinalDesign_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text101" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_35FinalDesign_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text102" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_35FinalDesign_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text103" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_35FinalDesign_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text104" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_35FinalDesign_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text106" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-2 control-label">3.6 Contract Documentation</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.atsP_36ContractDocumentation_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text69" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count28=getDocumentCount(28)">
+                <span class="document-management" document-count="count28" foreign-id="operationalActual.id" foreign-type="5" document-type="28" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_36ContractDocumentation_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text107" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_36ContractDocumentation_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text108" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_36ContractDocumentation_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text109" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_36ContractDocumentation_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text110" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_36ContractDocumentation_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text111" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_36ContractDocumentation_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text112" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_36ContractDocumentation_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text113" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_36ContractDocumentation_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text114" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-2 control-label">3.7 Appoint Contractor</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.atsP_37AppointContractor_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text75" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count29=getDocumentCount(29)">
+                <span class="document-management" document-count="count29" foreign-id="operationalActual.id" foreign-type="5" document-type="29" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_37AppointContractor_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text115" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_37AppointContractor_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text116" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_37AppointContractor_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text117" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_37AppointContractor_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text118" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_37AppointContractor_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text119" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_37AppointContractor_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text120" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_37AppointContractor_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text121" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_37AppointContractor_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text122" placeholder="">
+            </div>
+        </div>
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-3 control-label"></label>
+            <label for="inputNumber" class="col-lg-3 control-label">4. Implementation</label>
+        </div>
+        <div class="row section">
+            <label for="inputNumber" class="col-lg-2 control-label">4.1 Appointment CLO</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.atsP_41AppointmentCLO_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text81" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count30=getDocumentCount(30)">
+                <span class="document-management" document-count="count30" foreign-id="operationalActual.id" foreign-type="5" document-type="30" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_41AppointmentCLO_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text123" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_41AppointmentCLO_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text124" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_41AppointmentCLO_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text125" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_41AppointmentCLO_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text126" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_41AppointmentCLO_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text127" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_41AppointmentCLO_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text128" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_41AppointmentCLO_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text129" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_41AppointmentCLO_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text130" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-2 control-label">4.2 Site meetings (Progress & Quality)</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.atsP_42SiteMeetings_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text87" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count31=getDocumentCount(31)">
+                <span class="document-management" document-count="count31" foreign-id="operationalActual.id" foreign-type="5" document-type="31" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_42SiteMeetings_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text131" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_42SiteMeetings_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text132" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_42SiteMeetings_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text133" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_42SiteMeetings_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text134" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_42SiteMeetings_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text135" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_42SiteMeetings_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text136" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_42SiteMeetings_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text137" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_42SiteMeetings_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text138" placeholder="">
+            </div>
+        </div>
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-3 control-label"></label>
+            <label for="inputNumber" class="col-lg-3 control-label">5. Monitoring and reporting to Stakeholders</label>
+        </div>
+        <div class="row section">
+            <label for="inputNumber" class="col-lg-2 control-label">5.1 Progress and Evaluation reports (quantitative and qualitative)</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.atsP_51Progress_EvaluationReports_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text93" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count32=getDocumentCount(32)">
+                <span class="document-management" document-count="count32" foreign-id="operationalActual.id" foreign-type="5" document-type="32" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_51Progress_EvaluationReports_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text139" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_51Progress_EvaluationReports_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text140" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_51Progress_EvaluationReports_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text141" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_51Progress_EvaluationReports_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text142" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_51Progress_EvaluationReports_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text143" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_51Progress_EvaluationReports_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text144" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_51Progress_EvaluationReports_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text145" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_51Progress_EvaluationReports_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text146" placeholder="">
+            </div>
+        </div>
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-3 control-label"></label>
+            <label for="inputNumber" class="col-lg-3 control-label">6. Commissioning and Close-out</label>
+        </div>
+        <div class="row section">
+            <label for="inputNumber" class="col-lg-2 control-label">6.1 Project Commissioning</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.atsP_61ProjectCommissioning_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text99" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count33=getDocumentCount(33)">
+                <span class="document-management" document-count="count33" foreign-id="operationalActual.id" foreign-type="5" document-type="33" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_61ProjectCommissioning_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text147" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_61ProjectCommissioning_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text148" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_61ProjectCommissioning_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text149" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_61ProjectCommissioning_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text150" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_61ProjectCommissioning_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text151" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_61ProjectCommissioning_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text152" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_61ProjectCommissioning_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text153" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_61ProjectCommissioning_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text154" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-2 control-label">6.2 MISA Intervention Close-out</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.atsP_62MISAInterventionClose_out_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text105" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count34=getDocumentCount(34)">
+                <span class="document-management" document-count="count34" foreign-id="operationalActual.id" foreign-type="5" document-type="34" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_62MISAInterventionClose_out_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text155" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_62MISAInterventionClose_out_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text156" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_62MISAInterventionClose_out_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text157" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_62MISAInterventionClose_out_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text158" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_62MISAInterventionClose_out_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text159" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_62MISAInterventionClose_out_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text160" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_62MISAInterventionClose_out_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text161" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.atsP_62MISAInterventionClose_out_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text162" placeholder="">
+            </div>
+        </div>
+        <div class="form-actions">
+            <div class="container">
+                <button ng-click="saveOperationalActual()" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Save</button>
+            </div>
+        </div>
+    </form>
+</div>

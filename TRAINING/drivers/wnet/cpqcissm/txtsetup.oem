@@ -1,0 +1,62 @@
+[Disks]
+d1 = "Smart Array 5x and 6x Driver Diskette",\TXTSETUP.OEM,\
+
+
+[Defaults]
+SCSI = B060
+
+
+[SCSI]
+B060 = "Smart Array 5300 Controller"
+B178 = "Smart Array 5i, 532, 5312 Controllers"
+0046 = "Smart Array 6i, 641, 642, 6400, 6400EM Controllers"
+
+
+[Files.scsi.B060]
+driver  = d1,cpqcissm.sys,cpqcissm
+inf     = d1,cpqcissm.inf
+catalog = d1,cpqcissm.cat
+
+
+[Files.scsi.B178]
+driver  = d1,cpqcissm.sys,cpqcissm
+inf     = d1,cpqcissm.inf
+catalog = d1,cpqcissm.cat
+
+
+[Files.scsi.0046]
+driver  = d1,cpqcissm.sys,cpqcissm
+inf     = d1,cpqcissm.inf
+catalog = d1,cpqcissm.cat
+
+
+[Config.cpqcissm]
+value = "",tag,REG_DWORD,103
+value = Parameters\PnpInterface,5,REG_DWORD,1
+value = Parameters\Device,NumberOfRequests,REG_DWORD,80
+
+
+[HardwareIds.scsi.B060]
+id = "PCI\VEN_0E11&DEV_B060&SUBSYS_40700E11","cpqcissm"
+; W2K Default.
+id = "PCI\VEN_0E11&DEV_B060","cpqcissm"
+
+
+[HardwareIds.scsi.B178]
+id = "PCI\VEN_0E11&DEV_B178&SUBSYS_40800E11","cpqcissm"
+id = "PCI\VEN_0E11&DEV_B178&SUBSYS_40820E11","cpqcissm"
+id = "PCI\VEN_0E11&DEV_B178&SUBSYS_40830E11","cpqcissm"
+; W2K Default.
+id = "PCI\VEN_0E11&DEV_B178","cpqcissm"
+
+
+[HardwareIds.scsi.0046]
+id = "PCI\VEN_0E11&DEV_0046&SUBSYS_40910E11","cpqcissm"
+id = "PCI\VEN_0E11&DEV_0046&SUBSYS_409A0E11","cpqcissm"
+id = "PCI\VEN_0E11&DEV_0046&SUBSYS_409B0E11","cpqcissm"
+id = "PCI\VEN_0E11&DEV_0046&SUBSYS_409C0E11","cpqcissm"
+id = "PCI\VEN_0E11&DEV_0046&SUBSYS_409D0E11","cpqcissm"
+; W2K Default.
+id = "PCI\VEN_0E11&DEV_0046","cpqcissm"
+
+

@@ -1,0 +1,145 @@
+﻿<div class="overview">
+    <div class="col-md-7 field-list">
+
+        <div class="bold">{{project.organisationName}}</div>
+        <h4>Project Identification</h4>
+        <div>
+            <div>MIPMIS Project Number</div>
+            <div>{{autoproject}}</div>
+        </div>
+        <div>
+            <div>Project Number</div>
+            <div>{{project.number}}</div>
+        </div>
+        <div>
+            <div>MISA Supported Project</div>
+            <div yesno="{{project.misaSupportedProject}}"></div>
+
+        </div>
+        <div>
+            <div>National Project Number</div>
+            <div>{{project.nationalProjectNumber}}</div>
+        </div>
+        <div>
+            <div>Project Name</div>
+            <div>{{project.name}}</div>
+        </div>
+        <div>
+            <div>Project Description</div>
+            <div>{{project.description}}</div>
+        </div>
+        <h4>Project Details</h4>
+        <div>
+            <div>Start Date</div>
+            <div>{{project.startDate|date: 'yyyy/MM/dd'}}</div>
+        </div>
+        <div>
+            <div>End Date</div>
+            <div>{{project.endDate|date: 'yyyy/MM/dd'}}</div>
+        </div>
+        <div>
+            <div>Parent Project Number</div>
+            <div>{{project.parentProjectNumber}}</div>
+        </div>
+        <div>
+            <div>Sector Programme</div>
+            <div lookup="SectorProgrammes" id="project.sectorProgrammeId"></div>
+        </div>
+        <div>
+            <div>Infrastructure Lifecycle</div>
+            <div lookup="InfrastructureLifeCycles" id="project.infrastructureLifeCycleId"></div>
+        </div>
+        <div>
+            <div>Infrastructure Number</div>
+            <a id="project.infrastructureRegisterId" href="#/InfrastructureRegisterOverview/{{project.infrastructureRegisterId}}">{{project.InfrastructureRegisterNumber}}</a>
+        </div>
+        <div>
+            <div>MISA Support Agent</div>
+            <div lookup="MisaSupportAgents" id="project.misaSupportAgentId"></div>
+        </div>
+        <div>
+            <div>Implementing Agent</div>
+            <div lookup="ImplementingAgents" id="project.implementingAgentId"></div>
+        </div>
+        <div>
+            <div>Project Component</div>
+            <div lookup="MigComponents" id="project.migComponentId"></div>
+        </div>
+        <div>
+            <div>Project Status</div>
+            <div lookup="ProjectStatus" id="project.projectStatusId"></div>
+        </div>
+        <div>
+            <div>Anchor Project</div>
+            <div>{{project.anchorProject}}</div>
+        </div>
+        <div>
+            <div>Completion Certificate</div>
+            <div>{{project.completionCertificate}}</div>
+        </div>
+
+    </div>
+
+
+    <div class="col-md-5">
+        <ul class="summary" mipmis-accordion>
+            <li class="risks" accordion-section="Risks" href="#/projectRegistration/{{project.id}}/riskList">
+                <ol class="risks">
+                    <li ng-repeat="risk in risks">
+                        <div>{{risk.description}}</div>
+                        <div class="exposure {{risk.riskExposure}}">{{risk.riskExposure}}</div>
+                    </li>
+                </ol>
+            </li>
+            <li class="issues" accordion-section="Issues" href="#/projectRegistration/{{project.id}}/issueList">
+                <ol class="risks">
+                    <li ng-repeat="issue in issues">
+                        <div>{{issue.description}}</div>
+                        <div class="exposure {{issue.issuePriority}}">{{issue.issuePriority}}</div>
+                    </li>
+                </ol>
+            </li>
+            <li class="site-visits" accordion-section="Scheduled Activities" href="#/projectRegistration/{{project.id}}/siteVisitList">
+                <ol class="risks">
+                    <li ng-repeat="siteVisit in siteVisits">
+                        <div>{{siteVisit.description}}</div>
+                        <span class="pull-right">{{siteVisit.scheduledDate|date: 'yyyy/MM/dd'}}</span>
+                    </li>
+                </ol>
+            </li>
+            <li class="financials" accordion-section="Financials" href="#/projectRegistration/{{project.id}}/financials">
+                <div chart id="chart" values="financials"></div>
+            </li>
+            <li class="indicators" accordion-section="Indicators" href="#/projectRegistration/{{project.id}}/indicators">
+                <svg bullet-chart description="indicator.description" measures="indicator.actual" markers="indicator.target" ng-repeat="indicator in indicators" style="height: 80px"></svg>
+            </li>
+            <li class="activities" accordion-section="Project Gantt Chart" href="#/projectRegistration/{{project.id}}/projectActivities">
+                <table style="width: 100%;">
+                    <tr ng-repeat="activity in activities" style="border-bottom: 1px solid #bbb">
+                        <td style="width: 50%">{{activity.name}}</td>
+                        <td style="border-left: 1px solid #bbb; border-right: 1px solid #bbb">
+                            <div style="position: relative">
+                                &nbsp;
+                                <div style="position: absolute; top: 25%; height: 50%; background-color: green" ng-style="{left: activity.start + '%', width: activity.len + '%'}"></div>
+                                <div ng-if="activity.done" style="position: absolute; top: 0%; height: 100%; width: 5px; background-color: black" ng-style="{left: activity.done + '%'}"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div style="float: left">{{activities.min}}</div>
+                            <div style="float: right">{{activities.max}}</div>
+                        </td>
+                    </tr>
+                </table>
+            </li>
+            <li class="map" accordion-section="Location">
+                <div ui-map center="{lat: project.lattitude, long: project.longitude}" style="height: 400px">
+                    <div ui-map-marker="marker" position="{lat: project.lattitude, long: project.longitude}"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</div>

@@ -1,0 +1,64 @@
+﻿<div class="col-md-12">
+    <form class="form-horizontal" formnovalidate role="form" name="siteVisitScheduleForm">
+        <div class="form-group">
+            <label ng-model="siteVisit.organisation" for="inputOrganisation" class="col-lg-3 control-label">Organisation</label>
+            <div class="col-lg-6">
+                <input ng-model="siteVisit.organisation" disabled type="text" class="form-control" id="inputOrganisation" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label ng-model="siteVisit.projectNumber" for="inputProjectNumber" class="col-lg-3 control-label">Project Number</label>
+            <div class="col-lg-3">
+                <input ng-model="siteVisit.projectNumber" disabled type="text" class="form-control" id="inputProjectNumber" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label ng-model="siteVisit.locations" for="inputLocation" class="col-lg-3 control-label">Location</label>
+            <div class="col-lg-3">
+                <input ng-model="siteVisit.locations" disabled type="text" class="form-control" id="inputLocation" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label ng-model="siteVisit.lastSiteVisitDate" for="inputLastSiteVisit" class="col-lg-3 control-label">Last Activity Schedule</label>
+            <div class="col-lg-3">
+                <input ng-model="siteVisit.lastSiteVisitDate" disabled type="text" class="form-control" id="inputLastSiteVisit" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label ng-model="siteVisit.nextSiteVisitDate" for="inputNextSiteVisit" class="col-lg-3 control-label">Next Activity Schedule</label>
+            <div class="col-lg-3">
+                <input ng-model="siteVisit.nextSiteVisitDate" disabled type="text" class="form-control" id="inputNextSiteVisit" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputSiteVisitDescription" class="col-lg-3 control-label">Description</label>
+            <div class="col-lg-6">
+                <input ng-model="siteVisit.siteVisit.description" disabled type="text" class="form-control" id="inputSiteVisitDescription" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="selectAssignedTo" class="col-lg-3 control-label">Assigned To</label>
+            <div class="col-lg-3">
+                <select ng-options="person.id as person.description for person in people" ng-model="siteVisit.siteVisit.inspectorId" required class="form-control" id="selectAssignedTo"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputCompletionDate" class="col-lg-3 control-label">Completion Date</label>
+            <div class="col-lg-3">
+                <input ng-model="siteVisit.siteVisit.completionDate" required ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="inputSiteVisitDate" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <span class="document-management" document-count="siteVisit.documentCount" foreign-id="siteVisit.siteVisit.id" foreign-type="2" document-type="14"></span>
+            </div>
+            <label for="inputSiteVisitComplete" class="col-lg-2 control-label">Activity Schedule Completed</label>
+            <div class="col-lg-1 checkbox mipmis-checkbox">
+                <input ng-model="siteVisit.siteVisit.complete" type="checkbox" value="true" id="inputSiteVisitComplete" placeholder="">
+            </div>
+        </div>
+        <div class="form-actions">
+            <div class="container">
+                <button ng-click="saveSiteVisitSchedule()" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Save</button>
+            </div>
+        </div>
+    </form>
+</div>

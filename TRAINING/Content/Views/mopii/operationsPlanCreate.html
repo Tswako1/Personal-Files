@@ -1,0 +1,24 @@
+﻿<ul placeholder-content="toolbar">
+</ul>
+
+<div class="col-md-12">
+    <form class="form-horizontal" novalidate role="form" name="operationalPlanForm">
+        <div class="form-group">
+            <label for="organisation" class="col-lg-2 control-label">Organisation</label>
+            <div class="col-lg-4">
+                <select ng-options="organisation.id as organisation.name for organisation in organisations" ng-disabled="new_ops_plan" required ng-model="organisationId" class="form-control" id="selectOrganisation"></select>
+            </div>
+            <label for="inputYear" class="col-lg-2 control-label">Financial Year</label>
+            <div class="col-lg-3">
+                <select ng-options="financialYear.id as financialYear.description for financialYear in financialYears" ng-disabled="new_ops_plan" required ng-model="misaFinancialYearId" class="form-control" id="inputYear"></select>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <div class="container">
+                <button ng-click="create()" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Create</button>
+            </div>
+        </div>
+
+    </form>
+</div>

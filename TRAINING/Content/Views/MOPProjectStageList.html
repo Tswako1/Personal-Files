@@ -1,0 +1,19 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/administration/mOPProjectStage/Create"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="mOPProjectStage in mOPProjectStages">
+            <td>
+                <a href="#/administration/mOPProjectStage/{{mOPProjectStage.id}}">{{mOPProjectStage.description}}</a>
+            </td>
+        </tr>
+    </table>
+</div>

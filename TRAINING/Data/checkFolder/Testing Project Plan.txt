@@ -1,0 +1,12 @@
+public void DisplayItem(string file, string mimeType, byte[] fileData)
+{
+  HttpResponse response = HttpContext.Current.HttpResponse;
+  response.Buffer = true;
+  response.Clear();
+  response.ContentType = mimeType;
+  // If I want to save the file to disk with a default filename, I would use:
+  //response.AddHeader("content-disposition", string.Format("attachment; filename={0}", fileName));
+  response.BinaryWrite(fileData);
+  response.Flush();
+  response.End();
+}

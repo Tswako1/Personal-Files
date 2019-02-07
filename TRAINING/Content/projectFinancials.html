@@ -1,0 +1,53 @@
+﻿<div class="col-md-12">
+    <form class="form-horizontal" novalidate role="form" name="projectFinancialsForm">
+        <div>
+            <table class="table col-md-12 financials">
+                <thead>
+                    <tr>
+                        <th class="expand-collapse"></th>
+                        <th class="finyear">Year</th>
+                        <th class="period">Period</th>
+                        <th ng-repeat="source in sources" class="source">{{source.description}}</th>
+                        <th class="source">Total Budget</th>
+                        <th class="source">Actual</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="year in financials">
+                    <tr class="collapsed-financials" ng-hide="$parent.expandedYear==year.key">
+                        <td class="expand-collapse"><i ng-click="$parent.expandedYear=year.key" class="icon-arrow-right"></td>
+                        <td rowspan="1" class="finyear">
+                            {{year.key|financialYear}}
+                        </td>
+                        <td></td>
+                        <td ng-repeat="source in sources" class="source" ng-init="totals=calculateAnnualTotals(year, source)">{{totals.amount}}</td>
+                        <td class="source" ng-init="budgetTotals=calculateTotalTotals(year)">{{budgetTotals.amount}}</td>
+                        <td class="source" ng-init="actualTotals=calculateActualTotals(year)">{{actualTotals.amount}}</td>
+                    </tr>
+                    <tr ng-repeat="month in year.value" ng-show="$parent.expandedYear==year.key" ng-init="actual=getActual(year.key, month.key)">
+                        <td ng-if="$first" rowspan="{{year.value.length}}" class="expand-collapse"><i ng-click="$parent.$parent.$parent.expandedYear='0'" class="icon-arrow-down"></td>
+                        <td ng-if="$first" rowspan="{{year.value.length}}" class="finyear">
+                            {{year.key|financialYear}}
+                        </td>
+                        <td class="period">{{month.key|periodNumberAsText}}</td>
+                        <td ng-repeat="source in month.value" class="source">
+                            <input class="form-control" ng-model="source.amount" tabindex="{{$index*year.value.length + $parent.$index + 1}}">
+                        </td>
+                        <td class="source" ng-init="totals=calculatePeriodTotals(month.value)">
+                            <input class="form-control" disabled value="{{totals.amount}}">
+                        </td>
+                        <td class="source">
+                            <input class="form-control" ng-model="actual.amount" tabindex="{{((sources.length+1)*year.value.length) + $index + 1}}">
+                        </td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+        <div class="form-actions">
+            <div class="container">
+                <button ng-click="saveProjectFinancials()" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Save</button>
+            </div>
+        </div>
+    </form>
+</div>

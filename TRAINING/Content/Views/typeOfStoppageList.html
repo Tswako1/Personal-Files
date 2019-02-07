@@ -1,0 +1,19 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/administration/typeOfStoppage/Create"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="typeOfStoppage in typesOfStoppage">
+            <td>
+                <a href="#/administration/typeOfStoppage/{{typeOfStoppage.id}}">{{typeOfStoppage.description}}</a>
+            </td>
+        </tr>
+    </table>
+</div>

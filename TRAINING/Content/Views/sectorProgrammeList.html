@@ -1,0 +1,19 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/administration/sectorProgramme/Create"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="sectorProgramme in sectorProgrammes">
+            <td>
+                <a href="#/administration/sectorProgramme/{{sectorProgramme.id}}">{{sectorProgramme.description}}</a>
+            </td>
+        </tr>
+    </table>
+</div>

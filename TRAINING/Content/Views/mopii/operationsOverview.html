@@ -1,0 +1,179 @@
+﻿<ul placeholder-content="toolbar"></ul>
+<div class="col-md-8">
+    <form class="form-horizontal" novalidate role="form" name="planForm">
+        <div class="form-group">
+            <label for="organisation" class="col-lg-1 control-label">Organisation</label>
+            <div class="col-lg-3">
+                <select disabled class="form-control">
+                    <option selected>{{plan.organisation}}</option>
+                </select>
+            </div>
+            <label for="inputYear" class="col-lg-1 control-label">Year</label>
+            <div class="col-lg-3">
+                <select disabled class="form-control">
+                    <option selected>{{plan.year}}</option>
+                </select>
+            </div>
+        </div>
+        <div style="padding-left: 40px; border-top: 2px solid #ccc">
+            <table class="grid" style="border-top: none" ng-if="plan.kpis">
+                <tr>
+                    <td></td>
+                    <td style="text-align: center; width: 6%; font-weight: bold">Q1 T</td>
+                    <td style="text-align: center; width: 6%; font-weight: bold">Q1 A</td>
+                    <td style="text-align: center; width: 6%; font-weight: bold">Q2 T</td>
+                    <td style="text-align: center; width: 6%; font-weight: bold">Q2 A</td>
+                    <td style="text-align: center; width: 6%; font-weight: bold">Q3 T</td>
+                    <td style="text-align: center; width: 6%; font-weight: bold">Q3 A</td>
+                    <td style="text-align: center; width: 6%; font-weight: bold">Q4 T</td>
+                    <td style="text-align: center; width: 6%; font-weight: bold">Q4 A</td>
+                </tr>
+            </table>
+        </div>
+        <style>
+            table.grid
+            {
+                table-layout: fixed;
+                width: 100%;
+                border-top: 2px solid #ccc;
+            }
+
+            td
+            {
+                padding: 6px 4px;
+            }
+
+            div.kpi-label
+            {
+                border-top: 2px solid #ccc;
+                padding: 6px 4px;
+                font-weight: bold;
+            }
+
+            div.collapsed table
+            {
+                display: none;
+            }
+
+            tbody.collapsed tr:not(:first-child)
+            {
+                display: none;
+            }
+
+            i.icon-arrow-right, i.icon-arrow-down
+            {
+                vertical-align: middle;
+                margin-right: 5px;
+            }
+        </style>
+        <div ng-repeat="kpi in plan.kpis" ng-class="{collapsed: kpi.collapsed}">
+            <div class="kpi-label">
+                <i ng-click="kpi.collapsed = !kpi.collapsed" ng-class="{'icon-arrow-right': kpi.collapsed, 'icon-arrow-down': !kpi.collapsed}" />{{ kpi.name }}
+            </div>
+            <div style="padding-left: 40px">
+                <table class="grid">
+                    <colgroup>
+                        <col style="width: 52%" />
+                        <col style="width: 6%" />
+                        <col style="width: 6%" />
+                        <col style="width: 6%" />
+                        <col style="width: 6%" />
+                        <col style="width: 6%" />
+                        <col style="width: 6%" />
+                        <col style="width: 6%" />
+                        <col style="width: 6%" />
+                    </colgroup>
+                    <tbody ng-repeat="section in kpi.sections" ng-class="{collapsed: section.collapsed}">
+                        <tr>
+                            <td colspan="11" style="font-weight: bold">
+                                <i ng-click="section.collapsed = !section.collapsed" ng-class="{'icon-arrow-right': section.collapsed, 'icon-arrow-down': !section.collapsed}" />{{ section.name }}
+                            </td>
+                        </tr>
+                        <tr ng-repeat="process in section.processes">
+                            <td style="padding-left: 20px; vertical-align: middle;">{{process.name}}</td>
+                            <td>
+                                <input ng-model="process.targets.q1" disabled ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" style="text-align: right">
+                            </td>
+                            <td>
+                                <input ng-model="process.actuals.q1" disabled ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" style="text-align: right">
+                            </td>
+                            <td>
+                                <input ng-model="process.targets.q2" disabled ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" style="text-align: right">
+                            </td>
+                            <td>
+                                <input ng-model="process.actuals.q2" disabled ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" style="text-align: right">
+                            </td>
+                            <td>
+                                <input ng-model="process.targets.q3" disabled ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" style="text-align: right">
+                            </td>
+                            <td>
+                                <input ng-model="process.actuals.q3" disabled ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" style="text-align: right">
+                            </td>
+                            <td>
+                                <input ng-model="process.targets.q4" disabled ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" style="text-align: right">
+                            </td>
+                            <td>
+                                <input ng-model="process.actuals.q4" disabled ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" style="text-align: right">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<div class="col-md-4">
+    <ul class="auditevidence" mipmis-accordion>
+        <li class="auditevidence" accordion-section="Audit Evidence">
+            <ol>
+                <li ng-repeat="quarter in docs.quarters" ng-class="{collapsed: quarter.collapsed}">
+                    <div class="kpi-label">
+                        <i ng-click="quarter.collapsed = !quarter.collapsed" ng-class="{'icon-arrow-right': quarter.collapsed, 'icon-arrow-down': !quarter.collapsed}" />{{ quarter.quarter }}
+                    </div>
+                    <div ng-repeat="kpi in quarter.kpis" ng-class="{collapsed: kpi.collapsed}" style="padding-left: 10px">
+                        <div class="kpi-label">
+                            <i ng-click="kpi.collapsed = !kpi.collapsed" ng-class="{'icon-arrow-right': kpi.collapsed, 'icon-arrow-down': !kpi.collapsed}" />{{ kpi.name }}
+                        </div>
+                        <div style="padding-left: 10px" ng-repeat="section in kpi.sections" ng-class="{collapsed: section.collapsed}">
+                            <div class="kpi-label">
+                                <i ng-click="section.collapsed = !section.collapsed" ng-class="{'icon-arrow-right': section.collapsed, 'icon-arrow-down': !section.collapsed}" />{{ section.name }}
+                            </div>
+                            <div style="padding-left: 10px;">
+                                <table class="grid">
+                                    <colgroup>
+                                        <col />
+                                        <col style="width: 20%" />
+                                        <col style="width: 10%" />
+                                        <col style="width: 10%" />
+                                    </colgroup>
+                                    <tbody ng-repeat="process in section.processes" ng-class="{collapsed: process.collapsed}">
+                                        <tr>
+                                            <td colspan="4" style="font-weight: bold">
+                                                <i ng-click="process.collapsed = !process.collapsed" ng-class="{'icon-arrow-right': process.collapsed, 'icon-arrow-down': !process.collapsed}" />{{ process.name }}
+                                            </td>
+                                        </tr>
+                                        <tr ng-repeat="document in process.documents">
+                                            <td style="padding-left: 25px; vertical-align: middle;">
+                                                <a href="/api/document/{{document.id}}">{{document.name}}</a>
+                                            </td>
+                                            <td style="text-align: center">{{document.uploadDate}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+        </li>
+        <li class="operationalprojects" accordion-section="Projects">
+            <ol class="risks">
+                <li ng-repeat="mOPIIProject in mOPIIProjects.items">
+                    <div><a href="#/operations/{{mOPIIProject.mopiiPlanId}}/projects/{{mOPIIProject.id}}">{{mOPIIProject.projectName}}</a></div>
+                </li>
+            </ol>
+        </li>
+    </ul>
+</div>

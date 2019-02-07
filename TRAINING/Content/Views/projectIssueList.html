@@ -1,0 +1,35 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/projectRegistration/{{projectId}}/projectIssue/Create"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Date Reported</th>
+                <th>Issue Severity</th>
+                <th>Issue Probability</th>
+                <th>Date Resolved</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="projectIssue in projectIssues">
+            <td>
+                <a href="#/projectRegistration/{{projectId}}/projectIssue/{{projectIssue.id}}">{{projectIssue.description}}</a>
+            </td>
+            <td>
+                <a href="#/projectRegistration/{{projectId}}/projectIssue/{{projectIssue.id}}">{{projectIssue.dateReported|date: 'yyyy/MM/dd'}}</a>
+            </td>
+            <td>
+                <a href="#/projectRegistration/{{projectId}}/projectIssue/{{projectIssue.id}}">{{projectIssue.severity}}</a>
+            </td>
+            <td>
+                <a href="#/projectRegistration/{{projectId}}/projectIssue/{{projectIssue.id}}">{{projectIssue.probability}}</a>
+            </td>
+            <td>
+                <a href="#/projectRegistration/{{projectId}}/projectIssue/{{projectIssue.id}}">{{projectIssue.dateResolved|date: 'yyyy/MM/dd'}}</a>
+            </td>
+        </tr>
+    </table>
+</div>

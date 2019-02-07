@@ -1,0 +1,57 @@
+﻿<div class="col-md-12">
+    <form class="form-horizontal col-md-12" formnovalidate role="form" name="siteVisitScheduleForm">
+        <div class="form-group">
+            <label or="inputOrganisation" class="col-lg-3 control-label">Organisation</label>
+            <div class="col-lg-6">
+                <input ng-model="siteVisit.organisation" disabled type="text" class="form-control" id="inputOrganisation" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputProjectNumber" class="col-lg-3 control-label">Project Number</label>
+            <div class="col-lg-3">
+                <input ng-model="siteVisit.projectNumber" disabled type="text" class="form-control" id="inputProjectNumber" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputLocation" class="col-lg-3 control-label">Location</label>
+            <div class="col-lg-3">
+                <input ng-model="siteVisit.locations" disabled type="text" class="form-control" id="inputLocation" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputLastSiteVisit" class="col-lg-3 control-label">Last Activity Schedule</label>
+            <div class="col-lg-3">
+                <input ng-model="siteVisit.lastSiteVisitDate" fieldtype="date" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" disabled type="text" class="form-control date" id="inputLastSiteVisit" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNextSiteVisit" class="col-lg-3 control-label">Next Activity Schedule</label>
+            <div class="col-lg-3">
+                <input ng-model="siteVisit.nextSiteVisitDate" fieldtype="date" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" disabled type="text" class="form-control date" id="inputNextSiteVisit" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputSiteVisitDescription" class="col-lg-3 control-label">Description</label>
+            <div class="col-lg-6">
+                <input ng-model="siteVisit.siteVisit.description" required type="text" class="form-control" id="inputSiteVisitDescription" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputSiteVisitDate" class="col-lg-3 control-label">Actvity Schedule Date</label>
+            <div class="col-lg-3">
+                <input ng-model="siteVisit.siteVisit.scheduledDate" required ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="inputSiteVisitDate" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="selectAssignedTo" class="col-lg-3 control-label">Assigned To</label>
+            <div class="col-lg-3">
+                <select ng-options="person.id as person.description for person in people" ng-model="siteVisit.siteVisit.inspectorId" required class="form-control" id="selectAssignedTo"></select>
+            </div>
+        </div>
+        <div class="form-actions">
+            <div class="container">
+                <button ng-click="saveSiteVisitSchedule()" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Save</button>
+            </div>
+        </div>
+    </form>
+</div>

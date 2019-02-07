@@ -1,0 +1,31 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/projectRegistration/{{projectId}}/projectStakeHolder/Create" title="Add New Stake Holder"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>E Mail Address</th>
+                <th>Contact Number</th>
+                <th>Designation</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="projectStakeHolder in projectStakeHolders">
+            <td>
+                <a href="#/projectRegistration/{{projectId}}/projectStakeHolder/{{projectStakeHolder.id}}">{{projectStakeHolder.name}}</a>
+            </td>
+            <td>
+                <a href="#/projectRegistration/{{projectId}}/projectStakeHolder/{{projectStakeHolder.id}}">{{projectStakeHolder.emailAddress}}</a>
+            </td>
+            <td>
+                <a href="#/projectRegistration/{{projectId}}/projectStakeHolder/{{projectStakeHolder.id}}">{{projectStakeHolder.contactNumber}}</a>
+            </td>
+            <td>
+                <a href="#/projectRegistration/{{projectId}}/projectStakeHolder/{{projectStakeHolder.id}}">{{projectStakeHolder.designation}}</a>
+            </td>
+        </tr>
+    </table>
+</div>

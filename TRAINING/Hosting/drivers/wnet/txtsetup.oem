@@ -1,0 +1,145 @@
+[Disks]
+d1 = "ProLiant(R) Support Paq for Microsoft(R) Windows Server 2003(TM) Storage Products",\txtsetup.oem,\
+
+##################################################################################################
+[Defaults]
+SCSI = hpcisss2
+
+[SCSI]
+5x6x = "Smart Array 5x and 6x Controllers"
+lsi_scsi = "64-Bit/133-MHz Ultra320 SCSI Controllers"
+lsi_sas = "4/8 Internal Port SAS Controllers"
+hpcisss2 = "Smart Array SAS/SATA Controllers"
+aac = "6-Port SATA RAID Controller"
+bchtsw32 = "Broadcom HT1000 Serial ATA Controller"
+HpAHCIsr = "Server 2003 Driver for G6 SATA RAID controller",HpAHCIsr
+
+[Files.scsi.5x6x]
+driver  = d1,cpqcissm.sys,cpqcissm
+inf     = d1,cpqcissm.inf
+catalog = d1,cpqcissm.cat
+
+[Config.cpqcissm]
+value = "",tag,REG_DWORD,103
+value = Parameters\PnpInterface,5,REG_DWORD,1
+value = Parameters\Device,NumberOfRequests,REG_DWORD,80
+
+[HardwareIds.scsi.5x6x]
+id = "PCI\VEN_0E11&DEV_B060&SUBSYS_40700E11","cpqcissm"
+id = "PCI\VEN_0E11&DEV_B178&SUBSYS_40800E11","cpqcissm"
+id = "PCI\VEN_0E11&DEV_B178&SUBSYS_40820E11","cpqcissm"
+id = "PCI\VEN_0E11&DEV_B178&SUBSYS_40830E11","cpqcissm"
+id = "PCI\VEN_0E11&DEV_0046&SUBSYS_40910E11","cpqcissm"
+id = "PCI\VEN_0E11&DEV_0046&SUBSYS_409A0E11","cpqcissm"
+id = "PCI\VEN_0E11&DEV_0046&SUBSYS_409B0E11","cpqcissm"
+id = "PCI\VEN_0E11&DEV_0046&SUBSYS_409C0E11","cpqcissm"
+id = "PCI\VEN_0E11&DEV_0046&SUBSYS_409D0E11","cpqcissm"
+
+[Files.scsi.lsi_scsi]
+driver = d1,lsi_scsi.sys,lsi_scsi
+inf    = d1,lsi_scsi.inf
+catalog = d1,lsi_scsi.cat
+
+[Config.lsi_scsi]
+value = Parameters\PnpInterface,5,REG_DWORD,1
+
+[HardwareIds.scsi.lsi_scsi]
+id = "PCI\VEN_1000&DEV_0030&SUBSYS_00DA0E11", "lsi_scsi"
+id = "PCI\VEN_1000&DEV_0030&SUBSYS_3108103C", "lsi_scsi"
+id = "PCI\VEN_1000&DEV_0030&SUBSYS_00F40E11", "lsi_scsi"
+
+[Files.scsi.lsi_sas]
+driver = d1,lsi_sas.sys,lsi_sas
+inf    = d1,lsi_sas.inf
+catalog = d1,s2k332.cat
+
+[Config.lsi_sas]
+value = Parameters\PnpInterface,5,REG_DWORD,1
+
+[HardwareIds.scsi.lsi_sas]
+id = "PCI\VEN_1000&DEV_0054&SUBSYS_3228103C", "lsi_sas"
+id = "PCI\VEN_1000&DEV_0050&SUBSYS_1704103C", "lsi_sas"
+id = "PCI\VEN_1000&DEV_0058&SUBSYS_3229103C", "lsi_sas"
+id = "PCI\VEN_1000&DEV_0056&SUBSYS_322B103C", "lsi_sas"
+id = "PCI\VEN_1000&DEV_0058&SUBSYS_322D103C", "lsi_sas"
+
+[Files.scsi.hpcisss2]
+driver  = d1,HpCISSs2.sys, HpCISSs2
+inf     = d1,HpCISSx2.inf
+catalog = d1,HpCISSs2.cat
+
+[Config.HpCISSs2]
+value = "",tag,REG_DWORD,103
+value = Parameters\PnpInterface,5,REG_DWORD,1
+value = Parameters\Device,DriverParameter,REG_SZ,"CSMI=None;"
+
+[HardwareIds.scsi.hpcisss2]
+id = "PCI\VEN_103C&DEV_3220&SUBSYS_3225103C", "HpCISSs2"
+id = "PCI\VEN_103C&DEV_3230&SUBSYS_3234103C", "HpCISSs2"
+id = "PCI\VEN_103C&DEV_3230&SUBSYS_3235103C", "HpCISSs2"
+id = "PCI\VEN_103C&DEV_3238&SUBSYS_3211103C", "HpCISSs2"
+id = "PCI\VEN_103C&DEV_3238&SUBSYS_3212103C", "HpCISSs2"
+id = "PCI\VEN_103C&DEV_3230&SUBSYS_3223103C", "HpCISSs2"
+id = "PCI\VEN_103C&DEV_3230&SUBSYS_3237103C", "HpCISSs2"
+id = "PCI\VEN_103C&DEV_3230&SUBSYS_323D103C", "HpCISSs2"
+id = "PCI\VEN_103C&DEV_323A&SUBSYS_3241103C", "HpCISSs2"
+id = "PCI\VEN_103C&DEV_323A&SUBSYS_3243103C", "HpCISSs2"
+id = "PCI\VEN_103C&DEV_323A&SUBSYS_3245103C", "HpCISSs2"
+id = "PCI\VEN_103C&DEV_323A&SUBSYS_3247103C", "HpCISSs2"
+id = "PCI\VEN_103C&DEV_323A&SUBSYS_324A103C", "HpCISSs2"
+id = "PCI\VEN_103C&DEV_323A&SUBSYS_324C103C", "HpCISSs2"
+id = "PCI\VEN_103C&DEV_323A&SUBSYS_3249103C", "HpCISSs2"
+
+[Files.Scsi.aac]
+driver = d1, aac.sys, aac
+catalog = d1, aac.cat
+inf = d1, aac.inf
+inf = d1, aacmgt.inf
+driver = d1, aaccin.dll, none
+
+[Config.aac]
+value = "", Type, REG_DWORD, 1
+value = "", Start, REG_DWORD, 0
+value = "", Group, REG_SZ, "SCSI miniport"
+value = "", ErrorControl, REG_DWORD, 1
+value = Parameters\Device, NumberOfRequests, REG_DWORD, 0fe
+value = Parameters\Device, UncachedExtAlignment, REG_DWORD, e
+
+[HardwareIds.scsi.aac]
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_3227103C", "aac"
+
+[Files.scsi.bchtsw32]
+catalog = d1, bchtsw32.cat
+driver = d1, bchtsw32.sys, bchtsw32
+inf = d1, bchtsw32.inf
+
+[Config.bchtsw32]
+value = parameters\PnpInterface,5,REG_DWORD,1
+value = InstalledDuringSetup,1,REG_DWORD,1
+
+[HardwareIds.scsi.bchtsw32]
+id = "PCI\VEN_1166&DEV_024A", "bchtsw32"
+#--The following lines give additional USB floppy support
+id = "USB\VID_03F0&PID_2001", "usbstor" #--HP
+id = "USB\VID_054C&PID_002C", "usbstor" #--Sony
+id = "USB\VID_057B&PID_0001", "usbstor" #--Y-E Data
+id = "USB\VID_0409&PID_0040", "usbstor" #--NEC
+id = "USB\VID_0424&PID_0FDC", "usbstor" #--SMSC
+id = "USB\VID_08BD&PID_1100", "usbstor" #--Iomega
+id = "USB\VID_055D&PID_2020", "usbstor" #--Samsung
+
+[Files.scsi.HpAHCIsr]
+driver  = d1,HpAHCIsr.sys, HpAHCIsr
+inf     = d1,HpAHCIsr.inf
+catalog = d1,HpAHCIsr.cat
+
+[Config.HpAHCIsr]
+value = "",tag,REG_DWORD,103
+value = Parameters\PnpInterface,5,REG_DWORD,1
+value = Parameters\Device,DriverParameter,REG_SZ,"CSMI=None;"
+
+[HardwareIds.scsi.HpAHCIsr]
+id = "PCI\VEN_8086&DEV_3a25&SUBSYS_3118103C", "HpAHCIsr"
+id = "PCI\VEN_8086&DEV_3b25&SUBSYS_3118103C", "HpAHCIsr"
+id = "PCI\VEN_1002&DEV_4391&SUBSYS_1778103C", "HpAHCIsr"
+id = "PCI\VEN_8086&DEV_1c04&SUBSYS_3118103C", "HpAHCIsr"

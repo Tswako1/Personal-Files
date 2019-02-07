@@ -1,0 +1,19 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/administration/indicatorStandard/Create"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="indicatorStandard in indicatorStandards">
+            <td>
+                <a href="#/administration/indicatorStandard/{{indicatorStandard.id}}">{{indicatorStandard.description}}</a>
+            </td>
+        </tr>
+    </table>
+</div>

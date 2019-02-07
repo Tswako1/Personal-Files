@@ -1,0 +1,117 @@
+﻿<ul placeholder-content="toolbar">
+    <li class="dropdown">
+        <a class="dropdown-toggle" href="#">Strategic Plans  <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li style="display: block"><a style="color: #333; margin: 3px 10px;" href="/#/operationalPlan/{{operationalPlan.id}}/actuals/{{operationalActual.id}}/1">Annual Technical Support Plans</a></li>
+            <li style="display: block"><a style="color: #333; margin: 3px 10px;" href="/#/operationalPlan/{{operationalPlan.id}}/actuals/{{operationalActual.id}}/2">Sector Plans</a></li>
+            <li style="display: block"><a style="color: #333; margin: 3px 10px;" href="/#/operationalPlan/{{operationalPlan.id}}/actuals/{{operationalActual.id}}/3">Spatial Development Frameworks</a></li>
+            <li style="display: block"><a style="color: #333; margin: 3px 10px;" href="/#/operationalPlan/{{operationalPlan.id}}/actuals/{{operationalActual.id}}/4">Operation and Maintenance Plans</a></li>
+        </ul>
+    </li>
+</ul>
+<div class="col-md-12">
+    <form class="form-horizontal" novalidate role="form" name="operationalActualForm">
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-4 control-label"></label>
+            <label for="inputNumber" class="col-lg-4 control-label">Strategic Plans</label>
+        </div>
+        <div class="row" style="margin-bottom: 0">
+            <span class="col-lg-2">KPI 2.1.2:</span>
+            <p class="col-lg-10">Number of municipalities assisted with the development and implementation of sectoral and strategic plans</p>
+        </div>
+        <div class="row" style="margin-bottom: 0">
+            <span class="col-lg-2">Definition</span>
+            <p class="col-lg-10">Continuously contribute towards improvement of municipal infrastructure services delivery by facilitating the development of both Sectoral and Strategic Plans (IDP, SDBIP, CIP, WSDP etc.)</p>
+        </div>
+        <div class="row" style="margin-bottom: 0">
+            <span class="col-lg-2">Expected Impact:</span>
+            <p class="col-lg-10">Improvement of municipal infrastructure services deliverys</p>
+        </div>
+        <div class="form-group">
+            <label for="organisation" class="col-lg-2">Organisation</label>
+            <div class="col-lg-4">
+                <select ng-options="organisation.id as organisation.name for organisation in organisations" disabled ng-model="operationalActual.organisationId" class="form-control" id="selectOrganisation"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputYear" class="col-lg-2 control-label">Financial Year</label>
+            <div class="col-lg-3">
+                <select ng-options="financialYear.id as financialYear.description for financialYear in financialYears" disabled ng-model="operationalActual.financialYearId" class="form-control" id="Select2"></select>
+            </div>
+            <label for="inputPeriod" class="col-lg-2 control-label">Financial Period</label>
+            <div class="col-lg-3">
+                <select ng-options="financialPeriod.id as financialPeriod.description for financialPeriod in financialPeriods" required ng-disabled="new_ops_actual" ng-model="operationalActual.financialPeriodId" class="form-control" id="Select3"></select>
+            </div>
+        </div>
+
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-4 control-label">Process/Tasks</label>
+            <label for="inputNumber" class="col-lg-2 control-label">Achieved</label>
+        </div>
+
+        <div class="row section">
+            <label for="inputNumber" class="col-lg-4 control-label">Status-quo Assessment</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalActual.statusQuoAssessment_SP_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text28" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count89=getDocumentCount(89)">
+                <span class="document-management" document-count="count89" foreign-id="operationalActual.id" foreign-type="5" document-type="89" title="Upload Document"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-4 control-label">Develop Technical Support Plan</label>
+            <div class="col-lg-2">
+                <input ng-model="coperationalActual.developTechnicalSupportPlan_SP_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text3" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count90=getDocumentCount(90)">
+                <span class="document-management" document-count="count90" foreign-id="operationalActual.id" foreign-type="5" document-type="90" title="Upload Document"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-4 control-label">Development/ review IDP/ Strategic Plans</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalActual.developmentReviewIDPStrategicPlans_SP_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text10" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count91=getDocumentCount(91)">
+                <span class="document-management" document-count="count91" foreign-id="operationalActual.id" foreign-type="5" document-type="91" title="Upload Document"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-4 control-label">Development & Implementation of SPLUMA</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalActual.developmentImplementationSPLUMA_SP_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text111" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count92=getDocumentCount(92)">
+                <span class="document-management" document-count="count92" foreign-id="operationalActual.id" foreign-type="5" document-type="92" title="Upload Document"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-4 control-label">MISA Intervention Close-out</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalActual.misaInterventionCloseOut_SP_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text1" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count93=getDocumentCount(93)">
+                <span class="document-management" document-count="count93" foreign-id="operationalActual.id" foreign-type="5" document-type="93" title="Upload Document"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-4 control-label">Challenges/Comments</label>
+            <div class="col-lg-8">
+                <textarea ng-model="operationalActual.challengesComments_SP" rows="4" type="textarea" class="form-control" id="Textarea1" placeholder=""></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-4 control-label">Remedial Measures in place/Recommendations</label>
+            <div class="col-lg-8">
+                <textarea ng-model="operationalActual.measureInPlaceProposedForNonCompletion_SP" rows="4" type="textarea" class="form-control" id="Textarea2" placeholder=""></textarea>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <div class="container">
+                <button ng-click="saveOperationalActual()" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Save</button>
+            </div>
+        </div>
+
+    </form>
+</div>

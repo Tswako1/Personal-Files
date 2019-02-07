@@ -1,0 +1,50 @@
+﻿<form class="form-horizontal col-md-12" noviladate role="form" name="mOPResponsiblePeopleForm">
+    <div class="form-group">
+        <label for="organisation" class="col-lg-3 control-label">Organisation</label>
+        <div class="col-lg-9">
+            <select ng-options="organisation.id as organisation.name for organisation in organisations" required ng-model="mOPResponsiblePeople.organisationId" class="form-control" id="selectOrganisation"></select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="inputName" class="col-lg-3 control-label">Technical Consultant</label>
+        <div class="col-lg-6">
+            <input ng-model="mOPResponsiblePeople.technicalConsultant" required type="text" class="form-control" id="inputName" placeholder="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputName" class="col-lg-3 control-label">Project Manager</label>
+        <div class="col-lg-6">
+            <input ng-model="mOPResponsiblePeople.projectManager" required type="text" class="form-control" id="Text1" placeholder="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputName" class="col-lg-3 control-label">Technical Programme Manager</label>
+        <div class="col-lg-6">
+            <input ng-model="mOPResponsiblePeople.technicalProgrammeManager" required type="text" class="form-control" id="Text2" placeholder="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputName" class="col-lg-3 control-label">Administration Officer</label>
+        <div class="col-lg-6">
+            <input ng-model="mOPResponsiblePeople.administrationOfficer" required type="text" class="form-control" id="Text3" placeholder="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputName" class="col-lg-3 control-label">Head Technical Support</label>
+        <div class="col-lg-6">
+            <input ng-model="mOPResponsiblePeople.headTechnicalSupport" required type="text" class="form-control" id="Text4" placeholder="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputName" class="col-lg-3 control-label">PMTSC</label>
+        <div class="col-lg-6">
+            <input ng-model="mOPResponsiblePeople.pmtsc" required type="text" class="form-control" id="Text5" placeholder="">
+        </div>
+    </div>
+    <div class="form-actions">
+        <div class="container">
+            <button ng-click="saveMOPResponsiblePeople()" value="Save" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Save</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,59 @@
+﻿<div class="col-md-12">
+    <form class="form-horizontal col-md-12" formnovalidate role="form" name="siteVisitScheduleForm">
+        <div class="form-group">
+            <label or="inputOrganisation" class="col-lg-3 control-label">Indicator</label>
+            <div class="col-lg-6">
+                <select ng-model="selected" type="text" class="form-control" required ng-options="indicator.description for indicator in indicators"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Measure From</label>
+            <div class="col-lg-3">
+                <input ng-model="selected.start" name="start" required ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date">
+                <div class="error" validation-message="Measurement should start after project start date and should be before the measurement and project end dates"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Measure Until</label>
+            <div class="col-lg-3">
+                <input ng-model="selected.end" name="end" required ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date">
+                <div class="error" validation-message="Measurement should end before project end date and should be after project and measurement start dates"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Type</label>
+            <div class="col-lg-3">
+                <input ng-model="selected.type" disabled type="text" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Item</label>
+            <div class="col-lg-3">
+                <input ng-model="selected.item" disabled type="text" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Standard</label>
+            <div class="col-lg-3">
+                <input ng-model="selected.standard" disabled type="text" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Unit of Measure</label>
+            <div class="col-lg-3">
+                <input ng-model="selected.unitOfMeasure" disabled type="text" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Strategy</label>
+            <div class="col-lg-3">
+                <input ng-model="selected.strategy" disabled type="text" class="form-control">
+            </div>
+        </div>
+        <div class="form-actions">
+            <div class="container">
+                <button ng-click="save()" formnovalidate class="btn btn-default pull-right" ng-disabled="busy||saved">Save</button>
+            </div>
+        </div>
+    </form>
+</div>

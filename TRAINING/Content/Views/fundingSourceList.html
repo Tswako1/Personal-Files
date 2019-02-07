@@ -1,0 +1,21 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/administration/fundingSource/Create"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Funding Source Group</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="fundingSource in fundingSources">
+            <td>
+                <a href="#/administration/fundingSource/{{fundingSource.id}}">{{fundingSource.description}}</a>
+                <a href="#/administration/fundingSource/{{fundingSource.id}}">{{fundingSource.fundingSourceGroup}}</a>
+            </td>
+        </tr>
+    </table>
+</div>

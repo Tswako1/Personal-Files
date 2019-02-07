@@ -1,0 +1,27 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/administration/assetClass/Create"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Code</th>
+                <th>Expected Useful Life</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="assetClass in assetClasses">
+            <td>
+                <a href="#/administration/assetClass/{{assetClass.id}}">{{assetClass.description}}</a>
+            </td>
+            <td>
+                <a href="#/administration/assetClass/{{assetClass.id}}">{{assetClass.code}}</a>
+            </td>
+            <td>
+                <a href="#/administration/assetClass/{{assetClass.id}}">{{assetClass.expectedUsefulLife}}</a>
+            </td>
+        </tr>
+    </table>
+</div>

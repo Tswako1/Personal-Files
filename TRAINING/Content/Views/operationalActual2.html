@@ -1,0 +1,308 @@
+﻿<ul placeholder-content="toolbar">
+    <li class="dropdown">
+        <a class="dropdown-toggle"  href="#">2.2.2 Sector Plans    <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li style="display: block"><a style="color: #333; margin: 3px 10px;" href="/#/operationalPlan/{{operationalPlan.id}}/actuals/{{operationalActual.id}}/1">2.2.1 Annual Technical Support Plans</a></li>
+            <li style="display: block"><a style="color: #333; margin: 3px 10px;" href="/#/operationalPlan/{{operationalPlan.id}}/actuals/{{operationalActual.id}}/2">2.2.2 Sector Plans</a></li>
+            <li style="display: block"><a style="color: #333; margin: 3px 10px;" href="/#/operationalPlan/{{operationalPlan.id}}/actuals/{{operationalActual.id}}/3">2.2.3 Spatial Development Frameworks</a></li>
+            <li style="display: block"><a style="color: #333; margin: 3px 10px;" href="/#/operationalPlan/{{operationalPlan.id}}/actuals/{{operationalActual.id}}/4">2.2.4 Operation and Maintenance Plans</a></li>
+        </ul>
+    </li>
+</ul>
+<div class="col-md-12">
+    <form class="form-horizontal" novalidate role="form" name="operationalActualForm">
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-4 control-label">Sector Plans</label>
+        </div>
+        <div class="row section" style="margin-bottom: 0">
+            <span class="col-lg-2">KPI 2.2.2:</span>
+            <p class="col-lg-10">Number of municipal sector plans developed or reviewed</p>
+        </div>
+        <div class="row" style="margin-bottom: 0">
+            <span class="col-lg-2">Definition</span>
+            <p class="col-lg-10">MISA technical consultants or MISA appointed service providers assist municipalities to put in place or review sector plans for municipal services such as roads, storm water, water and sanitation, energy, human settlements, LED, revenue enhancement plans, environmental management plans, disaster management plans and waste management plans</p>
+        </div>
+        <div class="row" style="margin-bottom: 0">
+            <span class="col-lg-2">Measure</span>
+            <p class="col-lg-10">Quantitative (count of municipalities for which municipal infrastructure master plans are developed or reviewed)</p>
+        </div>
+        <div class="form-group">
+            <label for="organisation" class="col-lg-2">Organisation</label>
+            <div class="col-lg-4">
+                <select ng-options="organisation.id as organisation.name for organisation in organisations"  disabled ng-model="operationalActual.organisationId" class="form-control" id="selectOrganisation"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputYear" class="col-lg-2 control-label">Financial Year</label>
+            <div class="col-lg-3">
+                <select ng-options="financialYear.id as financialYear.description for financialYear in financialYears" disabled ng-model="operationalActual.misaFinancialYearId" class="form-control" id="Select2"></select>
+            </div>
+            <label for="inputPeriod" class="col-lg-2 control-label">Financial Period</label>
+            <div class="col-lg-3">
+                <select ng-options="financialPeriod.id as financialPeriod.description for financialPeriod in financialPeriods" required ng-disabled="new_ops_actual" ng-model="operationalActual.misaFinancialPeriodId" class="form-control" id="Select3"></select>
+            </div>
+        </div>
+
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-2 control-label" style="text-align:center">Process</label>
+            <label for="inputNumber" class="col-lg-1 control-label" style="text-align:center">Achieved</label>
+            <label for="inputNumber" class="col-lg-1 control-label" style="text-align:center">Docs</label>
+            <label for="inputNumber" class="col-lg-1 control-label" style="text-align:center">Q1 T</label>
+            <label for="inputNumber" class="col-lg-1 control-label" style="text-align:center">Q1 A</label>
+            <label for="inputNumber" class="col-lg-1 control-label" style="text-align:center">Q2 T</label>
+            <label for="inputNumber" class="col-lg-1 control-label" style="text-align:center">Q2 A</label>
+            <label for="inputNumber" class="col-lg-1 control-label" style="text-align:center">Q3 T</label>
+            <label for="inputNumber" class="col-lg-1 control-label" style="text-align:center">Q3 A</label>
+            <label for="inputNumber" class="col-lg-1 control-label" style="text-align:center">Q4 T</label>
+            <label for="inputNumber" class="col-lg-1 control-label" style="text-align:center">Q4 A</label>
+        </div>
+
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-4 control-label"></label>
+            <label for="inputNumber" class="col-lg-4 control-label">DEVELOPED SECTOR PLANS</label>
+        </div>
+        <div class="row section">
+            <label for="inputNumber" class="col-lg-2 control-label">1. Develop Terms of Reference for developing sector plan</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.dsP_1DevelopToR_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text28" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count35=getDocumentCount(35)">
+                <span class="document-management" document-count="count35" foreign-id="operationalActual.id" foreign-type="5" document-type="35" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.dsP_1DevelopToR_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text155" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.dsP_1DevelopToR_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text156" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.dsP_1DevelopToR_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text157" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.dsP_1DevelopToR_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text158" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.dsP_1DevelopToR_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text159" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.dsP_1DevelopToR_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text160" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.dsP_1DevelopToR_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text161" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.dsP_1DevelopToR_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text162" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-2 control-label">2. Appoint Service Provider</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.dsP_2AppointServiceProvider_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text3" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count36=getDocumentCount(36)">
+                <span class="document-management" document-count="count36" foreign-id="operationalActual.id" foreign-type="5" document-type="36" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.dsP_2AppointServiceProvider_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text47" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.dsP_2AppointServiceProvider_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text48" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.dsP_2AppointServiceProvider_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text49" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.dsP_2AppointServiceProvider_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text50" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.dsP_2AppointServiceProvider_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text52" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.dsP_2AppointServiceProvider_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text53" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.dsP_2AppointServiceProvider_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text54" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.dsP_2AppointServiceProvider_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text55" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-2 control-label">3. Develop draft  sector plan</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.dsP_3DevelopDraftSectorPlan_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text10" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count37=getDocumentCount(37)">
+                <span class="document-management" document-count="count37" foreign-id="operationalActual.id" foreign-type="5" document-type="37" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.dsP_3DevelopDraftSectorPlan_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text1" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.dsP_3DevelopDraftSectorPlan_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text2" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.dsP_3DevelopDraftSectorPlan_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text4" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.dsP_3DevelopDraftSectorPlan_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text5" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.dsP_3DevelopDraftSectorPlan_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text6" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.dsP_3DevelopDraftSectorPlan_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text7" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.dsP_3DevelopDraftSectorPlan_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text8" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.dsP_3DevelopDraftSectorPlan_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text9" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-2 control-label">4. Finalising developed draft sector Plan</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.dsP_4FinaliseDevelopedDraftSectorPlan_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text22" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count39=getDocumentCount(39)">
+                <span class="document-management" document-count="count39" foreign-id="operationalActual.id" foreign-type="5" document-type="39" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.dsP_4FinaliseDevelopedDraftSectorPlan_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text11" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.dsP_4FinaliseDevelopedDraftSectorPlan_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text12" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.dsP_4FinaliseDevelopedDraftSectorPlan_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text13" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.dsP_4FinaliseDevelopedDraftSectorPlan_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text14" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.dsP_4FinaliseDevelopedDraftSectorPlan_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text15" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.dsP_4FinaliseDevelopedDraftSectorPlan_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text16" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.dsP_4FinaliseDevelopedDraftSectorPlan_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text17" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.dsP_4FinaliseDevelopedDraftSectorPlan_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text18" placeholder="">
+            </div>
+        </div>
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-4 control-label"></label>
+            <label for="inputNumber" class="col-lg-4 control-label">REVIEWED SECTOR PLANS</label>
+        </div>
+        <div class="row section">
+            <label for="inputNumber" class="col-lg-2 control-label">1. Develop Terms of Reference for reviewing existing sector plan</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.rsP_1DevelopToR_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text39" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count41=getDocumentCount(41)">
+                <span class="document-management" document-count="count41" foreign-id="operationalActual.id" foreign-type="5" document-type="41" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.rsP_1DevelopToR_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text19" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.rsP_1DevelopToR_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text20" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.rsP_1DevelopToR_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text21" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.rsP_1DevelopToR_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text23" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.rsP_1DevelopToR_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text24" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.rsP_1DevelopToR_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text25" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.rsP_1DevelopToR_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text26" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.rsP_1DevelopToR_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text27" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-2 control-label">2. Draft reviewed existing sector plan</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.rsP_2DraftReviewedExistingSP_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text45" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count42=getDocumentCount(42)">
+                <span class="document-management" document-count="count42" foreign-id="operationalActual.id" foreign-type="5" document-type="42" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.rsP_2DraftReviewedExistingSP_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text29" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.rsP_2DraftReviewedExistingSP_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text30" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.rsP_2DraftReviewedExistingSP_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text31" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.rsP_2DraftReviewedExistingSP_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text32" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.rsP_2DraftReviewedExistingSP_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text33" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.rsP_2DraftReviewedExistingSP_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text34" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.rsP_2DraftReviewedExistingSP_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text35" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.rsP_2DraftReviewedExistingSP_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text36" placeholder="">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-2 control-label">3. Finalising reviewed draft sector Plan</label>
+            <div class="col-lg-1">
+                <input ng-model="operationalActual.rsP_3FinaliseRreviewedDraftSP_Achieved" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text51" placeholder="">
+            </div>
+            <div class="col-lg-1" ng-init="count43=getDocumentCount(43)">
+                <span class="document-management" document-count="count43" foreign-id="operationalActual.id" foreign-type="5" document-type="43" title="Upload Document"></span>
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.rsP_3FinaliseRreviewedDraftSP_TargetQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text37" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.rsP_3FinaliseRreviewedDraftSP_AQ1" disabled fieldtype="numeric" type="text" class="form-control" id="Text38" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.rsP_3FinaliseRreviewedDraftSP_TargetQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text40" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.rsP_3FinaliseRreviewedDraftSP_AQ2" disabled fieldtype="numeric" type="text" class="form-control" id="Text41" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.rsP_3FinaliseRreviewedDraftSP_TargetQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text42" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.rsP_3FinaliseRreviewedDraftSP_AQ3" disabled fieldtype="numeric" type="text" class="form-control" id="Text43" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.rsP_3FinaliseRreviewedDraftSP_TargetQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text44" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalActuals.rsP_3FinaliseRreviewedDraftSP_AQ4" disabled fieldtype="numeric" type="text" class="form-control" id="Text46" placeholder="">
+            </div>
+        </div>
+
+
+        <div class="form-actions">
+            <div class="container">
+                <button ng-click="saveOperationalActual()" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Save</button>
+            </div>
+        </div>
+    </form>
+</div>

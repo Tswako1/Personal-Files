@@ -1,0 +1,19 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/administration/crossCuttingProgramme/Create"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="crossCuttingProgramme in crossCuttingProgrammes">
+            <td>
+                <a href="#/administration/crossCuttingProgramme/{{crossCuttingProgramme.id}}">{{crossCuttingProgramme.description}}</a>
+            </td>
+        </tr>
+    </table>
+</div>

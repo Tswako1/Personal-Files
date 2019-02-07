@@ -1,0 +1,25 @@
+﻿<form class="form-horizontal col-md-12" noviladate role="form" name="mOPIIKPIForm">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">MISA Financial Year</label>
+        <div class="col-lg-3">
+            <select ng-model="mOPIIKPI.misaFinancialYearId" required class="form-control" ng-options="mISAFinancialYear.id as mISAFinancialYear.description for mISAFinancialYear in mISAFinancialYears"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputDescription" class="col-lg-3 control-label">Description</label>
+        <div class="col-lg-6">
+            <input ng-model="mOPIIKPI.description" required type="text" class="form-control" id="inputDescription" placeholder="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputDescription" class="col-lg-3 control-label">Display Order</label>
+        <div class="col-lg-2">
+            <input ng-model="mOPIIKPI.displayOrder" required type="text" class="form-control" id="Text1" placeholder="">
+        </div>
+    </div>
+    <div class="form-actions">
+        <div class="container">
+            <button ng-click="saveMOPIIKPI()" value="Save" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Save</button>
+        </div>
+    </div>
+</form>

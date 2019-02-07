@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html> 
+ 
+ <button style="background-color:yellow" onclick="window.location.href='Home.html'">Home</button>
+ <button style="background-color:blue" onclick="window.location.href='bingoverflw.html'">Your Location</button>
+ <button style="background-color:purple" onclick="window.location.href='Login.html'">Login</button>
+ <button style="background-color:Podium" onclick="window.location.href='StilWorking.jsp'">Podium</button>
+ <button style="background-color:green" onclick="window.location.href='Matric.htm'">Matric block</button>
+<button style="background-color:peach" onclick="window.location.href='Login.html'">Projects</button>
+<button style="background-color:red" onclick="window.location.href='Upload.jsp'">Upload</button>
+<button style="background-color:red" onclick="window.location.href='view.jsp'">view</button>
+
+  <head>
+ 
+    <script src="http://www.webglearth.com/v2/api.js"></script>
+    <script>
+      function initialize() {
+        var options = {atmosphere: true, center: [0, 0], zoom: 0};
+        var earth = new WE.map('earth_div', options);
+        WE.tileLayer('http://tileserver.maptiler.com/nasa/{z}/{x}/{y}.jpg', {
+          minZoom: 0,
+          maxZoom: 5,
+          attribution: 'PASS THE TORCH "E FANG BANA DITAOLA"'
+        }).addTo(earth);
+		
+		
+      }
+    </script>
+    <style>
+      html, body{padding: 0; margin: 0;}
+      #earth_div{top: 2; right: 2; bottom: 2; left: 2;
+                 background-color: #800000; "position: relative; width:100% height: 100% width:1000px; heght: 1000px;"}
+      </style>
+      <title>Kammakole</title>
+	  
+    </head>
+	
+    <body onload="initialize()">
+      <div id="earth_div"></div>
+  </body>
+</html>

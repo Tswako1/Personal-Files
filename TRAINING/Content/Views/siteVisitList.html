@@ -1,0 +1,36 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/projectRegistration/{{projectId}}/siteVisitSchedule/Create"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Assigned To</th>
+                <th>Scheduled Date</th>
+                <th>Completion Date</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tr ng-repeat="siteVisit in siteVisits">
+            <td>
+                <a href="#/projectRegistration/{{projectId}}/siteVisitSchedule/{{siteVisit.id}}">{{siteVisit.description}}</a>
+            </td>
+            <td>
+                <a href="#/projectRegistration/{{projectId}}/siteVisitSchedule/{{siteVisit.id}}">{{siteVisit.assignedTo}}</a>
+            </td>
+            <td>
+                <a href="#/projectRegistration/{{projectId}}/siteVisitSchedule/{{siteVisit.id}}">{{siteVisit.scheduledDate|date: 'yyyy/MM/dd'}}</a>
+            </td>
+            <td>
+                <a href="#/projectRegistration/{{projectId}}/siteVisitSchedule/{{siteVisit.id}}">{{siteVisit.completionDate|date: 'yyyy/MM/dd'}}</a>
+            </td>
+            <td>
+                <a href="#/projectRegistration/{{projectId}}/siteVisitUpdate/{{siteVisit.id}}" title="Update/Mark as Complete"><span class="glyphicon glyphicon-check pull-right"></span></a>
+            </td>
+
+        </tr>
+    </table>
+</div>

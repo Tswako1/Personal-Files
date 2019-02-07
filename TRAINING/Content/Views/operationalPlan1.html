@@ -1,0 +1,472 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a href="#/operationalPlanOverview/{{operationalPlan.id}}" class="glyphicon glyphicon-eye-open" title="Overview"></a>
+    </li>
+    <li>
+        <a href="#/operationalPlan/{{operationalPlan.id}}/actuals" class="icon-rulers" title="Achieved"></a>
+    </li>
+    <li>
+        <a href="#/operationalPlans/{{operationalPlan.id}}/projects" class="icon-certificate" title="Projects"></a>
+    </li>
+
+    <li class="dropdown">
+        <a class="dropdown-toggle" href="#">2.2.1 Annual Technical Support Plans  <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li style="display: block"><a style="color: #333; margin: 3px 10px;" href="/#/operationalPlan/{{operationalPlan.id}}/1">2.2.1 Annual Technical Support Plans</a></li>
+            <li style="display: block"><a style="color: #333; margin: 3px 10px;" href="/#/operationalPlan/{{operationalPlan.id}}/2">2.2.2 Sector Plans</a></li>
+            <li style="display: block"><a style="color: #333; margin: 3px 10px;" href="/#/operationalPlan/{{operationalPlan.id}}/3">2.2.3 Spatial Development Frameworks</a></li>
+            <li style="display: block"><a style="color: #333; margin: 3px 10px;" href="/#/operationalPlan/{{operationalPlan.id}}/4">2.2.4 Operation and Maintenance Plans</a></li>
+        </ul>
+    </li>
+</ul>
+<div class="col-md-12">
+    <form class="form-horizontal" novalidate role="form" name="operationalPlanForm">
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-4 control-label">Annual Technical Support Plans</label>
+        </div>
+        <div class="row section" style="margin-bottom: 0">
+            <span class="col-lg-2">KPI 2.2.1:</span>
+            <p class="col-lg-10">Number of municipalities with which annual technical support plans are signed and reported against quarterly</p>
+        </div>
+        <div class="row" style="margin-bottom: 0">
+            <span class="col-lg-2">Definition</span>
+            <p class="col-lg-10">MISA technical consultants or MISA appointed service providers assist municipalities to put in place or review sector plans for municipal services such as roads, storm water, water and sanitation, energy, human settlements, LED, revenue enhancement plans, environmental management plans, disaster management plans and waste management plans</p>
+        </div>
+        <div class="row" style="margin-bottom: 0">
+            <span class="col-lg-2">Measure</span>
+            <p class="col-lg-10">Quantitative (count of municipalities for which municipal infrastructure master plans are developed or reviewed)</p>
+        </div>
+        <div class="form-group">
+            <label for="organisation" class="col-lg-2">Organisation</label>
+            <div class="col-lg-4">
+                <select ng-options="organisation.id as organisation.name for organisation in organisations" ng-disabled="new_ops_plan" required ng-model="operationalPlan.organisationId" class="form-control" id="selectOrganisation"></select>
+            </div>
+            <label for="inputYear" class="col-lg-2 control-label">Financial Year</label>
+            <div class="col-lg-3">
+                <select ng-options="financialYear.id as financialYear.description for financialYear in financialYears" ng-disabled="new_ops_plan" required ng-model="operationalPlan.misaFinancialYearId" class="form-control" id="inputYear"></select>
+            </div>
+        </div>
+
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-4 control-label centre" style="text-align:center">Process</label>
+            <label for="inputNumber" class="col-lg-2 control-label centre" style="text-align:center">Start</label>
+            <label for="inputNumber" class="col-lg-2 control-label centre" style="text-align:center">End</label>
+            <label for="inputNumber" class="col-lg-1 control-label centre" style="text-align:center">Q1</label>
+            <label for="inputNumber" class="col-lg-1 control-label centre" style="text-align:center">Q2</label>
+            <label for="inputNumber" class="col-lg-1 control-label centre" style="text-align:center">Q3</label>
+            <label for="inputNumber" class="col-lg-1 control-label centre" style="text-align:center">Q4</label>
+        </div>
+
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-4 control-label"></label>
+            <label for="inputNumber" class="col-lg-4 control-label">1. Develop municipal Technical Support Plan (TSP)</label>
+        </div>
+        <div class="row section">
+            <label for="inputNumber" class="col-lg-4 control-label">1.1 Brief municipality about MISA technical support programme</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_11BriefMunicipality_StartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text9" placeholder="">
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_11BriefMunicipality_EndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text27" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_11BriefMunicipality_TargetQ1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text28" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_11BriefMunicipality_TargetQ2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text29" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_11BriefMunicipality_TargetQ3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text30" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_11BriefMunicipality_TargetQ4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text31" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-4 control-label">1.2 Determine projects that municipality requests for support</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_12DetermineProjects_StartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text1" placeholder="">
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_12DetermineProjects_EndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text2" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_12DetermineProjects_TargetQ1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text3" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_12DetermineProjects_TargetQ2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text4" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_12DetermineProjects_TargetQ3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text5" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_12DetermineProjects_TargetQ4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text6" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-4 control-label">1.3 Develop TSP and get signed off by municipality and TS Programme</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_13DevelopTSP_StartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text7" placeholder="">
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_13DevelopTSP_EndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text8" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_13DevelopTSP_TargetQ1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text10" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_13DevelopTSP_TargetQ2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text11" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_13DevelopTSP_TargetQ3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text12" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_13DevelopTSP_TargetQ4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text13" placeholder="">
+            </div>
+        </div>
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-4 control-label"></label>
+            <label for="inputNumber" class="col-lg-4 control-label">2. Securing Funds for Sector Projects</label>
+        </div>
+        <div class="row section">
+            <label for="inputNumber" class="col-lg-4 control-label">2.1 Assist municipality in developing Technical Report and Business Plan</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_21AssistDevelopTR_BP_StartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text14" placeholder="">
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_21AssistDevelopTR_BP_EndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text15" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_21AssistDevelopTR_BP_TargetQ1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text16" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_21AssistDevelopTR_BP_TargetQ2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text17" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_21AssistDevelopTR_BP_TargetQ3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text18" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_21AssistDevelopTR_BP_TargetQ4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text19" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-4 control-label">2.2 Assist municipality in presenting the TR and BP to funding agency (MIG, DWS, etc.)</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_22AssistPresentTR_BP_StartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text20" placeholder="">
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_22AssistPresentTR_BP_EndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text21" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_22AssistPresentTR_BP_TargetQ1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text22" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_22AssistPresentTR_BP_TargetQ2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text23" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_22AssistPresentTR_BP_TargetQ3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text24" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_22AssistPresentTR_BP_TargetQ4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text25" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-4 control-label">2.3 Funding Agency's approval of BP and Funds</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_23FundingApprovalBP_Funds_StartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text26" placeholder="">
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_23FundingApprovalBP_Funds_EndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text32" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_23FundingApprovalBP_Funds_TargetQ1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text33" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_23FundingApprovalBP_Funds_TargetQ2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text34" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_23FundingApprovalBP_Funds_TargetQ3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text35" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_23FundingApprovalBP_Funds_TargetQ4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text36" placeholder="">
+            </div>
+        </div>
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-4 control-label"></label>
+            <label for="inputNumber" class="col-lg-4 control-label">3. Planning for Implementation</label>
+        </div>
+        <div class="row section">
+            <label for="inputNumber" class="col-lg-4 control-label">3.1 Establish Project Steering Committee</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_31EstablishProjectSteeringCommittee_StartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text37" placeholder="">
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_31EstablishProjectSteeringCommittee_EndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text38" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_31EstablishProjectSteeringCommittee_TargetQ1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text39" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_31EstablishProjectSteeringCommittee_TargetQ2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text40" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_31EstablishProjectSteeringCommittee_TargetQ3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text41" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_31EstablishProjectSteeringCommittee_TargetQ4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text42" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-4 control-label">3.2 Infrastructure Procurement Planning</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_32InfrastructureProcurementPlanning_StartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text43" placeholder="">
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_32InfrastructureProcurementPlanning_EndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text44" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_32InfrastructureProcurementPlanning_TargetQ1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text45" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_32InfrastructureProcurementPlanning_TargetQ2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text46" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_32InfrastructureProcurementPlanning_TargetQ3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text47" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_32InfrastructureProcurementPlanning_TargetQ4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text48" placeholder="">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-4 control-label">3.3 Appointment of Consultants/ PSP</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_33AppointmentConsultantsPSP_StartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text49" placeholder="">
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_33AppointmentConsultantsPSP_EndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text50" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_33AppointmentConsultantsPSP_TargetQ1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text51" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_33AppointmentConsultantsPSP_TargetQ2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text52" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_33AppointmentConsultantsPSP_TargetQ3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text53" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_33AppointmentConsultantsPSP_TargetQ4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text54" placeholder="">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-4 control-label">3.4 Preliminary design</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_34PreliminaryDesign_StartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text55" placeholder="">
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_34PreliminaryDesign_EndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text56" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_34PreliminaryDesign_TargetQ1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text57" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_34PreliminaryDesign_TargetQ2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text58" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_34PreliminaryDesign_TargetQ3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text59" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_34PreliminaryDesign_TargetQ4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text60" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-4 control-label">3.5 Final Design</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_35FinalDesign_StartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text61" placeholder="">
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_35FinalDesign_EndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text62" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_35FinalDesign_TargetQ1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text63" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_35FinalDesign_TargetQ2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text64" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_35FinalDesign_TargetQ3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text65" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_35FinalDesign_TargetQ4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text66" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-4 control-label">3.6 Contract Documentation</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_36ContractDocumentation_StartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text67" placeholder="">
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_36ContractDocumentation_EndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text68" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_36ContractDocumentation_TargetQ1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text69" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_36ContractDocumentation_TargetQ2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text70" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_36ContractDocumentation_TargetQ3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text71" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_36ContractDocumentation_TargetQ4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text72" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-4 control-label">3.7 Appoint Contractor</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_37AppointContractor_StartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text73" placeholder="">
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_37AppointContractor_EndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text74" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_37AppointContractor_TargetQ1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text75" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_37AppointContractor_TargetQ2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text76" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_37AppointContractor_TargetQ3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text77" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_37AppointContractor_TargetQ4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text78" placeholder="">
+            </div>
+        </div>
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-4 control-label"></label>
+            <label for="inputNumber" class="col-lg-4 control-label">4. Implementation</label>
+        </div>
+        <div class="row section">
+            <label for="inputNumber" class="col-lg-4 control-label">4.1 Appointment CLO</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_41AppointmentCLO_StartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text79" placeholder="">
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_41AppointmentCLO_EndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text80" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_41AppointmentCLO_TargetQ1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text81" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_41AppointmentCLO_TargetQ2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text82" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_41AppointmentCLO_TargetQ3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text83" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_41AppointmentCLO_TargetQ4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text84" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-4 control-label">4.2 Site meetings (Progress & Quality)</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_42SiteMeetings_StartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text85" placeholder="">
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_42SiteMeetings_EndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text86" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_42SiteMeetings_TargetQ1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text87" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_42SiteMeetings_TargetQ2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text88" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_42SiteMeetings_TargetQ3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text89" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_42SiteMeetings_TargetQ4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text90" placeholder="">
+            </div>
+        </div>
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-4 control-label"></label>
+            <label for="inputNumber" class="col-lg-4 control-label">5. Monitoring and reporting to Stakeholders</label>
+        </div>
+        <div class="row section">
+            <label for="inputNumber" class="col-lg-4 control-label">5.1 Progress and Evaluation reports (quantitative and qualitative)</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_51Progress_EvaluationReports_StartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text91" placeholder="">
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_51Progress_EvaluationReports_EndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text92" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_51Progress_EvaluationReports_TargetQ1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text93" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_51Progress_EvaluationReports_TargetQ2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text94" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_51Progress_EvaluationReports_TargetQ3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text95" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_51Progress_EvaluationReports_TargetQ4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text96" placeholder="">
+            </div>
+        </div>
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-4 control-label"></label>
+            <label for="inputNumber" class="col-lg-4 control-label">6. Commissioning and Close-out</label>
+        </div>
+        <div class="row section">
+            <label for="inputNumber" class="col-lg-4 control-label">6.1 Project Commissioning</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_61ProjectCommissioning_StartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text97" placeholder="">
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_61ProjectCommissioning_EndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text98" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_61ProjectCommissioning_TargetQ1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text99" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_61ProjectCommissioning_TargetQ2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text100" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_61ProjectCommissioning_TargetQ3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text101" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_61ProjectCommissioning_TargetQ4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text102" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumber" class="col-lg-4 control-label">6.2 MISA Intervention Close-out</label>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_62MISAInterventionClose_out_StartDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text103" placeholder="">
+            </div>
+            <div class="col-lg-2">
+                <input ng-model="operationalPlan.atsP_62MISAInterventionClose_out_EndDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="Text104" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_62MISAInterventionClose_out_TargetQ1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text105" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_62MISAInterventionClose_out_TargetQ2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text106" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_62MISAInterventionClose_out_TargetQ3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text107" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <input ng-model="operationalPlan.atsP_62MISAInterventionClose_out_TargetQ4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" id="Text108" placeholder="">
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <div class="container">
+                <button ng-click="saveOperationalPlan()" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Save</button>
+            </div>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,75 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <form class="search" ng-submit="search()">
+            <input ng-model="filter" type="text">
+            <button ng-click="clearSearch()" class="search remove-filter" ng-show="serverFilter">X</button>
+            <button type="submit"></button>
+        </form>
+    </li>
+    <li>&nbsp;</li>
+</ul>
+<div class="col-md-12">
+    <form class="form-horizontal filters" novalidate role="form">
+        <div class="row">
+            <label for="filterOrganisation" class="col-lg-3 control-label">Organisation</label>
+            <div class="col-lg-3">
+                <select ng-options="organisation.id as organisation.name for organisation in organisations" ng-model="filters.organisation" class="form-control" id="filterOrganisation"></select>
+                <button ng-click="filters.organisation = null" class="remove-filter" ng-show="filters.organisation">X</button>
+            </div>
+            <label for="filterAssetClass" class="col-lg-3 control-label">Status</label>
+            <div class="col-lg-3">
+                <select ng-options="status.id as status.description for status in faultReportStatus" ng-model="filters.status" class="form-control" id="filterProjectStatus"></select>
+                <button ng-click="filters.status = null" class="remove-filter" ng-show="filters.status">X</button>
+            </div>
+        </div>
+        <div class="row">
+            <label for="filterOrganisation" class="col-lg-3 control-label">Sector Program</label>
+            <div class="col-lg-3">
+                <select ng-options="x.id as x.description for x in sectorProgrammes" ng-model="filters.sectorProgram" class="form-control" id="filterSectorProgram"></select>
+                <button ng-click="filters.sectorProgram = null" class="remove-filter" ng-show="filters.sectorProgram">X</button>
+            </div>
+        </div>
+    </form>
+    <table class="table infrastructureList">
+        <colgroup>
+            <col></col>
+            <col></col>
+        </colgroup>
+        <thead>
+            <tr>
+                <th ng-click="sort('Number')" ng-class="{sorted: field == 'Number', desc: desc}">Organisation</th>
+                <th ng-click="sort('Number')" ng-class="{sorted: field == 'Number', desc: desc}">Sector Program</th>
+                <th ng-click="sort('Number')" ng-class="{sorted: field == 'Number', desc: desc}">Description</th>
+                <th ng-click="sort('Status')" ng-class="{sorted: field == 'Status', desc: desc}">Date Reported</th>
+                <th ng-click="sort('Status')" ng-class="{sorted: field == 'Status', desc: desc}">Status</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="fault in faultReports.items">
+            <td>
+                <a href="#/faultReport/{{fault.id}}">{{fault.organisation}}</a>
+            </td>
+            <td>
+                <a href="#/faultReport/{{fault.id}}">{{fault.sectorProgram}}</a>
+            </td>
+            <td>
+                <a href="#/faultReport/{{fault.id}}">{{fault.description}}</a>
+            </td>
+            <td>
+                <a href="#/faultReport/{{fault.id}}">{{fault.dateReported | date:'yyyy-MM-dd HH:mm'}}</a>
+            </td>
+            <td>
+                <a href="#/faultReport/{{fault.id}}">{{fault.status}}</a>
+            </td>
+            <td>
+                <i class="glyphicon glyphicon-flag" ng-class="{low: fault.age < 3, medium: fault.age > 2, high: fault.age > 5 }"></i>
+            </td>
+        </tr>
+    </table>
+    <div class="paging">
+        <ol>
+            <li ng-show="pages.length > 1 && page > 1"><a ng-click="gotoPage(page - 1)" class="icon-angle-left"></a></li>
+            <li ng-show="pages.length > 1">Page {{page}}</li>
+            <li ng-show="pages.length > 1 && page < pages.length"><a ng-click="gotoPage(page + 1)" class="icon-angle-right"></a></li>
+        </ol>
+    </div>
+</div>

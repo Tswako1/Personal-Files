@@ -1,0 +1,118 @@
+﻿<ul placeholder-content="toolbar"></ul>
+<tr class="col-md-12">
+    <form class="form-horizontal" novalidate role="form" name="planForm">
+        <div class="form-group">
+            <label for="organisation" class="col-lg-1 control-label">Organisation</label>
+            <div class="col-lg-3">
+                <select disabled class="form-control">
+                    <option selected>{{plan.organisation}}</option>
+                </select>
+            </div>
+            <label for="inputYear" class="col-lg-1 control-label">Year</label>
+            <div class="col-lg-3">
+                <select disabled class="form-control">
+                    <option selected>{{plan.year}}</option>
+                </select>
+            </div>
+        </div>
+        <div style="padding-left: 120px; border-top: 2px solid #ccc">
+            <table class="grid" style="border-top: none">
+                <tr>
+                    <td>Document Name</td>
+                    <td style="text-align:center;width:20%; font-weight: bold">Date Uploaded</td>
+                    <td style="text-align:center;width:10%; font-weight: bold">Provincialy Validate</td>
+                    <td style="text-align:center;width:10%; font-weight: bold">Nationally Validated</td>
+                </tr>
+            </table>
+        </div>
+        <style>
+            table.grid {
+                table-layout: fixed;
+                width: 100%;
+                border-top: 2px solid #ccc;
+            }
+
+            td {
+                padding: 6px 4px;
+            }
+
+            div.kpi-label {
+                border-top: 2px solid #ccc;
+                padding: 6px 4px;
+                font-weight: bold;
+            }
+
+            div.collapsed table {
+                display: none;
+            }
+            div.collapsed > div:not(.kpi-label) {
+                display: none;
+            }
+
+            tbody.collapsed tr:not(:first-child) {
+                display: none;
+            }
+
+            i.icon-arrow-right, i.icon-arrow-down {
+                vertical-align: middle;
+                margin-right: 5px;
+            }
+        </style>
+        <div ng-repeat="quarter in plan.quarters" ng-class="{collapsed: quarter.collapsed}">
+            <div class="kpi-label">
+                <i ng-click="quarter.collapsed = !quarter.collapsed" ng-class="{'icon-arrow-right': quarter.collapsed, 'icon-arrow-down': !quarter.collapsed}" />{{ quarter.quarter }}
+            </div>
+            <div ng-repeat="kpi in quarter.kpis" ng-class="{collapsed: kpi.collapsed}" style="padding-left: 40px">
+                <div class="kpi-label">
+                    <i ng-click="kpi.collapsed = !kpi.collapsed" ng-class="{'icon-arrow-right': kpi.collapsed, 'icon-arrow-down': !kpi.collapsed}" />{{ kpi.name }}
+                </div>
+                <div style="padding-left: 40px" ng-repeat="section in kpi.sections"  ng-class="{collapsed: section.collapsed}">
+                    <div class="kpi-label">
+                        <i ng-click="section.collapsed = !section.collapsed" ng-class="{'icon-arrow-right': section.collapsed, 'icon-arrow-down': !section.collapsed}" />{{ section.name }}
+                    </div>
+                    <div style="padding-left: 40px;">
+                        <table class="grid">
+                            <colgroup>
+                                <col />
+                                <col style="width: 20%" />
+                                <col style="width: 10%" />
+                                <col style="width: 10%" />
+                            </colgroup>
+                            <tbody ng-repeat="process in section.processes" ng-class="{collapsed: process.collapsed}">
+                                <tr>
+                                    <td colspan="4" style="font-weight: bold">
+                                        <i ng-click="process.collapsed = !process.collapsed" ng-class="{'icon-arrow-right': process.collapsed, 'icon-arrow-down': !process.collapsed}" />{{ process.name }}
+                                    </td>
+                                </tr>
+                                <tr ng-repeat="document in process.documents">
+                                    <td style="padding-left: 25px;vertical-align: middle;">
+                                        <a href="/api/document/{{document.id}}">{{document.name}}</a>
+                                    </td>
+                                    <td style="text-align: center">{{document.uploadDate}}</td>
+                                    <td style="text-align: center">
+                                        <div checkbox mipmis-checkbox>
+                                            <input ng-model="document.provincialValidated" type="checkbox">
+                                        </div>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <div checkbox mipmis-checkbox>
+                                            <input ng-model="document.validated" disabled type="checkbox">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-actions">
+            <div class="container">
+                <button ng-click="save()" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Save</button>
+            </div>
+        </div>
+
+    </form>
+    </div>

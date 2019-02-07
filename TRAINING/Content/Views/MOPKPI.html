@@ -1,0 +1,13 @@
+﻿<form class="form-horizontal col-md-12" noviladate role="form" name="mOPKPIForm">
+    <div class="form-group">
+        <label for="inputDescription" class="col-lg-3 control-label">Description</label>
+        <div class="col-lg-6">
+            <input ng-model="mOPKPI.description" required type="text" class="form-control" id="inputDescription" placeholder="">
+        </div>
+    </div>
+    <div class="form-actions">
+        <div class="container">
+            <button ng-click="saveMOPKPI()" value="Save" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Save</button>
+        </div>
+    </div>
+</form>

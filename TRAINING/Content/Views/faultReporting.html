@@ -1,0 +1,93 @@
+﻿<div class="overview">
+    <div class="col-md-7 field-list">
+        <h4>Detail</h4>
+        <div ng-show="faultReport.referenceNumber">
+            <div>Reference</div>
+            <div>{{faultReport.referenceNumber}}</div>
+        </div>
+        <div>
+            <div>Status</div>
+            <div>{{faultReport.faultStatusDescription}}</div>
+        </div>
+        <div ng-show="faultReport.faultStatus == 3">
+            <div>Duplicate Fault</div>
+            <div><a href="#/faultReport/{{faultReport.linkedFaultReportId}}">{{faultReport.linkedFaultReportReferenceNumber}}</a></div>
+        </div>
+        <div>
+            <div>Date Reported</div>
+            <div>{{faultReport.dateReported | date:'yyyy-MM-dd'}}</div>
+        </div>
+        <h4>Reporter</h4>
+        <div>
+            <div>Name</div>
+            <div>{{faultReport.name}}</div>
+        </div>
+        <div>
+            <div>Surname</div>
+            <div>{{faultReport.surname}}</div>
+        </div>
+        <div>
+            <div>Telephone</div>
+            <div>{{faultReport.contactNo}}</div>
+        </div>
+        <div>
+            <div>E-Mail</div>
+            <div>{{faultReport.email}}</div>
+        </div>
+        <div>
+            <div>Description</div>
+            <div>{{faultReport.description}}</div>
+        </div>
+        <h4>Location</h4>
+        <div>
+            <div>Province</div>
+            <div>{{faultReport.province}}</div>
+        </div>
+        <div>
+            <div>District</div>
+            <div>{{faultReport.district}}</div>
+        </div>
+        <div>
+            <div>Organisation</div>
+            <div>{{faultReport.organisation}}</div>
+        </div>
+        <div>
+            <div>Longitude</div>
+            <div>{{faultReport.longitude}}</div>
+        </div>
+        <div>
+            <div>Latitude</div>
+            <div>{{faultReport.latitude}}</div>
+        </div>
+        <h4>Categorization</h4>
+        <div>
+            <div>Sector Program</div>
+            <div>{{faultReport.sectorProgram}}</div>
+        </div>
+        <div>
+            <div>Fault Type</div>
+            <div>{{faultReport.faultType}}</div>
+        </div>
+        <h4 ng-show="faultReport.attachmentName">Attachment</h4>
+
+        <a href="api/document/{{faultReport.attachmentId}}" ng-if="faultReport.attachmentName">{{faultReport.attachmentName}}</a>
+    </div>
+    <div class="col-md-5 field-list">
+        <h4>Actions</h4>
+        <textarea style="width: 100%" placeholder="Add comments..." ng-model="comment"></textarea>
+        <div style="text-align: right">
+            <button class="btn btn-primary" ng-disabled="!comment" ng-click="add()">Add Comment</button>
+            <button class="btn btn-primary" ng-disabled="!comment" ng-show="faultReport.faultStatus == 1" ng-click="confirm()">Confirm</button>
+            <button class="btn btn-primary" ng-disabled="!comment" ng-show="faultReport.faultStatus == 1 || faultReport.faultStatus == 2" ng-click="duplicate()">Duplicate</button>
+            <button class="btn btn-primary" ng-disabled="!comment" ng-show="faultReport.faultStatus == 1 || faultReport.faultStatus == 2" ng-click="reject()">Reject</button>
+            <button class="btn btn-primary" ng-disabled="!comment" ng-show="faultReport.faultStatus == 2" ng-click="close()">Close</button>
+        </div>
+        <ol class="fault-actions">
+            <li ng-repeat="action in faultReport.actions | orderBy:'-actionDate'">
+                <p>{{action.comments}}</p>
+                <div>{{action.actionDate | date:'yyyy-MM-dd HH:mm'}}</div>
+                <div>{{action.firstName}} {{action.surname}}</div>
+            </li>
+        </ol>
+    </div>
+</div>

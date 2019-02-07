@@ -1,0 +1,27 @@
+﻿<ul placeholder-content="toolbar" ng-if="infrastructureRegister.id">
+</ul>
+<div class="col-md-12">
+    <div class="col-md-6">
+        <div class="widget">
+            <ul ng-repeat="insight in infrastructureInsights">
+                <li class="{{insight.type}}"><a href="{{insight.url}}" target="_blank">{{insight.description}}</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="widget">
+            <ul ng-repeat="insight in projectInsights">
+                <li class="{{insight.type}}"><a href="{{insight.url}}" target="_blank">{{insight.description}}</a></li>
+            </ul>
+        </div>
+    </div>
+	
+	<div class="col-md-6">
+        <div class="widget">
+            <ul ng-repeat="insight in projectInsights">
+                <li class="{{insight.type}}"><a href="{{insight.url}}" target="_blank">{{insight.description}}</a></li>
+            </ul>
+        </div>
+    </div>
+	
+</div>

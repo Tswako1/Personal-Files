@@ -1,0 +1,38 @@
+﻿<form class="form-horizontal col-md-12" noviladate role="form" name="projectStakeHolderForm">
+    <div class="form-group">
+        <label ng-model="projectStakeHolder.name" for="inputDescription" class="col-lg-3 control-label">Name</label>
+        <div class="col-lg-9">
+            <input ng-model="projectStakeHolder.name" required type="text" class="form-control" id="inputName" placeholder="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="emailAddress" class="col-lg-3 control-label">E Mail Address</label>
+        <div class="col-lg-9">
+            <input ng-model="projectStakeHolder.emailAddress" required type="text" class="form-control" id="inputEmailAddress" placeholder="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="contactNumber" class="col-lg-3 control-label">Contact Number</label>
+        <div class="col-lg-9">
+            <input ng-model="projectStakeHolder.contactNumber" required type="text" class="form-control" id="Text1" placeholder="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="designation" class="col-lg-3 control-label">Designation</label>
+        <div class="col-lg-9">
+            <input ng-model="projectStakeHolder.designation" required type="text" class="form-control" id="Text2" placeholder="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="organisation" class="col-lg-3 control-label">Organisation</label>
+        <div class="col-lg-9">
+
+            <select ng-options="organisation.id as organisation.name for organisation in organisations" required ng-model="projectStakeHolder.organisationId" class="form-control" id="selectOrganisation"></select>
+        </div>
+    </div>
+    <div class="form-actions">
+        <div class="container">
+            <button ng-click="saveProjectStakeHolder()" value="Save" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Save</button>
+        </div>
+    </div>
+</form>

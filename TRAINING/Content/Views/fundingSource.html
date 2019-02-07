@@ -1,0 +1,19 @@
+﻿<form class="form-horizontal col-md-12" noviladate role="form" name="fundingSourceForm">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Funding Source Group</label>
+        <div class="col-lg-3">
+            <select ng-model="fundingSource.fundingSourceGroupId" required class="form-control" ng-options="fundingSourceGroup.id as fundingSourceGroup.description for fundingSourceGroup in fundingSourceGroups"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputDescription" class="col-lg-3 control-label">Description</label>
+        <div class="col-lg-6">
+            <input ng-model="fundingSource.description" required type="text" class="form-control" id="inputDescription" placeholder="">
+        </div>
+    </div>
+    <div class="form-actions">
+        <div class="container">
+            <button ng-click="saveFundingSource()" value="Save" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Save</button>
+        </div>
+    </div>
+</form>

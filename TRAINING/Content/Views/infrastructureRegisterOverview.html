@@ -1,0 +1,130 @@
+﻿<div class="overview">
+    <div class="col-md-7 field-list">
+        <div class="bold">{{infrastructureRegister.organisation.name}}</div>
+
+        <h4>Description</h4>
+
+        <div>
+            <div>MIPMIS Asset Number</div>
+            <div>{{autoir}}</div>
+        </div>
+        <div>
+            <div>Asset Number</div>
+            <div>{{infrastructureRegister.number}}</div>
+        </div>
+        <div>
+            <div>Model</div>
+            <div>{{infrastructureRegister.model}}</div>
+        </div>
+        <div>
+            <div>Serial Number</div>
+            <div>{{infrastructureRegister.serialNumber}}</div>
+        </div>
+        <h4>Type</h4>
+        <div>
+            <div>Material Type</div>
+            <div>{{infrastructureRegister.materialType}}</div>
+        </div>
+        <div>
+            <div>Class Description/Nature</div>
+            <div lookup="AssetClasses" id="infrastructureRegister.assetClassId"></div>
+        </div>
+        <div>
+            <div>Size</div>
+            <div>{{infrastructureRegister.size}}</div>
+        </div>
+        <div>
+            <div>Capacity</div>
+            <div>{{infrastructureRegister.capacity}}</div>
+        </div>
+        <div>
+            <div>Quantity</div>
+            <div>{{infrastructureRegister.quantity}}</div>
+        </div>
+        <div>
+            <div>Utilisation  (%)</div>
+            <div>{{infrastructureRegister.utilisation}}</div>
+        </div>
+        <div>
+            <div>Repacement Equivalent</div>
+            <div>{{infrastructureRegister.replacementEquivalent}}</div>
+        </div>
+        <div>
+            <div>Year Constructed /  Purchase Date</div>
+            <div>{{infrastructureRegister.yearConstructedPurchaseDate| date:'yyyy/MM/dd'}}</div>
+        </div>
+        <div>
+            <div>Supplier Name</div>
+            <div>{{infrastructureRegister.supplierName}}</div>
+        </div>
+        <div></div>
+        <h4>Classification</h4>
+        <div>
+            <div>Criticality Grade</div>
+            <div lookup="CriticalityGrades" id="infrastructureRegister.criticalityGradeId"></div>
+        </div>
+        <div>
+            <div>Condition</div>
+            <div lookup="Conditions" id="infrastructureRegister.conditionId"></div>
+        </div>
+        <div>
+            <div>Condition Index</div>
+            <div class="condition{{infrastructureRegister.conditionId}} condition-label">{{infrastructureRegister.conditionId}}</div>
+        </div>
+        <div>
+            <div>Ward(s)</div> 
+            <div>
+                <div ng-repeat="ward in infrastructureRegister.wards">{{ward.name}}</div>
+            </div>
+        </div>
+        <div>
+            <div>Custodian</div>
+            <div>{{infrastructureRegister.custodian}}</div>
+        </div>
+        <h4>Costs</h4>
+
+        <div>
+            <div>Purchase Price</div>
+            <div>{{infrastructureRegister.purchasePrice | number}}</div>
+        </div>
+        <div>
+            <div>Deemed Cost</div>
+            <div>{{infrastructureRegister.deemedCost | number}}</div>
+        </div>
+        <div>
+            <div>Depreciated Replacement Cost</div>
+            <div>{{infrastructureRegister.depreciatedReplacementCost | number}}</div>
+        </div>
+        <div>
+            <div>Current Replacement Cost</div>
+            <div>{{infrastructureRegister.currentReplacementCost | number}}</div>
+        </div>
+        <div>
+            <div>Addition Amount</div>
+            <div>{{infrastructureRegister.additionAmount}}</div>
+        </div>
+
+    </div>
+
+
+    <div class="col-md-5">
+        <ul class="summary" mipmis-accordion>
+            <li class="risks" accordion-section="Risks" href="#/infrastructureRegister/{{infrastructureRegister.id}}/infrastructureRisk">
+                <ol class="risks" ng-repeat="infrastructureRisk in infrastructureRisks">
+                    <li>
+                        <div>{{infrastructureRisk.description}}</div>
+                        <div class="exposure {{infrastructureRisk.riskExposure}}">
+                            {{infrastructureRisk.riskExposure}}
+                        </div>
+                    </li>
+                </ol>
+            </li>
+            <li class="risks" accordion-section="Location">
+                <div ui-map center="{lat: infrastructureRegister.locationY, long: infrastructureRegister.locationX}" style="height: 400px">
+                    <div ui-map-marker="marker" position="{lat: infrastructureRegister.locationY, long: infrastructureRegister.locationX}"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+

@@ -1,0 +1,25 @@
+﻿<div class="col-md-12">
+    <form class="form-horizontal captureform" novalidate role="form" name="projectCheckListForm">
+        <!--
+        <div>
+            <h4 style="margin-left: 0; padding-left: 0" class="col-lg-6">Planning</h4>
+            <h4 style="margin-left: 0" class="col-lg-3">Completion Date</h4>
+        </div>
+        -->
+        <div class="form-group quality-check col-lg-9" ng-repeat="check in checks">
+            <label for="inputBusinessProjectPlanDate" class="col-lg-9 control-label" ng-class="{child: check.parentId}">{{check.description}}</label>
+            <div class="col-lg-2 checkbox mipmis-checkbox">
+                <input ng-model="check.checked" type="checkbox" value="true" id="inputBusinessProjectPlanDate" placeholder="">
+            </div>
+            <div class="col-lg-1">
+                <span class="document-management" document-count="check.documentCount" foreign-id="check.id" foreign-type="3" document-type="15" document-title="{{check.description}}"></span>
+            </div>
+
+        </div>
+        <div class="form-actions">
+            <div class="container">
+                <button ng-click="save()" type="submit" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Save</button>
+            </div>
+        </div>
+    </form>
+</div>

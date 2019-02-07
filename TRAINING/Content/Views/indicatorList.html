@@ -1,0 +1,44 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/administration/indicator/Create"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Item</th>
+                <th>Standard</th>
+                <th>Unit Of Measure</th>
+                <th>Strategy</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="indicator in indicators">
+            <td>
+                <a href="#/administration/indicatorTargets/{{indicator.id}}">{{indicator.description}}</a>
+            </td>
+            <td>
+                <a href="#/administration/indicatorTargets/{{indicator.id}}">{{indicator.type}}</a>
+            </td>
+            <td>
+                <a href="#/administration/indicatorTargets/{{indicator.id}}">{{indicator.item}}</a>
+            </td>
+            <td>
+                <a href="#/administration/indicatorTargets/{{indicator.id}}">{{indicator.standard}}</a>
+            </td>
+            <td>
+                <a href="#/administration/indicatorTargets/{{indicator.id}}">{{indicator.unitOfMeasure}}</a>
+            </td>
+            <td>
+                <a href="#/administration/indicatorTargets/{{indicator.id}}">{{indicator.strategy}}</a>
+            </td>
+            <td style="text-align: right" class="list-item-action">
+                <a href="#/administration/indicator/{{indicator.id}}" class="icon-pencil" ng-hide="deleteInfrastructure.value" title="Edit"></a>
+
+            </td>
+
+        </tr>
+    </table>
+</div>

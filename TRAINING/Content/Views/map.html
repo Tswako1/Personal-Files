@@ -1,0 +1,16 @@
+﻿<div class="modal-dialog map">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="modal.close(false)">&times;</button>
+            <h4 class="modal-title">Select location</h4>
+        </div>
+        <div class="modal-body">
+            <div map center-long="{{organisation.CentreLongitude}}" center-lat="{{organisation.CentreLatitude}}" lat="location.lat" long="location.long"></div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" ng-click="modal.close(false)">Cancel</button>
+            <button class="btn btn-primary" ng-click="OK()">OK</button>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,57 @@
+﻿<div class="col-md-12">
+    <form class="form-horizontal col-md-12" formnovalidate role="form" name="indicatorForm">
+        <div class="form-group">
+            <label or="inputOrganisation" class="col-lg-3 control-label">Indicator</label>
+            <div class="col-lg-6">
+                <input type="text" ng-model="indicator.description" required class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Measure From</label>
+            <div class="col-lg-3">
+                <input ng-model="indicator.start" name="start" required ng-disabled="isUpdate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Measure Until</label>
+            <div class="col-lg-3">
+                <input ng-model="indicator.end" name="end" required ng-disabled="isUpdate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date">
+           </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Type</label>
+            <div class="col-lg-3">
+                <select ng-model="indicator.typeId" class="form-control" ng-options="type.id as type.description for type in types"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Item</label>
+            <div class="col-lg-3">
+                <select ng-model="indicator.itemId" class="form-control" ng-options="item.id as item.description for item in items"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Standard</label>
+            <div class="col-lg-3">
+                <select ng-model="indicator.indicatorStandardId" class="form-control" ng-options="standard.id as standard.description for standard in standards"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Unit of Measure</label>
+            <div class="col-lg-3">
+                <select ng-model="indicator.unitOfMeasureId" class="form-control" ng-options="unitOfMeasure.id as unitOfMeasure.description for unitOfMeasure in unitOfMeasures"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Strategy</label>
+            <div class="col-lg-3">
+                <select ng-model="indicator.strategyId" class="form-control" ng-options="strategy.id as strategy.description for strategy in strategies"></select>
+            </div>
+        </div>
+        <div class="form-actions">
+            <div class="container">
+                <button ng-click="save()" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Save</button>
+            </div>
+        </div>
+    </form>
+</div>

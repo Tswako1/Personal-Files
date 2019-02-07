@@ -1,0 +1,35 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/administration/mOPResponsiblePeople/Create"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Organisation</th>
+                <th>Technical Consultant</th>
+                <th>Project Manager</th>
+                <th>Technical Programme Manager</th>
+                <th>Administration Officer</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="mOPResponsiblePeople in mOPResponsiblePeoples">
+            <td>
+                <a href="#/administration/mOPResponsiblePeople/{{mOPResponsiblePeople.id}}">{{mOPResponsiblePeople.organisation.name}}</a>
+            </td>
+            <td>
+                <a href="#/administration/mOPResponsiblePeople/{{mOPResponsiblePeople.id}}">{{mOPResponsiblePeople.technicalConsultant}}</a>
+            </td>
+            <td>
+                <a href="#/administration/mOPResponsiblePeople/{{mOPResponsiblePeople.id}}">{{mOPResponsiblePeople.projectManager}}</a>
+            </td>
+            <td>
+                <a href="#/administration/mOPResponsiblePeople/{{mOPResponsiblePeople.id}}">{{mOPResponsiblePeople.technicalProgrammeManager}}</a>
+            </td>
+            <td>
+                <a href="#/administration/mOPResponsiblePeople/{{mOPResponsiblePeople.id}}">{{mOPResponsiblePeople.administrationOfficer}}</a>
+            </td>
+        </tr>
+    </table>
+</div>

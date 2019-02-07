@@ -1,0 +1,19 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/administration/causeOfStoppage/Create"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="causeOfStoppage in causesOfStoppage">
+            <td>
+                <a href="#/administration/causeOfStoppage/{{causeOfStoppage.id}}">{{causeOfStoppage.description}}</a>
+            </td>
+        </tr>
+    </table>
+</div>

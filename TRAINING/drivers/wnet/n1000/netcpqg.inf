@@ -1,0 +1,449 @@
+; Copyright 2003 Hewlett-Packard Development Company, L.P.
+; INF for 32-bit Windows 2000 and Windows server 2003
+
+[version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %HP%
+CatalogFile = n1000w32.cat
+DriverVer   = 11/07/2007,8.10.1.0
+
+[Manufacturer]
+%HP%    = HP, NTx86.5.1
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+
+[HP.NTx86.5.1]
+%N1000.DeviceDesc%  = N1000_NTx86.ndi,PCI\VEN_8086&DEV_1000&SUBSYS_B0DF0E11 ; HP NC6132 Gigabit Module
+%N10001.DeviceDesc% = N1000_NTx86.ndi,PCI\VEN_8086&DEV_1000&SUBSYS_B0E00E11 ; HP NC6133 Gigabit Module
+%N10002.DeviceDesc% = N1000a_NTx86.ndi,PCI\VEN_8086&DEV_1000&SUBSYS_B1230E11 ; HP NC6134 Gigabit NIC
+%N10003.DeviceDesc% = N1001_NTx86.ndi,PCI\VEN_8086&DEV_1001&SUBSYS_004A0E11 ; HP NC6136 Gigabit Server Adapter
+%N10004.DeviceDesc% = N1002_NTx86.ndi,PCI\VEN_8086&DEV_1004&SUBSYS_B1A40E11 ; HP NC7131 Gigabit Server Adapter
+%N10005.DeviceDesc% = N1002a_NTx86.ndi,PCI\VEN_8086&DEV_1004&SUBSYS_00490E11 ; HP NC7132 Gigabit Upgrade Module
+%N10006.DeviceDesc% = N1003_NTx86.ndi,PCI\VEN_8086&DEV_1010&SUBSYS_00DB0E11 ; HP NC7170 Dual Gigabit Server Adapter
+%N10007.DeviceDesc% = N1004_NTx86.ndi,PCI\VEN_8086&DEV_1012&SUBSYS_00DC0E11 ; HP NC6170 Dual Gigabit Server Adapter
+%N1027.DeviceDesc% =  N1027_NTx86.ndi,PCI\VEN_8086&DEV_1027&SUBSYS_3103103c ; HP ProLiant NC 310F PCI-X Gigabit Server Adapter
+%N10008.DeviceDesc% = N1005_NTx86.ndi,PCI\VEN_8086&DEV_10B5&SUBSYS_3109103c ; HP NC340T PCI-X Quad-port Gigabit Server Adapter
+
+
+
+;*******************************************************************************
+; Windows 2003 Install sections.
+;*******************************************************************************
+;-----------------------------------------------------------------------------
+; 82542 Fiber Gig - HP NC6132/NC6133 Gigabit Server Adapter
+;
+[N1000_NTx86.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg		= Obsolete_NTx86.DelReg
+AddReg          = Common_NTx86.reg, Advanced_NTx86.reg
+CopyFiles       = N1000_NTx86.CopyFiles
+Port1DeviceNumber = 4 ; Port ID
+
+[N1000_NTx86.ndi.NTx86.Services]
+AddService = N1000, 2, N1000_NTx86.Service, common_NTx86.EventLog
+
+;-----------------------------------------------------------------------------
+; 82542 Fiber Gig - HP NC6134 Gigabit Server Adapter
+;
+[N1000a_NTx86.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg		= Obsolete_NTx86.DelReg
+AddReg          = Common_NTx86.reg, Advanced_NTx86.reg
+CopyFiles       = N1000_NTx86.CopyFiles
+
+[N1000a_NTx86.ndi.NTx86.Services]
+AddService = N1000, 2, N1000_NTx86.Service, common_NTx86.EventLog
+
+;-----------------------------------------------------------------------------
+; 82543GC Fiber Gig - HP NC6136 Gigabit Server Adapter
+;
+[N1001_NTx86.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg		= Obsolete_NTx86.DelReg
+AddReg          = Common_NTx86.reg, Advanced_NTx86.reg, 82543GC.reg
+CopyFiles       = N1000_NTx86.CopyFiles
+
+[N1001_NTx86.ndi.NTx86.Services]
+AddService = N1000, 2, N1000_NTx86.Service, common_NTx86.EventLog
+
+;-----------------------------------------------------------------------------
+; 82543 Copper Gig - HP NC7131 Gigabit Server Adapter
+;
+[N1002_NTx86.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg		= Obsolete_NTx86.DelReg
+AddReg          = Common_NTx86.reg, Advanced_NTx86.reg, 82543GC.reg, Copper.reg
+CopyFiles       = N1000_NTx86.CopyFiles
+
+[N1002_NTx86.ndi.NTx86.Services]
+AddService = N1000, 2, N1000_NTx86.Service, common_NTx86.EventLog
+
+;-----------------------------------------------------------------------------
+; 82543 Copper Gig - HP NC7132 Gigabit Server Adapter
+;
+[N1002a_NTx86.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg		= Obsolete_NTx86.DelReg
+AddReg          = Common_NTx86.reg, Advanced_NTx86.reg, 82543GC.reg, Copper.reg
+CopyFiles       = N1000_NTx86.CopyFiles
+Port1DeviceNumber = 4 ; Port ID
+
+
+[N1002a_NTx86.ndi.NTx86.Services]
+AddService = N1000, 2, N1000_NTx86.Service, common_NTx86.EventLog
+
+;-----------------------------------------------------------------------------
+; 82544 Dual Copper Gig - HP NC7170 Dual Gigabit Server Adapter
+;
+[N1003_NTx86.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg		= Obsolete_NTx86.DelReg
+AddReg          = Common_NTx86.reg, Advanced_NTx86.reg, 82543GC.reg, TCPSeg.reg, Copper.reg, 
+AddReg          = 82544EI_NTx86.reg, 82540EM.reg, EnablePME.reg, WakeOn.reg
+AddReg          = Server_WakeOn.reg
+CopyFiles       = N1000_NTx86.CopyFiles
+Port1FunctionNumber = 0 ; Port ID
+
+[N1003_NTx86.ndi.NTx86.Services]
+AddService = N1000, 2, N1000_NTx86.Service, common_NTx86.EventLog
+
+;-----------------------------------------------------------------------------
+; 82544 Dual Fiber Gig - HP NC6170 Dual Gigabit Server Adapter
+;
+[N1004_NTx86.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg		= Obsolete_NTx86.DelReg
+AddReg          = Common_NTx86.reg, Advanced_NTx86.reg, 82543GC.reg, TCPSeg.reg
+AddReg          = 82544EI_NTx86.reg, 82540EM.reg, EnablePME.reg, WakeOn.reg
+AddReg          = Server_WakeOn.reg
+CopyFiles       = N1000_NTx86.CopyFiles
+Port1FunctionNumber = 0 ; Port ID
+
+[N1004_NTx86.ndi.NTx86.Services]
+AddService = N1000, 2, N1000_NTx86.Service, common_NTx86.EventLog
+
+;-----------------------------------------------------------------------------
+; 82545 Fiber Gig - HP ProLiant NC 310F PCI-X Gigabit Server Adapter
+;
+[N1027_NTx86.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg		= Obsolete_NTx86.DelReg
+AddReg          = Common_NTx86.reg, Advanced_NTx86.reg, 82543GC.reg, TCPSeg.reg
+AddReg          = 82544EI_NTx86.reg, 82540EM.reg, EnablePME.reg, WakeOn.reg
+AddReg          = Server_WakeOn.reg
+CopyFiles       = N1000_NTx86.CopyFiles
+
+[N1027_NTx86.ndi.NTx86.Services]
+AddService = N1000, 2, N1000_NTx86.Service, common_NTx86.EventLog
+
+;-----------------------------------------------------------------------------
+; 82544 Quad Gig - HP NC340T PCI-X Quad-port Gigabit Server Adapter
+;
+[N1005_NTx86.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = Obsolete_NTx86.DelReg
+AddReg          = Common_NTx86.reg, Advanced_NTx86.reg, 82543GC.reg, TCPSeg.reg, Copper.reg, 
+AddReg		= EnablePME.reg, WakeOn.reg, WakeOnLink.reg, Server_WakeOn.reg
+AddReg          = 82544EI_NTx86.reg, 82540EM.reg
+CopyFiles       = N1000_NTx86.CopyFiles
+
+
+[N1005_NTx86.ndi.NTx86.Services]
+AddService = N1000, 2, N1000_NTx86.Service, common_NTx86.EventLog
+
+
+;-----------------------------------------------------------------------------
+; Registry Settings (decimal)
+;
+[Common_NTx86.reg]
+HKR, Ndi\Interfaces,                           UpperRange,         0, "ndis5"
+HKR, Ndi\Interfaces,                           LowerRange,         0, "ethernet"
+HKR, Ndi,                                      Service,            0, "N1000"
+
+; NumTxDescriptors
+HKR, Ndi\Params\NumTxDescriptors,              ParamDesc,          0, %NumTxDescriptors%
+HKR, Ndi\Params\NumTxDescriptors,              default,            0, "256"
+HKR, Ndi\Params\NumTxDescriptors,              min,                0, "80"
+HKR, Ndi\Params\NumTxDescriptors,              max,                0, "768"
+HKR, Ndi\Params\NumTxDescriptors,              step,               0, "8"
+HKR, Ndi\Params\NumTxDescriptors,              Base,               0, "10"
+HKR, Ndi\Params\NumTxDescriptors,              type,               0, "int"
+
+; NumRxDescriptors
+HKR, Ndi\Params\NumRxDescriptors,              ParamDesc,          0, %NumRxDescriptors%
+HKR, Ndi\Params\NumRxDescriptors,              default,            0, "160"
+HKR, Ndi\Params\NumRxDescriptors,              min,                0, "80"
+HKR, Ndi\Params\NumRxDescriptors,              max,                0, "768"
+HKR, Ndi\Params\NumRxDescriptors,              step,               0, "8"
+HKR, Ndi\Params\NumRxDescriptors,              Base,               0, "10"
+HKR, Ndi\Params\NumRxDescriptors,              type,               0, "int"
+
+; NumCoalesceBuffers
+HKR, Ndi\Params\NumCoalesce,                   ParamDesc,          0, %NumCoalesceBuffers%
+HKR, Ndi\Params\NumCoalesce,                   default,            0, "128"
+HKR, Ndi\Params\NumCoalesce,                   min,                0, "16"
+HKR, Ndi\Params\NumCoalesce,                   max,                0, "768"
+HKR, Ndi\Params\NumCoalesce,                   step,               0, "8"
+HKR, Ndi\Params\NumCoalesce,                   Base,               0, "10"
+HKR, Ndi\Params\NumCoalesce,                   type,               0, "int"
+
+; ChecksumTxTcp
+HKR, Ndi\Params\ChecksumTxTcp,                 ParamDesc,          0, %ChecksumTxTcp%
+HKR, Ndi\Params\ChecksumTxTcp,                 default,            0, "1"
+HKR, Ndi\Params\ChecksumTxTcp\Enum,            "0",                0, %Off%
+HKR, Ndi\Params\ChecksumTxTcp\Enum,            "1",                0, %On%
+HKR, Ndi\Params\ChecksumTxTcp,                 type,               0, "enum"
+
+; ChecksumRxTcp
+HKR, Ndi\Params\ChecksumRxTcp,                 ParamDesc,          0, %ChecksumRxTcp%
+HKR, Ndi\Params\ChecksumRxTcp,                 default,            0, "1"
+HKR, Ndi\Params\ChecksumRxTcp\Enum,            "0",                0, %Off%
+HKR, Ndi\Params\ChecksumRxTcp\Enum,            "1",                0, %On%
+HKR, Ndi\Params\ChecksumRxTcp,                 type,               0, "enum"
+
+; Network Address
+HKR, Ndi\Params\NetworkAddress,                ParamDesc,          0, %LAA%
+HKR, Ndi\Params\NetworkAddress,                Default,            0, ""
+HKR, Ndi\Params\NetworkAddress,                type,               0, "edit"
+HKR, NDI\Params\NetworkAddress,                LimitText,          0, "12"
+HKR, NDI\Params\NetworkAddress,                UpperCase,          0, "1"
+HKR, NDI\Params\NetworkAddress,                optional,           0, "1"
+
+; Hardwired defaults
+HKR,,                                          PciScanMethod,      0, "3"
+HKR,,                                          TxIntDelay,         0, "28"
+HKR,,                                          MWIEnable,          0, "1"
+HKR,,                                          CustomMessages,     0, "1"
+HKR,,                                          EventLogControl,	   0, "11"
+HKR,,                                          DmaFairness,        0, "0"
+HKR,,                                          MulticastFilterType,0, "0"
+HKR,,                                          VlanFiltering,      0, "1"
+HKR,,                                          QtagSwControlled,   0, "1"
+HKR,,                                          FlowControl,        0, "0"
+HKR,,                                          CheckForTxHangWithoutLink, 0, "1"
+HKR,,                                          APM2KWA,            0, "0"
+; Advanced Power Consumption Features
+HKR,,                                          ReduceSpeedOnPowerDown,   0, "1"
+HKR,,                                          AutoPowerSaveModeEnabled, 0, "0"
+
+[82543GC.reg]
+HKR, Ndi\Params\NumTxDescriptors,              max,                0, "256"
+HKR, Ndi\Params\NumRxDescriptors,              max,                0, "256"
+
+; ChecksumTxIp
+HKR, Ndi\Params\ChecksumTxIp,                  ParamDesc,          0, %ChecksumTxIp%
+HKR, Ndi\Params\ChecksumTxIp,                  default,            0, "1"
+HKR, Ndi\Params\ChecksumTxIp\Enum,             "0",                0, %Off%
+HKR, Ndi\Params\ChecksumTxIp\Enum,             "1",                0, %On%
+HKR, Ndi\Params\ChecksumTxIp,                  type,               0, "enum"
+
+; Hardwired defaults
+HKR,,                                          QtagSwControlled,   0, "0"
+HKR,,                                          FlowControl,        0, "3"
+
+[TCPSeg.reg]
+HKR, Ndi\Params\TcpSegmentation,               ParamDesc,          0, %TcpSegmentation%
+HKR, Ndi\Params\TcpSegmentation,               default,            0, "1"
+HKR, Ndi\Params\TcpSegmentation\Enum,          "0",                0, %Off%
+HKR, Ndi\Params\TcpSegmentation\Enum,          "1",                0, %On%
+HKR, Ndi\Params\TcpSegmentation,               type,               0, "enum"
+
+[Copper.reg]
+HKR, Ndi\Params\SpeedDuplex,                   ParamDesc,          0, %SpeedDuplex%
+HKR, Ndi\Params\SpeedDuplex,                   default,            0, "0"
+HKR, Ndi\Params\SpeedDuplex,                   type,               0, "enum"
+HKR, Ndi\Params\SpeedDuplex\Enum,              "0",                0, %AutoDetect%
+HKR, Ndi\Params\SpeedDuplex\Enum,              "1",                0, %10Mb_Half_Duplex%
+HKR, Ndi\Params\SpeedDuplex\Enum,              "2",                0, %10Mb_Full_Duplex%
+HKR, Ndi\Params\SpeedDuplex\Enum,              "3",                0, %100Mb_Half_Duplex%
+HKR, Ndi\Params\SpeedDuplex\Enum,              "4",                0, %100Mb_Full_Duplex%
+HKR, Ndi\Params\SpeedDuplex\Enum,              "5",                0, %1000Mb_Full_Duplex%
+
+; Adaptive IFS
+HKR,,                                          AdaptiveIFS,        0, "1"
+
+
+[82544EI_NTx86.reg]
+HKR, Ndi\Params\NumTxDescriptors,              max,                0, "4096"
+HKR, Ndi\Params\NumTxDescriptors,              default,            0, "256"
+HKR, Ndi\Params\NumRxDescriptors,              max,                0, "4096"
+HKR, Ndi\Params\NumRxDescriptors,              default,            0, "256"
+
+; ChecksumRxIp
+HKR, Ndi\Params\ChecksumRxIp,                  ParamDesc,          0, %ChecksumRxIp%
+HKR, Ndi\Params\ChecksumRxIp,                  default,            0, "1"
+HKR, Ndi\Params\ChecksumRxIp\Enum,             "0",                0, %Off%
+HKR, Ndi\Params\ChecksumRxIp\Enum,             "1",                0, %On%
+HKR, Ndi\Params\ChecksumRxIp,                  type,               0, "enum"
+[82540EM.reg]
+;  Interrupt Throttle Rate
+HKR,,                                          ITR,                0, "950"
+
+[EnablePME.reg]
+HKR,Ndi\Params\EnablePME,                     ParamDesc,          0, %Enable_PME%
+HKR,Ndi\Params\EnablePME,                     Type,               0, "enum"
+HKR,Ndi\Params\EnablePME,                     Default,            0, "2"
+HKR,Ndi\Params\EnablePME\Enum,                "1",                0, %Enabled%
+HKR,Ndi\Params\EnablePME\Enum,                "0",                0, %Disabled%
+HKR,Ndi\Params\EnablePME\Enum,                "2",                0, %No_Action%
+HKR,Ndi\Params\EnablePME\Enum,                "255",              0, %HardwareDefault%
+
+[WakeOn.reg]
+HKR, Ndi\Params\WakeOn,                       ParamDesc,          0, %WakeOnSettings%
+HKR, Ndi\Params\WakeOn\Enum,                  "0",                0, %Disabled%
+HKR, Ndi\Params\WakeOn\Enum,                  "2",                0, %WakeOnMagicPacket% 
+HKR, Ndi\Params\WakeOn\Enum,                  "84",               0, %WakeOnDirectedPacket%
+HKR, Ndi\Params\WakeOn\Enum,                  "86",               0, %WakeOnMagicAndDirectedPackets%
+HKR, Ndi\Params\WakeOn\Enum,                  "246",              0, %OSControlled%
+HKR, Ndi\Params\WakeOn,                       type,               0, "enum"
+
+[Server_WakeOn.reg]
+HKR, Ndi\Params\WakeOn,                       default,            0, "0"
+HKR,,                                         WakeOn,             2, "0"
+
+
+[WakeOnLink.reg]
+HKR, Ndi\Params\WakeOnLink,                   ParamDesc,          0, %WakeOnLinkSettings%
+HKR, Ndi\Params\WakeOnLink\Enum,              "0",                0, %Disabled%
+HKR, Ndi\Params\WakeOnLink\Enum,              "1",                0, %OSControlled% 
+HKR, Ndi\Params\WakeOnLink\Enum,              "2",                0, %Forced%
+HKR, Ndi\Params\WakeOnLink,                   type,               0, "enum"
+HKR, Ndi\Params\WakeOnLink,                   default,            0, "0"
+HKR, PROSetNdi\NdiExt\Params\WakeOnLink,      MiniHelp,           0, %WakeOnLinkHelp% 
+
+
+
+;----------------------------------------------------------------------------
+; Packet specifics
+;
+
+[Advanced_NTx86.reg]
+; 802.1p/802.1Q Tagging
+HKR, Ndi\Params\TaggingMode,                   ParamDesc,          0, %TaggingMode%
+HKR, Ndi\Params\TaggingMode,                   default,            0, "0"
+HKR, Ndi\Params\TaggingMode\Enum,              "0",                0, %Disabled%
+HKR, Ndi\Params\TaggingMode\Enum,              "1",                0, %Enabled%
+HKR, Ndi\Params\TaggingMode,                   type,               0, "enum"
+
+HKR,,                                          NetVlanEnable,      2, "0"
+HKR,,                                          MaxFrameSize,       2, "1514"
+
+[Obsolete_NTx86.DelReg]
+HKR, Ndi\Params
+HKR,,ReportTxEarly
+HKR,,TransmitMode
+HKR, PROSetNDI
+HKR,,NumCoalesceBuffers
+
+
+[N1000_NTx86.CopyFiles]
+n1000325.sys,,,2
+
+
+[N1000_NTx86.Service]
+DisplayName     = %N1000.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\n1000325.sys
+LoadOrderGroup  = NDIS
+
+
+;-----------------------------------------------------------------------------
+; Common base for Server 2003 for all drivers for Eventlog
+;
+[common_NTx86.EventLog]
+AddReg = common_NTx86.AddEventLog.reg
+
+[common_NTx86.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll;%%SystemRoot%%\System32\drivers\n1000325.sys"
+HKR, , TypesSupported,   0x00010001, 7
+
+;-----------------------------------------------------------------------------
+; DestinationDirs
+;
+[DestinationDirs]
+DefaultDestDir  	= 12
+N1000_NTx86.CopyFiles   = 12
+
+
+[SourceDisksNames]
+1 = %DriverDiskName%,,,
+
+[SourceDisksFiles]
+n1000325.sys = 1
+n1000nt5.sys = 1
+
+
+;-----------------------------------------------------------------------------
+; Localizable Strings
+;
+[Strings]
+HP                       = "Hewlett-Packard Company"
+
+ChecksumTxIp             = "Offload Transmit IP Checksum"
+ChecksumRxIp             = "Offload Receive IP Checksum"
+ChecksumTxTcp            = "Offload Transmit TCP Checksum"
+ChecksumRxTcp            = "Offload Receive TCP Checksum"
+TcpSegmentation          = "Large Send Offload"
+
+LAA                      = "Locally Administered Address"
+NumTxDescriptors         = "Number of Transmit Descriptors"
+NumRxDescriptors         = "Number of Receive Descriptors"
+NumCoalesceBuffers       = "Number of Coalesce Buffers"
+
+AutoDetect               = "Auto Detect"
+SpeedDuplex              = "Link Speed & Duplex"
+10Mb_Half_Duplex         = "10Mbps/Half Duplex"
+10Mb_Full_Duplex         = "10Mbps/Full Duplex"
+100Mb_Half_Duplex        = "100Mbps/Half Duplex"
+100Mb_Full_Duplex        = "100Mbps/Full Duplex"
+1000Mb_Full_Duplex       = "1000Mbps/Full Duplex"
+
+TaggingMode              = "QoS Packet Tagging"
+
+Enable_PME               = "Enable PME"
+No_Action                = "No Action"
+HardwareDefault          = "Hardware Default"
+WakeOnSettings           = "Wake On Settings"
+WakeOnDirectedPacket     = "Wake on Directed Packet"
+WakeOnMagicPacket        = "Wake On Magic Packet"
+WakeOnLinkSettings       = "Wake On Link Settings"
+WakeOnLinkHelp           = "Allows wake-up from APM power management when link is reconnected."
+WakeOnMagicAndDirectedPackets = "Wake on Magic & Directed"
+OSControlled             = "OS Controlled"
+
+Forced                   = "Forced"
+
+On                       = "On"
+Off                      = "Off"
+Enabled                  = "Enabled"
+Disabled                 = "Disabled"
+
+DriverDiskName           = "Network Server Adapters and Upgrade Modules CD"
+
+N1000.DeviceDesc         = "HP NC6132 Gigabit Module"
+N10001.DeviceDesc        = "HP NC6133 Gigabit Module"
+N10002.DeviceDesc        = "HP NC6134 Gigabit NIC"
+N10003.DeviceDesc        = "HP NC6136 Gigabit Server Adapter"
+N10004.DeviceDesc        = "HP NC7131 Gigabit Server Adapter"
+N10005.DeviceDesc        = "HP NC7132 Gigabit Upgrade Module"
+N10006.DeviceDesc        = "HP NC7170 Dual Gigabit Server Adapter"
+N10007.DeviceDesc        = "HP NC6170 Dual Gigabit Server Adapter"
+N1027.DeviceDesc	 = "HP NC310F PCI-X Gigabit Server Adapter"
+N10008.DeviceDesc        = "HP NC340T PCI-X Quad-port Gigabit Server Adapter"
+
+N1000.Service.DispName   = "HP Gigabit NIC Driver"

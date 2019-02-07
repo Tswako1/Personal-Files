@@ -1,0 +1,55 @@
+﻿@using Recaptcha.Web.Mvc;
+@model MIPMIS.Controllers.FaultReportController.Report
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+    <title>Report a Fault</title>
+    <link rel="stylesheet" href="Content/css/faults.css" />
+</head>
+<body>
+    <div>
+        <div>
+            <h5>Report an Incident</h5>
+            <p>Please fill in the contact form below and we will respond to you as quickly as possible.</p>
+            <div class="contentdivider"></div>
+            @using (Html.BeginForm("Index", "FaultReport", FormMethod.Post, new { novalidate=true})) {
+                <fieldset>
+                    <ul>
+                        <li class="required">
+                            @Html.LabelFor(x => x.Name)
+                            @Html.EditorFor(x => x.Name)
+                            @Html.ValidationMessageFor(x => x.Name)
+                        </li>
+                        <li class="required">
+                            @Html.LabelFor(x => x.Surname)
+                            @Html.EditorFor(x => x.Surname)
+                            @Html.ValidationMessageFor(x => x.Surname)
+                        </li>
+                        <li class="required">
+                            @Html.LabelFor(x => x.Telephone)
+                            @Html.EditorFor(x => x.Telephone)
+                            @Html.ValidationMessageFor(x => x.Telephone)
+                        </li>
+                        <li>
+                            @Html.LabelFor(x => x.EMail)
+                            @Html.EditorFor(x => x.EMail)
+                            @Html.ValidationMessageFor(x => x.EMail)
+                        </li>
+                        <li>
+                            @Html.Recaptcha(theme: Recaptcha.Web.RecaptchaTheme.Clean)
+                            <span class="field-validation-error">@ViewBag.CaptchaError</span>
+                        </li>
+                    </ul>
+                    <button type="submit" class="button">Next</button>
+                </fieldset>
+}
+
+        </div>
+
+    </div>
+</body>
+</html>

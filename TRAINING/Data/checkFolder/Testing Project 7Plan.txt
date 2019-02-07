@@ -1,0 +1,29 @@
+string dir = @"C:\Test\VideoTraining\";
+ private void button1_Click(object sender, EventArgs e) // populate treeview
+ {
+ ListDirectory(treeView1, dir); 
+ }
+
+ private void ListDirectory(TreeView treeview1, string dir)
+ {
+            treeView1.Nodes.Clear();
+ var rootDirectoryInfo = new DirectoryInfo(dir);
+            treeView1.Nodes.Add(CreateDirectoryNode(rootDirectoryInfo));
+ }
+
+ private static TreeNode CreateDirectoryNode(DirectoryInfo directoryInfo)
+ {
+ var directoryNode = new TreeNode(directoryInfo.Name);
+ foreach (var directory in directoryInfo.GetDirectories())
+                directoryNode.Nodes.Add(CreateDirectoryNode(directory));
+ foreach (var file in directoryInfo.GetFiles())
+                directoryNode.Nodes.Add(new TreeNode(file.Name));
+ return directoryNode;
+ }
+
+ private void button2_Click(object sender, EventArgs e) // to open file
+ {
+ string name = treeView1.SelectedNode.ToString().Replace("TreeNode: ",string.Empty);
+ MessageBox.Show(dir + "\\" +  name);
+ System.Diagnostics.Process.Start(dir + "\\" +  name);
+        }

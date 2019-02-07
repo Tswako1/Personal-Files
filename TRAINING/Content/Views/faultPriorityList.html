@@ -1,0 +1,35 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/administration/faultPriority/Create"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>First Escalation Reminder</th>
+                <th>First Escalation Time</th>
+                <th>Second Escalation Reminder</th>
+                <th>Second Escalation Time</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="faultPriority in faultPriorities">
+            <td>
+                <a href="#/administration/faultPriority/{{faultPriority.id}}">{{faultPriority.description}}</a>
+            </td>
+            <td>
+                <a href="#/administration/faultPriority/{{faultPriority.id}}">{{faultPriority.firstEscalationReminder}}</a>
+            </td>
+            <td>
+                <a href="#/administration/faultPriority/{{faultPriority.id}}">{{faultPriority.firstEscalationTime}}</a>
+            </td>
+            <td>
+                <a href="#/administration/faultPriority/{{faultPriority.id}}">{{faultPriority.secondEscalationReminder}}</a>
+            </td>
+            <td>
+                <a href="#/administration/faultPriority/{{faultPriority.id}}">{{faultPriority.secondEscalationTime}}</a>
+            </td>
+        </tr>
+    </table>
+</div>

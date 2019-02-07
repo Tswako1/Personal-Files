@@ -1,0 +1,28 @@
+﻿<div class="col-md-12">
+    <form class="form-horizontal col-md-12" formnovalidate role="form" name="faultTypeForm">
+        <div class="form-group">
+            <label for="inputDescription" class="col-lg-3 control-label">Description</label>
+            <div class="col-lg-6">
+                <input ng-model="faultType.description" required type="text" class="form-control" id="inputDescription" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Sector Programme</label>
+            <div class="col-lg-3">
+                <select ng-model="faultType.sectorProgrammeId" class="form-control" ng-options="sector.id as sector.description for sector in sectors"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Priority</label>
+            <div class="col-lg-3">
+                <select ng-model="faultType.faultPriorityId" class="form-control" ng-options="priority.id as priority.description for priority in priorities"></select>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <div class="container">
+                <button ng-click="save()" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Save</button>
+            </div>
+        </div>
+    </form>
+</div>

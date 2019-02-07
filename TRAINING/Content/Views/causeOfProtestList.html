@@ -1,0 +1,19 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/administration/causeOfProtest/Create"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="causeOfProtest in causesOfProtest">
+            <td>
+                <a href="#/administration/causeOfProtest/{{causeOfProtest.id}}">{{causeOfProtest.description}}</a>
+            </td>
+        </tr>
+    </table>
+</div>

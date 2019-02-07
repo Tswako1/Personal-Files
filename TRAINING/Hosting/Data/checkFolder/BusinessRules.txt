@@ -1,0 +1,29 @@
+Business Rules.
+
+Users
+
+1. User must follow mipmis user manual in order to accomplish task appropriately.
+2. User must log calls if experiencing any loging problems mipmis nerve center.
+3. If user contract expires, retrenched, resigned or fired then the organisation must alert mipmis nerve center to disable the account.
+4. If user is not active for more one month and two weeks, mipmis nerve center must disable account untill advised otherwise.
+5. 
+
+
+Databases
+
+1. Databases must be backed up everyday or atleast once in two days.
+2. Backed up scripts must be stored mipmis nerve center external drive, and local server(misa offices).
+3. Only authorised pessonnel must assign usernames and passwords to mipmis users.
+4. Passwords must be changed every six weeks(one month and two weeks).
+5. Passwords must be protected by the mipmis users and must not be shared.
+6. 
+   
+
+Logins
+
+1. Production server (Login tab) must only be used by the relevent users.
+2. Training server (Training tab) can be used by new users in order familiarise themselves with the system.
+3.  
+ 
+
+

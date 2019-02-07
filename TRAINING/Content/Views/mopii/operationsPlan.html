@@ -1,0 +1,113 @@
+﻿<ul placeholder-content="toolbar">
+    
+</ul>
+<tr class="col-md-12">
+    <form class="form-horizontal" novalidate role="form" name="planForm">
+        <div class="form-group">
+            <label for="organisation" class="col-lg-2 control-label">Organisation</label>
+            <div class="col-lg-4">
+                <select disabled class="form-control">
+                    <option selected>{{plan.organisation}}</option>
+                </select>
+            </div>
+            <label for="inputYear" class="col-lg-2 control-label">Financial Year</label>
+            <div class="col-lg-3">
+                <select disabled class="form-control">
+                    <option selected>{{plan.year}}</option>
+                </select>
+            </div>
+        </div>
+
+        <table class="grid">
+        <tr>
+            <td></td>
+            <td style="text-align:center;width:11%; font-weight: bold">Start</td>
+            <td style="text-align:center;width:11%; font-weight: bold">End</td>
+            <td style="text-align:center;width:8%; font-weight: bold">Q1</td>
+            <td style="text-align:center;width:8%; font-weight: bold">Q2</td>
+            <td style="text-align:center;width:8%; font-weight: bold">Q3</td>
+            <td style="text-align:center;width:8%; font-weight: bold">Q4</td>
+        </tr>
+        </table>
+        <style>
+            table.grid {
+                table-layout: fixed;
+                width: 100%;
+                border-top: 2px solid #ccc;
+            }
+            td {
+                padding: 6px 4px;
+            }
+            div.kpi-label {
+                border-top: 2px solid #ccc;
+                padding: 6px 4px;
+                font-weight: bold;
+            }
+            div.collapsed table {
+                display: none;
+            }
+            tbody.collapsed tr:not(:first-child) {
+                display: none;
+            }
+            i.icon-arrow-right, i.icon-arrow-down {
+                vertical-align: middle;
+                margin-right: 5px;
+            }
+        </style>
+        <div ng-repeat="kpi in plan.kpis" ng-class="{collapsed: kpi.collapsed}">
+            <div class="kpi-label">
+                <i ng-click="kpi.collapsed = !kpi.collapsed" ng-class="{'icon-arrow-right': kpi.collapsed, 'icon-arrow-down': !kpi.collapsed}" />{{ kpi.name }}
+            </div>
+            <div style="padding-left: 40px">
+                <table class="grid">
+                    <colgroup>
+                        <col />
+                        <col  style="width: 11%"/>
+                        <col  style="width: 11%" />
+                        <col  style="width: 8%"/>
+                        <col  style="width: 8%"/>
+                        <col  style="width: 8%"/>
+                        <col  style="width: 8%"/>
+                    </colgroup>
+                    <tbody ng-repeat="section in kpi.sections" ng-class="{collapsed: section.collapsed}">
+                        <tr>
+                            <td colspan="7" style="font-weight: bold">
+                                <i ng-click="section.collapsed = !section.collapsed" ng-class="{'icon-arrow-right': section.collapsed, 'icon-arrow-down': !section.collapsed}" />{{ section.name }}
+                            </td>
+                        </tr>
+                        <tr ng-repeat="process in section.processes">
+                            <td style="padding-left: 20px;vertical-align: middle;">{{process.name}}</td>
+                            <td>
+                                <input ng-model="process.startDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date">
+                            </td>
+                            <td>
+                                <input ng-model="process.endDate" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" >
+                            </td>
+                            <td>
+                                <input ng-model="process.q1" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" style="text-align: right">
+                            </td>
+                            <td style="width: 5%">
+                                <input ng-model="process.q2" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" style="text-align: right">
+                            </td>
+                            <td>
+                                <input ng-model="process.q3" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" style="text-align: right">
+                            </td>
+                            <td>
+                                <input ng-model="process.q4" ng-pattern="/^[0-9]*$/" fieldtype="numeric" type="text" class="form-control" style="text-align: right">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+     
+
+
+        <div class="form-actions">
+            <div class="container">
+                <button ng-click="save()" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Save</button>
+            </div>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,27 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/administration/misaSupportAgent/Create"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Contact Number</th>
+                <th>E Mail</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="misaSupportAgent in misaSupportAgents">
+            <td>
+                <a href="#/administration/misaSupportAgent/{{misaSupportAgent.id}}">{{misaSupportAgent.name}}</a>
+            </td>
+            <td>
+                <a href="#/administration/misaSupportAgent/{{misaSupportAgent.id}}">{{misaSupportAgent.contactNumber}}</a>
+            </td>
+            <td>
+                <a href="#/administration/misaSupportAgent/{{misaSupportAgent.id}}">{{misaSupportAgent.emailAddress}}</a>
+            </td>
+        </tr>
+    </table>
+</div>

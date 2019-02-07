@@ -1,0 +1,96 @@
+﻿<div class="col-md-12">
+    <form class="form-horizontal" novalidate role="form" name="mopDocumentValidation">
+        <div>
+            <table class="table col-md-12">
+                <thead>
+                    <tr>
+                        <th>Document Name</th>
+                        <th>Upload Date</th>
+                        <th>Validated</th>
+                    </tr>
+                </thead>
+                <div class="form-group quality-check col-lg-12">
+                    <tr>
+                        <td>Q1</td>
+                    </tr>
+                    <tbody ng-repeat="category in operationPlanDocumentsQ1">
+                        <tr>
+                            <td>{{category.key}}</td>
+                        </tr>
+                        <tr ng-repeat="operationPlanDocumentQ1 in category.value">
+                            <td><a href="api/document/{{operationPlanDocumentQ1.id}}">{{operationPlanDocumentQ1.name}}</a></td>
+                            <td>{{operationPlanDocumentQ1.uploadDate|date: 'yyyy/MM/dd'}}</td>
+                            <td class="col-lg-1 checkbox mipmis-checkbox">
+                                <input ng-model="operationPlanDocumentQ1.validated" type="checkbox" value="true" id="inputBusinessProjectPlanDate" placeholder="">
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </div>
+                <div class="form-group">
+                    <tr>
+                        <td>Q2</td>
+                    </tr>
+
+                    <tbody ng-repeat="category in operationPlanDocumentsQ2">
+                        <tr>
+                            <td>{{category.key}}</td>
+                        </tr>
+                        <tr ng-repeat="operationPlanDocumentQ2 in category.value">
+                            <td><a href="api/document/{{operationPlanDocumentQ2.id}}">{{operationPlanDocumentQ2.name}}</a></td>
+                            <td>{{operationPlanDocumentQ2.uploadDate|date: 'yyyy/MM/dd'}}</td>
+                            <td class="col-lg-1 checkbox mipmis-checkbox">
+                                <input ng-model="operationPlanDocumentQ2.validated" type="checkbox" value="true" id="Checkbox1" placeholder="">
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </div>
+                <div class="form-group">
+                    <tr>
+                        <td>Q3</td>
+                    </tr>
+
+                    <tbody ng-repeat="category in operationPlanDocumentsQ3">
+                        <tr>
+                            <td>{{category.key}}</td>
+                        </tr>
+                        <tr ng-repeat="operationPlanDocumentQ3 in category.value">
+                            <td><a href="api/document/{{operationPlanDocumentQ3.id}}">{{operationPlanDocumentQ3.name}}</a></td>
+                            <td>{{operationPlanDocumentQ3.uploadDate|date: 'yyyy/MM/dd'}}</td>
+                            <td class="col-lg-1 checkbox mipmis-checkbox">
+                                <input ng-model="operationPlanDocumentQ3.validated" type="checkbox" value="true" id="Checkbox2" placeholder="">
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </div>
+                <div class="form-group">
+
+                    <tr>
+                        <td>Q4</td>
+                    </tr>
+                    <tbody ng-repeat="category in operationPlanDocumentsQ4">
+                        <tr>
+                            <td>{{category.key}}</td>
+                        </tr>
+                        <tr ng-repeat="operationPlanDocumentQ4 in category.value">
+                            <td><a href="api/document/{{operationPlanDocumentQ4.id}}">{{operationPlanDocumentQ4.name}}</a></td>
+                            <td>{{operationPlanDocumentQ4.uploadDate|date: 'yyyy/MM/dd'}}</td>
+                            <td class="col-lg-1 checkbox mipmis-checkbox">
+                                <input ng-model="operationPlanDocumentQ4.validated" type="checkbox" value="true" id="Checkbox3" placeholder="">
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </div>
+            </table>
+        </div>
+        <div class="form-actions">
+            <div class="container">
+                <button ng-click="saveDocumentValidation()" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Save</button>
+            </div>
+        </div>
+
+    </form>
+</div>

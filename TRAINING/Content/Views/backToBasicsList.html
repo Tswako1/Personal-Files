@@ -1,0 +1,70 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <form class="search" ng-submit="search()" ng-show="false">
+            <input ng-model="filter" type="text">
+            <button ng-click="clearSearch()" class="search remove-filter" ng-show="serverFilter">X</button>
+            <button type="submit"></button>
+        </form>
+    </li>
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/backToBasics/Create" title="Create New Back to Basics Report" operation="CreateBackToBasics"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <form class="form-horizontal filters" novalidate role="form">
+        <div class="row">
+            <label for="filterOrganisation" class="col-lg-3 control-label">Organisation</label>
+            <div class="col-lg-3">
+                <select ng-options="organisation.id as organisation.name for organisation in organisations" ng-model="filters.organisation" class="form-control" id="filterOrganisation"></select>
+                <button ng-click="filters.organisation = null" class="remove-filter" ng-show="filters.organisation">X</button>
+            </div>
+            <label for="filterFinancialYear" class="col-lg-3 control-label">Financial Year</label>
+            <div class="col-lg-3">
+                <select ng-options="year.id as year.description for year in financialYears" ng-model="filters.year" class="form-control" id="filterFinancialYear"></select>
+                <button ng-click="filters.year = null" class="remove-filter" ng-show="filters.year">X</button>
+            </div>
+        </div>
+        <div class="row">
+            <label for="filterFinancialPeriod" class="col-lg-3 control-label">Period</label>
+            <div class="col-lg-3">
+                <select ng-options="period.id as period.description for period in financialPeriods" ng-model="filters.period" class="form-control" id="filterFinancialPeriod"></select>
+                <button ng-click="filters.period = null" class="remove-filter" ng-show="filters.period">X</button>
+            </div>
+        </div>
+    </form>
+    <table class="table infrastructureList">
+        <colgroup>
+            <col></col>
+            <col></col>
+        </colgroup>
+        <thead>
+            <tr>
+                <th ng-click="sort('Number')" ng-class="{sorted: field == 'Number', desc: desc}">Organisation</th>
+                <th ng-click="sort('Number')" ng-class="{sorted: field == 'Number', desc: desc}">Financial Year</th>
+                <th ng-click="sort('Number')" ng-class="{sorted: field == 'Number', desc: desc}">Financial Period</th>
+                <th ng-click="sort('Status')" ng-class="{sorted: field == 'Status', desc: desc}">Date Updated</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="backToBasic in backToBasics.items">
+            <td>
+                <a href="#/backToBasics/{{backToBasic.id}}/1">{{backToBasic.organisationName}}</a>
+            </td>
+            <td>
+                <a href="#/backToBasics/{{backToBasic.id}}/1">{{backToBasic.financialYear}}</a>
+            </td>
+            <td>
+                <a href="#/backToBasics/{{backToBasic.id}}/1">{{backToBasic.financialPeriod}}</a>
+            </td>
+            <td>
+                <a href="#/backToBasics/{{backToBasic.id}}/1">{{backToBasic.dateUpdated | date:'yyyy-MM-dd'}}</a>
+            </td>
+        </tr>
+    </table>
+    <div class="paging">
+        <ol>
+            <li ng-show="pages.length > 1 && page > 1"><a ng-click="gotoPage(page - 1)" class="icon-angle-left"></a></li>
+            <li ng-show="pages.length > 1">Page {{page}}</li>
+            <li ng-show="pages.length > 1 && page < pages.length"><a ng-click="gotoPage(page + 1)" class="icon-angle-right"></a></li>
+        </ol>
+    </div>
+</div>

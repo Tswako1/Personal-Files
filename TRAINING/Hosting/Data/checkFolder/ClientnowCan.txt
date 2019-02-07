@@ -1,0 +1,9 @@
+FileStream MyFileStream = new FileStream(@"d:\inetpub\wwwroot\small.txt", FileMode.Open);
+long FileSize;
+FileSize = MyFileStream.Length;
+byte[] Buffer = new byte[(int)FileSize];
+MyFileStream.Read(Buffer, 0, (int)MyFileStream.Length);
+MyFileStream.Close();
+Response.ContentType="text/plain";
+Response.AddHeader( "content-disposition","inline; filename=sample.txt");
+Response.BinaryWrite(Buffer);

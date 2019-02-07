@@ -1,0 +1,27 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/projectRegistration/{{projectId}}/projectRisk/Create"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Risk Category</th>
+                <th>Risk Consequence</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="projectRisk in projectRisks">
+            <td>
+                <a href="#/projectRegistration/{{projectId}}/projectRisk/{{projectRisk.id}}">{{projectRisk.description}}</a>
+            </td>
+            <td>
+                <a href="#/projectRegistration/{{projectId}}/projectRisk/{{projectRisk.id}}">{{projectRisk.riskCategory}}</a>
+            </td>
+            <td>
+                <a href="#/projectRegistration/{{projectId}}/projectRisk/{{projectRisk.id}}">{{projectRisk.riskConsequence}}</a>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,19 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/administration/migComponent/Create"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="migComponent in migComponents">
+            <td>
+                <a href="#/administration/migComponent/{{migComponent.id}}">{{migComponent.description}}</a>
+            </td>
+        </tr>
+    </table>
+</div>

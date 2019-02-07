@@ -1,0 +1,232 @@
+﻿<div class="col-md-12">
+    <form class="form-horizontal captureform" novalidate role="form" name="infrastructureRegisterForm">
+        <ul placeholder-content="toolbar" ng-if="infrastructureRegister.id">
+            <li>
+                <a href="#/infrastructureRegister/{{infrastructureRegister.id}}/infrastructureRisk" title="Risks" class="icon-warning"></a>
+            </li>
+            <li>
+                <a href="#/infrastructureRegisterOverview/{{infrastructureRegister.id}}" class="icon-info"></a>
+            </li>
+        </ul>
+        <div class="col-md-12">
+            <form class="form-horizontal" novalidate role="form" name="infrastructureRegisterForm">
+                <div class="form-group">
+                    <label for="organisation" class="col-lg-3 control-label">Organisation</label>
+                    <div class="col-lg-9">
+                        <select ng-options="organisation.id as organisation.name for organisation in organisations" required ng-model="infrastructureRegister.organisationId" class="form-control" id="selectOrganisation"></select>
+                    </div>
+                </div>
+                <fieldset>
+                    <div class="form-group">
+                        <label for="inputDescription" class="col-lg-3 control-label">MIPMIS Number</label>
+                        <div class="col-lg-3">
+                            <input ng-model="autoir" disabled type="text" class="form-control" id="Text1" placeholder="">
+                        </div>
+                        <div class="col-lg-1" ng-init="count104=getDocumentCount(104)">
+                            <span class="document-management" document-count="count104" foreign-id="infrastructureRegister.id" foreign-type="6" document-type="104" title="Upload Document"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label ng-model="infrastructureRegister.number" for="inputNumber" class="col-lg-3 control-label">Number</label>
+                        <div class="col-lg-3">
+                            <input ng-model="infrastructureRegister.number" required type="text" class="form-control" id="inputNumber" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="inputModel" class="col-lg-3 control-label">Model</label>
+                        <div class="col-lg-3">
+                            <input ng-model="infrastructureRegister.model" type="text" class="form-control" id="inputModel" placeholder="">
+                        </div>
+                        <label for="inputSerialNumber" class="col-lg-3 control-label">Serial Number</label>
+                        <div class="col-lg-3">
+                            <input ng-model="infrastructureRegister.serialNumber" type="text" class="form-control" id="serialNumber" placeholder="" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputDescription" class="col-lg-3 control-label">Description</label>
+                        <div class="col-lg-9">
+                            <input ng-model="infrastructureRegister.description" required type="text" class="form-control" id="description" placeholder="">
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="row">
+                        <label for="inputSectorProgramme" class="col-lg-3 control-label">Sector Programme</label>
+                        <div class="col-lg-3">
+                            <select ng-options="sectorProgramme.id as sectorProgramme.description for sectorProgramme in sectorProgrammes" ng-model="infrastructureRegister.sectorProgrammeId" class="form-control" id="selectSectorProgramme"></select>
+                        </div>
+                        <label for="inputSectorProgramme" class="col-lg-3 control-label">Parent Asset Number</label>
+                        <div class="col-lg-3">
+                            <select ng-options="parentInfrastructureRegister.id as parentInfrastructureRegister.description for parentInfrastructureRegister in parentInfrastructureRegisters.data" ng-model="infrastructureRegister.parentInfrastructureRegisterId" class="form-control" id="selectinfrastructureRegister">
+                                <option value="">Not yet assigned</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputMaterialType" class="col-lg-3 control-label">Material Type</label>
+                        <div class="col-lg-3">
+                            <input ng-model="infrastructureRegister.materialType" type="text" class="form-control" id="materialType" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="selectAssetClass" class="col-lg-3 control-label">Class Description/Nature</label>
+					
+                        <div class="col-lg-9">
+                            <select ng-options="assetClass.id as assetClass.description for assetClass in assetClasses" ng-model="infrastructureRegister.assetClassId" class="form-control" id="selectAssetClass"></select> 
+							
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <label for="inputSize" class="col-lg-3 control-label">Size</label>
+                        <div class="col-lg-3 validate">
+                            <input ng-model="infrastructureRegister.size" required type="text" class="form-control" id="size" placeholder="">
+                        </div>
+                        <div class="field-information">
+                            <div fieldinfo="Size">
+                            </div>
+                        </div>
+
+                        <label for="inputCapacity" class="col-lg-3 control-label">Capacity</label>
+                        <div class="col-lg-3">
+                            <input ng-model="infrastructureRegister.capacity" fieldtype="numeric" type="text" class="form-control" id="capacity" placeholder="">
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <label for="inputQuantity" class="col-lg-3 control-label">Quantity</label>
+                        <div class="col-lg-3">
+                            <input ng-model="infrastructureRegister.quantity" type="text" class="form-control" id="quantity" placeholder="" ng-pattern="/^[0-9]*$/" fieldtype="numeric">
+                        </div>
+                        <label for="inputUtilisation" class="col-lg-3 control-label">Utilisation (%)</label>
+                        <div class="col-lg-3">
+                            <input ng-model="infrastructureRegister.utilisation" type="number" class="form-control" id="utilisation" placeholder="" min="0" max="100" ng-pattern="/^[0-9]{1,3}$/" validationmessage="Utilisation must a a percentage between 0 and 100">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="inputReplacementEquivalent" class="col-lg-3 control-label">Replacement Equivalent</label>
+                        <div class="col-lg-3">
+                            <input ng-model="infrastructureRegister.replacementEquivalent" type="text" class="form-control" id="replacementEquivalent" placeholder="">
+                        </div>
+                        <label for="inputYearConstructedPurchaseDate" class="col-lg-3 control-label">Year Constructed/Purchase Date</label>
+                        <div class="col-lg-3">
+                            <input ng-model="infrastructureRegister.yearConstructedPurchaseDate" required ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="yearConstructedPurchaseDate" name="yearConstructedPurchaseDate" placeholder="">
+                            <div class="error" validation-message="Year Constructed/Purchase Date is required and should not be in the future"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputSupplierName" class="col-lg-3 control-label">Supplier Name</label>
+                        <div class="col-lg-9">
+                            <input ng-model="infrastructureRegister.supplierName" type="text" class="form-control" id="supplierName" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="inputCriticalityGrade" class="col-lg-3 control-label">Criticality Grade</label>
+                        <div class="col-lg-3">
+                            <select ng-options="criticalityGrade.id as criticalityGrade.description for criticalityGrade in criticalityGrades" ng-model="infrastructureRegister.criticalityGradeId" class="form-control" id="selectCriticalityGrade"></select>
+
+                        </div>
+                        <div class="field-information">
+                            <div fieldinfo="criticality">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="inputCondition" class="col-lg-3 control-label">Condition</label>
+                        <div class="col-lg-3">
+
+                            <select ng-options="condition as condition.description for condition in conditions" ng-model="selected" class="form-control" id="selectCondition"></select>
+                        </div>
+                        <div class="field-information">
+                            <div fieldinfo="condition">
+                            </div>
+                        </div>
+                        <label for="conditionIndex" class="col-lg-3 control-label">Condition Index/Grade</label>
+                        <div class="col-lg-1">
+                            <input ng-model="infrastructureRegister.conditionId" class="form-control condition{{infrastructureRegister.conditionId}}" disabled id="conditionIndex" placeholder="">
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label for="inputWardId" class="col-lg-3 control-label">Ward(s)</label>
+                        <div class="col-lg-3">
+                            <select ng-options="ward as ward.name for ward in wards.data track by ward.id" data="wards" select2 multiple style="width: 100%" ng-model="infrastructureRegister.wards" id="selectWard"></select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="inputLocationY" class="col-lg-3 control-label"><a ng-click="selectLocation()">Location</a>: Latitude</label>
+                        <div class="col-lg-3">
+                            <input ng-model="infrastructureRegister.locationY" type="text" class="form-control" id="locationY" placeholder="" coordinate="S">
+                        </div>
+                        <label for="inputLocationX" class="col-lg-3 control-label">Longitude</label>
+                        <div class="col-lg-3">
+                            <input ng-model="infrastructureRegister.locationX" type="text" class="form-control" id="locationX" placeholder="" coordinate="E">
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="row" >
+                    <label for="inputPurchasePrice" class="col-lg-3 control-label">Purchase Price</label>
+                    <div class="col-lg-3">
+                        <input ng-model="price" required type="text"  class="form-control" id="purchasePrice" placeholder=""  ng-pattern="/^[0-9]{1,3}(?:\s?[0-9]{3})*(?:\.[0-9]{2})?$/" fieldtype="currency" mycurr>
+                    </div>
+                    <div class="col-lg-3">
+                        <input ng-model="priceOption" required type="radio" value="0" id="radioActual" placeholder=""><label for="radioActual">Actual</label>
+                        <input ng-model="priceOption" required type="radio" value="1" id="radioDeemed" placeholder=""><label for="radioDeemed">Deemed</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="inputCustodian" class="col-lg-3 control-label">Custodian</label>
+                    <div class="col-lg-3">
+                        <input ng-model="infrastructureRegister.custodian" type="text" class="form-control" id="custodian" placeholder="" required>
+                    </div>
+                    <div class="field-information">
+                        <div fieldinfo="custodian">
+                        </div>
+                    </div>
+					
+					<div class="row">
+                    <label for="inputCustodian" class="col-lg-3 control-label">Tocheck</label>
+                    <div class="col-lg-3">
+                        <input ng-model="infrastructureRegister.custodian" type="text" class="form-control" id="custodian" placeholder="" required>
+                    </div>
+                    <div class="field-information">
+                        <div fieldinfo="custodian">
+                        </div>
+                    </div>
+					
+
+                    <label for="inputReplacementCostPerItem" class="col-lg-3 control-label">Depreciated Value</label>
+                    <div class="col-lg-3">
+                        <input ng-model="infrastructureRegister.replacementCostPerItem" disabled type="text" class="form-control" id="replacementCostPerItem" placeholder=""  mycurr>
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="inputCurrentReplacementCost" class="col-lg-3 control-label">Current Replacement Cost</label>
+                    <div class="col-lg-3">
+                        <input ng-model="infrastructureRegister.currentReplacementCost" type="text" class="form-control" id="currentReplacementCost" placeholder="" ng-pattern="/^[0-9]{1,3}(?:\s?[0-9]{3})*(?:\.[0-9]{2})?$/" fieldtype="currency" mycurr>
+                    </div>
+                    <label for="inputDepreciatedReplacementCost" class="col-lg-3 control-label">Depreciated Replacement Cost</label>
+                    <div class="col-lg-3">
+                        <input ng-model="infrastructureRegister.depreciatedReplacementCost" disabled type="text" class="form-control" id="depreciatedReplacementCost" placeholder="" mycurr>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAdditionAmount" class="col-lg-3 control-label">Addition Amount</label>
+                    <div class="col-lg-3">
+                        <input ng-model="infrastructureRegister.additionAmount" type="text" class="form-control" id="additionAmount" placeholder="" ng-pattern="/^[0-9]{1,3}(?:\s?[0-9]{3})*(?:\.[0-9]{2})?$/" fieldtype="currency" mycurr>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <div class="container">
+                        <button ng-click="saveInfrastructureRegister()" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,214 @@
+﻿@using System.Collections
+@model MIPMIS.Controllers.FaultReportController.Report
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+    <title>Index</title>
+    <link rel="stylesheet" href="/Content/css/faults.css" />
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script>
+        $(function () {
+            var map;
+            var province = function (e, auto) {
+                if (!$("#Province").val())
+                    return;
+                if (!auto) {
+                    map.setCenter(new google.maps.LatLng(parseFloat($("#Province option:selected").data("lat")), parseFloat($("#Province option:selected").data("long"))));
+                    map.setZoom(6);
+                }
+                return $.ajax("/faultreport/districts?province=" + $("#Province").val()).then(function (response) {
+                    $('#District').find('option').remove();
+                    $("#District").append($("<option />"));
+                    $.each(response, function () {
+                        $("#District").append($("<option />").val(this.Value).text(this.Text).data("long", this.CentreLongitude).data("lat", this.CentreLatitude));
+                    });
+                });
+            };
+            var district = function (e, auto) {
+                if (!$("#District").val())
+                    return;
+                if (!auto) {
+                    map.setCenter(new google.maps.LatLng($("#District option:selected").data("lat"), $("#District option:selected").data("long")));
+                    map.setZoom(9);
+                }
+                return $.ajax("/faultreport/municipalities?district=" + $("#District").val()).then(function (response) {
+                    $('#Municipality').find('option').remove();
+                    $("#Municipality").append($("<option />"));
+                    $.each(response, function () {
+                        $("#Municipality").append($("<option />").val(this.Value).text(this.Text).data("long", this.CentreLongitude).data("lat", this.CentreLatitude));
+                    });
+                });
+            };
+            var municipality = function (e, auto) {
+                if (!$("#Municipality").val())
+                    return;
+                if (!auto) {
+                    map.setCenter(new google.maps.LatLng($("#Municipality option:selected").data("lat"), $("#Municipality option:selected").data("long")));
+                    map.setZoom(9);
+                }
+            };
+            var sector = function (e, auto) {
+                if (!$("#Sector").val())
+                    return;
+                $.ajax("/faultreport/FaultTypes?sector=" + $("#Sector").val()).done(function (response) {
+                    $('#FaultType').find('option').remove();
+                    $("#FaultType").append($("<option />"));
+                    $.each(response, function () {
+                        $("#FaultType").append($("<option />").val(this.Value).text(this.Text));
+                    });
+                });
+            };
+
+            $("#Province").change(province);
+            $("#District").change(district);
+            $("#Municipality").change(municipality);
+            $("#Sector").change(sector);
+
+            province();
+            district();
+
+            window.onGoogleReady = function () {
+                var marker;
+                var elm = $("#map");
+                var center = {lat: -25, long: 23};
+                var opts = {
+                    center: new google.maps.LatLng(center.lat, center.long),
+                    zoom: 4,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                map = new google.maps.Map(elm[0], opts);
+                var changing = false;
+                var double = 0;
+                google.maps.event.addListener(map, "dblclick", function (e) {
+                    double = true;
+                });
+                google.maps.event.addListener(map, 'click', function (event) {
+                    setTimeout(function () {
+                        if (double) {
+                            double = false;
+                            return;
+                        }
+                        changing = true;
+                        if (marker) marker.setMap(null);
+                        marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
+                            title: "Incident Location",
+                            map: map
+                        });
+                        $('#Longitute').val(event.latLng.lat());
+                        $('#Latitude').val(event.latLng.lng());
+                        $.ajax("api/Spatial?longitude=" + event.latLng.lat() + '&latitude=' + event.latLng.lng()).done(function (data) {
+                            if (data.length == 0) return;
+                            $("#Province").val(data[0].provinceCode);
+                            province(null, true).then(function () {
+                                $("#District").val(data[0].districtCode);
+                                district(null, true).then(function () {
+                                    $("#Municipality").val(data[0].id);
+                                });
+                            });
+
+                        });
+                        changing = false;
+                    }, 100);
+                });
+                var change = function() {
+                    if (changing) return;
+                    if ($('#Latitude').val() && $('#Longitute').val()) {
+                        var pos = new google.maps.LatLng($('#Longitute').val(), $('#Latitude').val());
+                        map.setCenter(pos);
+                        if (marker) marker.setMap(null);
+                        marker = new google.maps.Marker({
+                            position: pos,
+                            title: "Incident Location",
+                            map: map
+                        });
+                    }
+                }
+                $('#Longitute').change(change);
+                $('#Latitude').change(change);
+            }
+
+            $("form").submit(function(e) {
+                if (!$("#Description").val()) {
+                    $("#description_error").css('display', '');
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <div>
+            <h5>Report an Incident</h5>
+            <p>Please complete the details of the incident below.</p>
+            <div class="contentdivider"></div>
+            @using (Html.BeginForm("Submit", "FaultReport", FormMethod.Post, new { novalidate=true, enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(x => x.Name)
+                @Html.HiddenFor(x => x.Surname)
+                @Html.HiddenFor(x => x.Telephone)
+                @Html.HiddenFor(x => x.EMail)
+                <fieldset class="detail">
+                    <ul>
+                        <li class="required">
+                            @Html.LabelFor(x => x.Province)
+                            <select id="Province" name="Province">
+                            @foreach (var x in Model.Provinces)
+                            {
+                                <option value="@x.Value" data-lat="@x.Lat" data-long="@x.Long">@x.Text</option>
+                            }
+                            </select>
+                            @Html.ValidationMessageFor(x => x.Province)
+                        </li>
+                        <li class="required">
+                            @Html.LabelFor(x => x.District)
+                            @Html.DropDownListFor(x => x.District, new List<SelectListItem>())
+                            @Html.ValidationMessageFor(x => x.District)
+                        </li>
+                        <li class="required">
+                            @Html.LabelFor(x => x.Municipality)
+                            @Html.DropDownListFor(x => x.Municipality, new List<SelectListItem>())
+                            @Html.ValidationMessageFor(x => x.Municipality)
+                        </li>
+                        <li>
+                            @Html.LabelFor(x => x.Longitute)
+                            @Html.EditorFor(x => x.Longitute)
+                        </li>
+                        <li>
+                            @Html.LabelFor(x => x.Latitude)
+                            @Html.EditorFor(x => x.Latitude)
+                        </li>
+                        <li class="required">
+                            @Html.LabelFor(x => x.Sector)
+                            @Html.DropDownListFor(x => x.Sector, (IEnumerable<SelectListItem>)ViewData["Sectors"])
+                            @Html.ValidationMessageFor(x => x.Sector)
+                        </li>
+                        <li class="required">
+                            @Html.LabelFor(x => x.FaultType)
+                            @Html.DropDownListFor(x => x.FaultType, new List<SelectListItem>())
+                            @Html.ValidationMessageFor(x => x.FaultType)
+                        </li>
+                        <li class="memo required">
+                            @Html.LabelFor(x => x.Description)
+                            @Html.TextAreaFor(x => x.Description, new {required = true})
+                            @Html.ValidationMessageFor(x => x.Description)
+                            <span id="description_error" style="display: none" class="field-validation-error" data-valmsg-for="Description" data-valmsg-replace="true">Description is required</span>
+                        </li>
+                        <li>
+                            <label>Photo</label>
+                            <input type="file" name="file" accept="image/*" />
+                        </li>
+                    </ul>
+                    <button type="submit" class="button">Submit</button>
+                </fieldset>
+                <div id="map"></div>
+            }
+        </div>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=onGoogleReady" async defer></script>
+    </div>
+</body>
+</html>

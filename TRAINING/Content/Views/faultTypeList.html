@@ -1,0 +1,27 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/administration/faultType/Create"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Sector</th>
+                <th>Priority</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="faultType in faultTypes">
+            <td>
+                <a href="#/administration/faultType/{{faultType.id}}">{{faultType.description}}</a>
+            </td>
+            <td>
+                <a href="#/administration/faultType/{{faultType.id}}">{{faultType.sectorProgramme}}</a>
+            </td>
+            <td>
+                <a href="#/administration/faultType/{{faultType.id}}">{{faultType.faultPriority}}</a>
+            </td>
+        </tr>
+    </table>
+</div>

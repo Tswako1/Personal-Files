@@ -1,0 +1,189 @@
+﻿<ul placeholder-content="toolbar" ng-if="project.id">
+    <li>
+        <a href="#/projectOverview/{{project.id}}" class="glyphicon glyphicon-eye-open" title="Overview"></a>
+    </li>
+    <li>
+        <a href="#/projectRegistration/{{project.id}}/financials" class="icon-money" title="Financials"></a>
+    </li>
+    <li>
+        <a href="#/projectRegistration/{{project.id}}/indicators" class="icon-rulers" title="Indicators"></a>
+    </li>
+    <li>
+        <a href="#/projectRegistration/{{project.id}}/projectActivities" class="icon-settings" title="Project Gantt Chart"></a>
+    </li>
+    <li>
+        <a href="#/projectRegistration/{{project.id}}/projectCheckList" class="icon-signup" title="Project Check List"></a>
+    </li>
+    <li>
+        <a href="#/projectRegistration/{{project.id}}/siteVisitList" class="icon-calendar" title="Activity Scheduler"></a>
+    </li>
+    <li>
+        <a href="#/projectRegistration/{{project.id}}/riskList" class="icon-warning" title="Risks"></a>
+    </li>
+    <li>
+        <a href="#/projectRegistration/{{project.id}}/issueList" class="icon-fire" title="Issues"></a>
+    </li>
+    <li>
+        <a href="#/projectRegistration/{{project.id}}/qualityControl" class="icon-certificate" title="Quality Control"></a>
+    </li>
+    <li>
+        <a href="#/projectRegistration/{{project.id}}/projectStakeHolderList" class="glyphicon glyphicon-user" title="Stake Holders" ng-hide="deleteProject.value"></a>
+    </li>
+</ul>
+
+<div class="col-md-12">
+    <form class="form-horizontal" novalidate role="form" name="projectRegistrationForm">
+        <div class="form-group">
+            <label for="organisation" class="col-lg-3 control-label">Organisation</label>
+            <div class="col-lg-9">
+
+                <select ng-options="organisation.id as organisation.name for organisation in organisations" required ng-model="project.organisationId" class="form-control" id="selectOrganisation"></select>
+            </div>
+        </div>
+        <fieldset>
+
+            <div class="form-group">
+                <label for="inputDescription" class="col-lg-3 control-label">MIPMIS Project Number</label>
+                <div class="col-lg-3">
+                    <input ng-model="autoproject" disabled type="text" class="form-control" id="Text1" placeholder="">
+                </div>
+            </div>
+            <div class="row">
+                <label for="inputNumber" class="col-lg-3 control-label">IDP Reference Number</label>
+                <div class="col-lg-3">
+                    <input ng-model="project.number" required type="text" class="form-control" id="inputNumber" placeholder="">
+                </div>
+                <label for="inputNationalProjectNumber" class="col-lg-3 control-label">Funders Project Reference</label>
+                <div class="col-lg-3">
+                    <input ng-model="project.nationalProjectNumber" type="text" class="form-control" id="inputNationalProjectNumber" placeholder="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputName" class="col-lg-3 control-label">Project Name</label>
+                <div class="col-lg-3">
+                    <input ng-model="project.name" required type="text" class="form-control" id="inputName" placeholder="">
+                </div>
+                <label for="inputMisaSupportedProject" class="col-lg-3 control-label">MISA Supported Project</label>
+                <div class="col-lg-3 checkbox mipmis-checkbox">
+                    <input ng-model="project.misaSupportedProject" type="checkbox" value="true" id="inputMisaSupportedProject" placeholder="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputDescription" class="col-lg-3 control-label">Project Description</label>
+                <div class="col-lg-9">
+                    <input ng-model="project.description" required type="text" class="form-control" id="inputDescription" placeholder="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputProjectStartDate" class="col-lg-3 control-label">Project Start Date</label>
+                <div class="col-lg-3">
+                    <input ng-model="project.startDate" required ng-disabled="project.id" ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="inputProjectStartDate" placeholder="">
+                </div>
+                <div class="field-information">
+                    <div fieldinfo="start date">
+                    </div>
+                </div>
+                <label for="inputProjectEndDate" class="col-lg-3 control-label">Estimated Project End Date</label>
+                <div class="col-lg-3">
+                    <input ng-model="project.endDate" required ng-pattern="/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/" fieldtype="date" type="text" class="form-control date" id="inputProjectEndDate" placeholder="">
+                </div>
+                <div class="field-information">
+                    <div fieldinfo="end date">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputParentProjectNumber" class="col-lg-3 control-label">Parent Project Number</label>
+                <div class="col-lg-3">
+                    <input ng-model="project.parentProjectNumber" type="text" class="form-control" id="inputParentProjectNumber" placeholder="">
+                </div>
+                <div class="field-information">
+                    <div fieldinfo="parent project">
+                    </div>
+                </div>
+
+                <label for="inputSectorProgramme" class="col-lg-3 control-label">Sector Programme</label>
+                <div class="col-lg-3">
+                    <select ng-options="sectorProgramme.id as sectorProgramme.description for sectorProgramme in sectorProgrammes" ng-model="project.sectorProgrammeId" required class="form-control" id="selectSectorProgramme"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="selectinfrastructureLifeCycle" class="col-lg-3 control-label">Project Type</label>
+                <div class="col-lg-3">
+                    <select ng-options="infrastructureLifeCycle.id as infrastructureLifeCycle.description for infrastructureLifeCycle in infrastructureLifeCycles" required ng-model="project.infrastructureLifeCycleId" class="form-control" id="selectinfrastructureLifeCycle"></select>
+                </div>
+                <label for="selectinfrastructureRegister" class="col-lg-3 control-label">Infrastructure Number</label>
+                <div class="col-lg-3">
+                    <select ng-options="infrastructureRegister.id as infrastructureRegister.description for infrastructureRegister in infrastructureRegisters.data" ng-model="project.infrastructureRegisterId" class="form-control" id="selectinfrastructureRegister">
+                        <option value="">Not yet assigned</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="selectMisaSupportAgent" class="col-lg-3 control-label">MISA Support Agent</label>
+                <div class="col-lg-3">
+                    <select ng-options="misaSupportAgent.id as misaSupportAgent.description for misaSupportAgent in misaSupportAgents" ng-required="project.misaSupportedProject" ng-model="project.misaSupportAgentId" class="form-control" id="selectMisaSupportAgent"></select>
+                </div>
+                <label for="selectImplementingAgent" class="col-lg-3 control-label">Implementing Agent</label>
+                <div class="col-lg-3">
+                    <select ng-options="implementingAgent as implementingAgent.description for implementingAgent in implementingAgents track by implementingAgent.id" data="implementingAgents" select2 multiple style="width: 100%" ng-model="project.implementingAgents" id="select1"></select>
+
+                    <!--<select ng-options="implementingAgent.id as implementingAgent.description for implementingAgent in implementingAgents" ng-model="project.implementingAgentId" class="form-control" id="selectImplementingAgent"></select>-->
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="selectMigComponent" class="col-lg-3 control-label">Project Component</label>
+                <div class="col-lg-3">
+                    <select ng-options="migComponent.id as migComponent.description for migComponent in migComponents" ng-model="project.migComponentId" class="form-control" id="selectMigComponent"></select>
+                </div>
+                <label for="selectProjectStatus" class="col-lg-3 control-label">Project Status</label>
+                <div class="col-lg-3">
+                    <select ng-options="projectStat.id as projectStat.description for projectStat in projectStatus" disabled required ng-model="project.projectStatusId" class="form-control" id="selectProjectStatus"></select>
+                </div>
+            </div>
+            <!--
+            <div class="form-group">
+                <label for="inputAnchorProject" class="col-lg-3 control-label">Anchor Project</label>
+                <div class="col-lg-3 checkbox mipmis-checkbox">
+                    <input ng-model="project.anchorProject" type="checkbox" value="true" id="inputAnchorProject" placeholder="">
+                </div>
+            </div>
+-->
+            <div class="form-group">
+                <label for="inputLatitude" class="col-lg-3 control-label"><a ng-click="selectLocation()">Location</a>: Latitude</label>
+                <div class="col-lg-3">
+                    <input ng-model="project.lattitude" type="text" class="form-control" id="inputLatitude" placeholder="" coordinate="S">
+                </div>
+                <label for="inputLongitude" class="col-lg-3 control-label">Longitude</label>
+                <div class="col-lg-3">
+                    <input ng-model="project.longitude" type="text" class="form-control" id="inputLongitude" placeholder="" coordinate="E">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputWardId" class="col-lg-3 control-label">Ward(s)</label>
+                <div class="col-lg-3">
+                    <select ng-options="ward as ward.name for ward in wards.data track by ward.id" data="wards" select2 multiple style="width: 100%" ng-model="project.wards" id="selectWard"></select>
+                </div>
+                <label for="inputDevelopmentalLocation" class="col-lg-3 control-label">Developmental Location(s)</label>
+                <div class="col-lg-3">
+                    <select ng-options="developmentalLocation as developmentalLocation.description for developmentalLocation in developmentalLocations track by developmentalLocation.id" data="developmentalLocations" select2 multiple style="width: 100%" ng-model="project.developmentalLocations" id="inputDevelopmentalLocation"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputCrossCuttingProgramme" class="col-lg-3 control-label">Back to Basics Reference(s)</label>
+                <div class="col-lg-3">
+                    <select ng-options="crossCuttingProgramme as crossCuttingProgramme.description for crossCuttingProgramme in crossCuttingProgrammes track by crossCuttingProgramme.id" data="crossCuttingProgrammes" select2 multiple style="width: 100%" ng-model="project.crossCuttingProgrammes" id="inputCrossCuttingProgramme"></select>
+                </div>
+                <label for="inputFundingSources" class="col-lg-3 control-label">Funding Source(s)</label>
+                <div class="col-lg-3">
+                    <select ng-options="fundingSource as fundingSource.description group by fundingSource.fundingSourceGroup for fundingSource in fundingSources track by fundingSource.id" data="fundingSources" select2 multiple style="width: 100%" ng-model="project.fundingSources" id="inputFundingSources"></select>
+                </div>
+            </div>
+            <div class="form-actions">
+                <div class="container">
+                    <button ng-click="saveProjectRegistration()" formnovalidate class="btn btn-default pull-right" ng-disabled="busy" operation="CreateProject">Save</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>

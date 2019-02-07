@@ -1,0 +1,67 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a href="content/helpfiles/GettingStarted.htm" class="glyphicon glyphicon-info-sign"  target="_blank"></a>
+    </li>
+</ul>
+<div class="col-md-6">
+    <h3>My Tasks
+    </h3>
+    <div calendar callback="getAppointments" select="showDay" month-change="monthChange"></div>
+    <table class="table" style="border-top: 1px solid #ccc; table-layout: fixed">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th style ="width: 30%">Due Date</thstyle>
+            </tr>
+        <x/thead>
+        <tbody>
+            <tr ng-repeat="task in tasks" ng-class="{due: isDue(task)}">
+                <td>
+                    <a href="#/siteVisitUpdate/{{task.id}}">{{task.description}}</a>
+                </td>
+                <td style="width: 30%">{{task.dueDate | date:'yyyy-MM-dd'}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+<div class="col-md-6">
+    <h3 ng-show="projects">My Projects
+        <div class="pull-right actions">
+            <a href="#/projectRegistration/Create">
+                <span class="glyphicon glyphicon-plus" operation="CreateProject" title="Add New Project"></span>
+            </a>
+        </div>
+    </h3>
+    <table class="table" ng-show="projects">
+        <tbody>
+            <tr ng-repeat="project in projects">
+                <td>
+                    <a href="#/projectOverview/{{project.id}}">{{project.name}}</a>
+                </td>
+                <td style="text-align: right" class="list-item-action">
+                    <a href="#/projectRegistration/{{project.id}}"><span class="icon-pencil pull-right" operation="CreateProject" title="Edit"></span></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h3 ng-show="infrastructures">My Assets
+        <div class="pull-right actions">
+            <a href="#/infrastructureRegister/Create">
+                <span class="glyphicon glyphicon-plus" operation="CreateInfrastructure" title="Add New Asset"></span>
+            </a>
+        </div>
+    </h3>
+    <table class="table" ng-show="infrastructures">
+        <tbody>
+            <tr ng-repeat="infrastructure in infrastructures">
+                <td>
+                    <a href="#/infrastructureRegisterOverview/{{infrastructure.id}}">{{infrastructure.description}}</a>
+                </td>
+                <td style="text-align: right" class="list-item-action">
+                    <a href="#/infrastructureRegister/{{infrastructure.id}}"><span class="icon-pencil pull-right" operation="CreateInfrastructure" title="Edit"></span></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

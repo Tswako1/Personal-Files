@@ -1,0 +1,113 @@
+﻿<ul placeholder-content="toolbar" ng-if="infrastructureRegister.id">
+    <li>
+        <a href="#/infrastructureRegister/{{infrastructureRegister.id}}/infrastructureRisk" title="Risks" class="icon-warning"></a>
+    </li>
+    <li>
+        <a href="#/infrastructureRegisterOverview/{{infrastructureRegister.id}}" class="icon-info"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <form class="form-horizontal" novalidate role="form" name="backToBasicsForm">
+        <div class="form-group">
+            <label for="organisation" class="col-lg-3">Organisation</label>
+            <div class="col-lg-9">
+                <select ng-options="organisation.id as organisation.name for organisation in organisations" disabled required ng-model="backToBasics.organisationId" class="form-control" id="selectOrganisation"></select>
+            </div>
+        </div>
+        <div class="row">
+            <label for="inputYear" class="col-lg-3 control-label">Financial Year</label>
+            <div class="col-lg-3">
+                <select ng-options="financialYear.id as financialYear.description for financialYear in financialYears" disabled required ng-model="backToBasics.financialYearId" class="form-control" id="inputYear"></select>
+            </div>
+            <label for="inputPeriod" class="col-lg-3 control-label">Financial Period</label>
+            <div class="col-lg-3">
+                <select ng-options="financialPeriod.id as financialPeriod.description for financialPeriod in financialPeriods" disabled required ng-model="backToBasics.financialPeriodId" class="form-control" id="inputPeriod"></select>
+            </div>
+        </div>
+
+        <div class="row section bold">
+            <label for="inputNumber" class="col-lg-5 control-label">Sound Financial Management</label>
+            <label for="inputNumber" class="col-lg-1 control-label">Format</label>
+            <label for="inputNumber" class="col-lg-2 control-label">Response</label>
+            <label for="inputNumber" class="col-lg-4 control-label">Comments</label>
+        </div>
+
+        <div class="row section">
+            <label for="inputNumber" class="col-lg-5 control-label">What was the % spent on MIG/USDG in the past month?</label>
+            <label for="inputNumber" class="col-lg-1 control-label">Percentage</label>
+            <div class="col-lg-2">
+                <input ng-model="backToBasics.question4_1Response" ng-pattern="/^[0-9]*$/" fieldtype="numeric" required type="text" class="form-control" id="inputNumber" placeholder="">
+            </div>
+            <div class="col-lg-4">
+                <input ng-model="backToBasics.question4_1Note" type="text" class="form-control" id="Text1" placeholder="">
+            </div>
+        </div>
+        <div class="row section">
+            <label for="inputNumber" class="col-lg-5 control-label">How many tenders over R200,000 were awarded in the past month?</label>
+            <label for="inputNumber" class="col-lg-1 control-label">Number</label>
+            <div class="col-lg-2">
+                <input ng-model="backToBasics.question4_2Response" ng-pattern="/^[0-9]*$/" fieldtype="numeric" required type="text" class="form-control" id="Text10" placeholder="">
+            </div>
+            <div class="col-lg-4">
+                <input ng-model="backToBasics.question4_2Note" type="text" class="form-control" id="Text11" placeholder="">
+            </div>
+        </div>
+        <div class="row section">
+            <label for="inputNumber" class="col-lg-5 control-label">For these tenders approved last month, what was the average length of time in calendar days from FIRST advertisement to the date of letter of award to successful bidder?</label>
+            <label for="inputNumber" class="col-lg-1 control-label">Days</label>
+            <div class="col-lg-2">
+                <input ng-model="backToBasics.question4_3Response" ng-pattern="/^[0-9]*$/" fieldtype="numeric" required type="text" class="form-control" id="Text16" placeholder="">
+            </div>
+            <div class="col-lg-4">
+                <input ng-model="backToBasics.question4_3Note" type="text" class="form-control" id="Text26" placeholder="">
+            </div>
+        </div>
+        <div class="row section">
+            <label for="inputNumber" class="col-lg-5 control-label">What was the total value of all tenders awarded in the past month?</label>
+            <label for="inputNumber" class="col-lg-1 control-label">Rands</label>
+            <div class="col-lg-2">
+                <input ng-model="backToBasics.question4_4Response" ng-pattern="/^[0-9]{1,3}(?:\s?[0-9]{3})*(?:\.[0-9]{2})?$/" fieldtype="currency" required type="text" class="form-control" id="Text27" placeholder="">
+            </div>
+            <div class="col-lg-4">
+                <input ng-model="backToBasics.question4_4Note" type="text" class="form-control" id="Text28" placeholder="">
+            </div>
+        </div>
+        <div class="row section">
+            <label for="inputNumber" class="col-lg-5 control-label">How many section 36 awards were made in the past month?</label>
+            <label for="inputNumber" class="col-lg-1 control-label">Number</label>
+            <div class="col-lg-2">
+                <input ng-model="backToBasics.question4_5Response" ng-pattern="/^[0-9]*$/" fieldtype="numeric" required type="text" class="form-control" id="Text29" placeholder="">
+            </div>
+            <div class="col-lg-4">
+                <input ng-model="backToBasics.question4_5Note" type="text" class="form-control" id="Text30" placeholder="">
+            </div>
+        </div>
+        <div class="row section">
+            <label for="inputNumber" class="col-lg-5 control-label">What was the total value of section 36 awards made in the past month?</label>
+            <label for="inputNumber" class="col-lg-1 control-label">Rands</label>
+            <div class="col-lg-2">
+                <input ng-model="backToBasics.question4_6Response" ng-pattern="/^[0-9]{1,3}(?:\s?[0-9]{3})*(?:\.[0-9]{2})?$/" fieldtype="currency" required type="text" class="form-control" id="Text31" placeholder="">
+            </div>
+            <div class="col-lg-4">
+                <input ng-model="backToBasics.question4_6Note" type="text" class="form-control" id="Text32" placeholder="">
+            </div>
+        </div>
+        <div class="row section">
+            <label for="inputNumber" class="col-lg-5 control-label">What was the % spend of the Municipality's operating budget on free basic services in the past  month?</label>
+            <label for="inputNumber" class="col-lg-1 control-label">Percentage</label>
+            <div class="col-lg-2">
+                <input ng-model="backToBasics.question4_7Response" ng-pattern="/^[0-9]*$/" fieldtype="numeric" required type="text" class="form-control" id="Text33" placeholder="">
+            </div>
+            <div class="col-lg-4">
+                <input ng-model="backToBasics.question4_7Note" type="text" class="form-control" id="Text34" placeholder="">
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <div class="container">
+                <button ng-click="saveBackToBasics()" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Next ></button>
+            </div>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,68 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <form class="search">
+            <input ng-model="filter" type="text">
+            <button ng-click="clearSearch()" class="search remove-filter" ng-show="serverFilter">X</button>
+            <button type="submit" ng-click="search()"></button>
+        </form>
+    </li>
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/infrastructureRegister/Create" title="Add New Asset"></a>
+    </li>
+</ul>
+<div>
+    <div class="col-md-12">
+        <form class="form-horizontal filters" novalidate role="form">
+            <div class="row">
+                <label for="filterOrganisation" class="col-lg-3 control-label">Organisation</label>
+                <div class="col-lg-3">
+                    <select ng-options="organisation.id as organisation.name for organisation in organisations" ng-model="filters.organisation" class="form-control" id="filterOrganisation"></select>
+                    <button ng-click="filters.organisation = null" class="remove-filter" ng-show="filters.organisation">X</button>
+                </div>
+                <label for="filterAssetClass" class="col-lg-3 control-label">Asset Class</label>
+                <div class="col-lg-3">
+                    <select ng-options="assetClass.id as assetClass.description for assetClass in assetClasses" ng-model="filters.assetClass" class="form-control" id="filterAssetClass"></select>
+                    <button ng-click="filters.assetClass = null" class="remove-filter" ng-show="filters.assetClass">X</button>
+                </div>
+            </div>
+        </form>
+        <table class="table infrastructureList">
+            <colgroup>
+                <col></col>
+                <col></col>
+                <col></col>
+                <col></col>
+                <col></col>
+                <col class="search"></col>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th ng-click="sort('Number')" ng-class="{sorted: field == 'Number', desc: desc}">Asset Number</th>
+                    <th ng-click="sort('Description')" ng-class="{sorted: field == 'Description', desc: desc}">Asset Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tr ng-repeat="infrastructureRegister in infrastructureRegisters">
+                <td>
+                    <a href="#/infrastructureRegisterOverview/{{infrastructureRegister.id}}">{{infrastructureRegister.number}}</a>
+                </td>
+                <td>
+                    <a href="#/infrastructureRegisterOverview/{{infrastructureRegister.id}}">{{infrastructureRegister.description}}</a>
+                </td>
+                <td style="text-align: right" class="list-item-action">
+                    <a href="#/infrastructureRegister/{{infrastructureRegister.id}}" class="icon-pencil" title="Edit" ng-hide="deleteInfrastructure.value"></a>
+                    <a href="#/infrastructureRegister/{{infrastructureRegister.id}}/infrastructureRisk" class="icon-warning" title="Risks" ng-hide="deleteInfrastructure.value"></a>
+                    <a href="" ng-click="deleteInfrastructureRegister(infrastructureRegister.id,$index)" class="glyphicon glyphicon-trash" title="Delete" ng-show="deleteInfrastructure.value"></a>
+
+                </td>
+            </tr>
+        </table>
+        <div class="paging">
+            <ol>
+                <li ng-show="pages.length > 1 && page > 1"><a ng-click="gotoPage(page - 1)" class="icon-angle-left"></a></li>
+                <li ng-show="pages.length > 1">Page {{page}}</li>
+                <li ng-show="pages.length > 1 && page < pages.length"><a ng-click="gotoPage(page + 1)" class="icon-angle-right"></a></li>
+            </ol>
+        </div>
+    </div>
+</div>

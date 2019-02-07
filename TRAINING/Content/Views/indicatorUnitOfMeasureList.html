@@ -1,0 +1,19 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/administration/indicatorUnitOfMeasure/Create"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="indicatorUnitOfMeasure in indicatorUnitOfMeasures">
+            <td>
+                <a href="#/administration/indicatorUnitOfMeasure/{{indicatorUnitOfMeasure.id}}">{{indicatorUnitOfMeasure.description}}</a>
+            </td>
+        </tr>
+    </table>
+</div>

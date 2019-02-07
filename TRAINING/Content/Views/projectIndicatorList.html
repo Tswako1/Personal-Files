@@ -1,0 +1,39 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/projectRegistration/{{project.id}}/indicators/create"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Item</th>
+                <th>Standard</th>
+                <th>Unit Of Measure</th>
+                <th>Strategy</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="indicator in indicators">
+            <td>
+                <a href="#/projectRegistration/{{project.id}}/indicator/{{indicator.id}}">{{indicator.description}}</a>
+            </td>
+            <td>
+                <a href="#/projectRegistration/{{project.id}}/indicator/{{indicator.id}}">{{indicator.type}}</a>
+            </td>
+            <td>
+                <a href="#/projectRegistration/{{project.id}}/indicator/{{indicator.id}}">{{indicator.item}}</a>
+            </td>
+            <td>
+                <a href="#/projectRegistration/{{project.id}}/indicator/{{indicator.id}}">{{indicator.standard}}</a>
+            </td>
+            <td>
+                <a href="#/projectRegistration/{{project.id}}/indicator/{{indicator.id}}">{{indicator.unitOfMeasure}}</a>
+            </td>
+            <td>
+                <a href="#/projectRegistration/{{project.id}}/indicator/{{indicator.id}}">{{indicator.strategy}}</a>
+            </td>
+        </tr>
+    </table>
+</div>

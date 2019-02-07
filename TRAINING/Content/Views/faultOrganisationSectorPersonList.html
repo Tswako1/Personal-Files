@@ -1,0 +1,27 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/administration/faultOrganisationSectorPerson/Create"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Organisation</th>
+                <th>Sector Programme</th>
+                <th>Responsible Person</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="faultOrganisationSectorPerson in faultOrganisationSectorPersonList">
+            <td>
+                <a href="#/administration/faultOrganisationSectorPerson/{{faultOrganisationSectorPerson.id}}">{{faultOrganisationSectorPerson.organisationName}}</a>
+            </td>
+            <td>
+                <a href="#/administration/faultOrganisationSectorPerson/{{faultOrganisationSectorPerson.id}}">{{faultOrganisationSectorPerson.sectorProgrammeDescription}}</a>
+            </td>
+            <td>
+                <a href="#/administration/faultOrganisationSectorPerson/{{faultOrganisationSectorPerson.id}}">{{faultOrganisationSectorPerson.responsiblePersonName}}</a>
+            </td>
+        </tr>
+    </table>
+</div>

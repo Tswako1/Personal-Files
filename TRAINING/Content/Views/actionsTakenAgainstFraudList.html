@@ -1,0 +1,19 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/administration/actionsTakenAgainstFraud/Create"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="actionTakenAgainstFraud in actionsTakenAgainstFraud">
+            <td>
+                <a href="#/administration/actionsTakenAgainstFraud/{{actionTakenAgainstFraud.id}}">{{actionTakenAgainstFraud.description}}</a>
+            </td>
+        </tr>
+    </table>
+</div>

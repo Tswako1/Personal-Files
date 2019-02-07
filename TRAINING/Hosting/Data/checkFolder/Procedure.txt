@@ -1,0 +1,8 @@
+1 How to create stored procedure.
+
+ 
+create proc sp_s_see
+as
+begin
+select id,studentno,institution from seenow
+end

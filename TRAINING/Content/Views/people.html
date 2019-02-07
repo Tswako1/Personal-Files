@@ -1,0 +1,91 @@
+﻿<form class="form-horizontal col-md-12" novalidate role="form" name="peopleForm">
+    <div class="form-group">
+        <label for="inputFirstName" class="col-lg-3 control-label">First Name</label>
+        <div class="col-lg-6">
+            <input ng-model="people.firstName" required type="text" class="form-control" id="inputFirstName" placeholder="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputSurname" class="col-lg-3 control-label">Surname</label>
+        <div class="col-lg-6">
+            <input ng-model="people.surname" required type="text" class="form-control" id="inputSurname" placeholder="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputEmailAddress" class="col-lg-3 control-label">E-Mail Address</label>
+        <div class="col-lg-6">
+            <input ng-model="people.emailAddress" required type="text" class="form-control" id="inputEmailAddress" placeholder="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPhoneNumber" class="col-lg-3 control-label">Phone Number</label>
+        <div class="col-lg-6">
+            <input ng-model="people.phoneNumber" required type="text" class="form-control" id="inputPhoneNumber" placeholder="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Job Description</label>
+        <div class="col-lg-6">
+            <select ng-model="people.jobDescription.id" class="form-control" required ng-options="jobDescription.id as jobDescription.description for jobDescription in jobDescriptions"></select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="userCheckBox" class="col-lg-3 control-label">Person is a System User</label>
+        <div class="col-lg-3 checkbox mipmis-checkbox">
+            <input ng-model="isUser" type="checkbox" ng-disabled="isAtLoadUser" value="true" id="userCheckBox" placeholder="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="userCheckBox" class="col-lg-3 control-label">Enabled</label>
+        <div class="col-lg-3 checkbox mipmis-checkbox">
+            <input ng-model="people.enabled" type="checkbox" value="true" id="Checkbox1" placeholder="">
+        </div>
+    </div>
+    <div ng-show="isUser">
+        <div class="form-group">
+            <label for="inputUserName" class="col-lg-3 control-label">User Name</label>
+            <div class="col-lg-6">
+                <input ng-model="people.userName" ng-required="isUser" ng-disabled="isAtLoadUser" type="text" class="form-control" id="inputUserName" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputRoleId" class="col-lg-3 control-label">Roles</label>
+            <div class="col-lg-6">
+                <select ng-options="role as role.name for role in roles track by role.id" data="roles" ng-required="isUser" select2 multiple style="width: 100%" ng-model="people.roles" id="inputRoleId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputRoleId" class="col-lg-3 control-label">Sector Programmes</label>
+            <div class="col-lg-6">
+                <select ng-options="sector as sector.description for sector in sectors track by sector.id" data="sectors" ng-required="isUser" select2 multiple style="width: 100%" ng-model="people.sectors" id="inputSectorId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputOrganisationId" class="col-lg-3 control-label">Organisations</label>
+            <div class="col-lg-6">
+                <ul treeview class="form-control">
+                    <li node label="national"><span>National</span>
+                        <ul>
+                            <li node label="{{province.key}}" ng-repeat="province in hierarchy">{{province.key}}
+                        <ul>
+                            <li node label="{{district.key}}" ng-repeat="district in province.districts">{{district.key}}
+                                <ul>
+                                    <li node value="{{organisation.id}}" organisations="people.userOrganisations" ng-repeat="organisation in district.organisations">{{organisation.name}}
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="form-actions">
+        <div class="container">
+            <button ng-click="savePeople()" value="Save" formnovalidate class="btn btn-default pull-right" ng-disabled="busy">Save</button>
+        </div>
+    </div>
+</form>

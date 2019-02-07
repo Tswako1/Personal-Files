@@ -1,0 +1,51 @@
+﻿<ul placeholder-content="toolbar">
+    <li>
+        <form class="search" ng-submit="search()" ng-show="false">
+            <input ng-model="filter" type="text">
+            <button ng-click="clearSearch()" class="search remove-filter" ng-show="serverFilter">X</button>
+            <button type="submit"></button>
+        </form>
+    </li>
+    <li>
+        <a class="glyphicon glyphicon-plus" href="#/operationalPlan/{{targetId}}/projects/Create" title="Create New Operations Project" operation="CreateOperationalPlan"></a>
+    </li>
+</ul>
+<div class="col-md-12">
+    <form class="form-horizontal filters" novalidate role="form">
+        <div class="row">
+            <label for="filterOrganisation" class="col-lg-3 control-label">Organisation</label>
+            <div class="col-lg-3">
+                <select ng-options="organisation.id as organisation.name for organisation in organisations" ng-model="filters.organisation" class="form-control" id="filterOrganisation"></select>
+                <button ng-click="filters.organisation = null" class="remove-filter" ng-show="filters.organisation">X</button>
+            </div>
+            <label for="filterFinancialYear" class="col-lg-3 control-label">Financial Year</label>
+            <div class="col-lg-3">
+                <select ng-options="year.id as year.description for year in financialYears" ng-model="filters.year" class="form-control" id="filterFinancialYear"></select>
+                <button ng-click="filters.year = null" class="remove-filter" ng-show="filters.year">X</button>
+            </div>
+        </div>
+    </form>
+    <table class="table infrastructureList">
+        <colgroup>
+            <col></col>
+        </colgroup>
+        <thead>
+            <tr>
+                <th ng-click="sort('Number')" ng-class="{sorted: field == 'Number', desc: desc}">Project Name</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="operationalProject in operationalProjects.items">
+            <td>
+                <a href="#/operationalPlan/{{targetId}}/projects/{{operationalProject.id}}">{{operationalProject.projectName}}</a>
+            </td>
+            
+        </tr>
+    </table>
+    <div class="paging">
+        <ol>
+            <li ng-show="pages.length > 1 && page > 1"><a ng-click="gotoPage(page - 1)" class="icon-angle-left"></a></li>
+            <li ng-show="pages.length > 1">Page {{page}}</li>
+            <li ng-show="pages.length > 1 && page < pages.length"><a ng-click="gotoPage(page + 1)" class="icon-angle-right"></a></li>
+        </ol>
+    </div>
+</div>
